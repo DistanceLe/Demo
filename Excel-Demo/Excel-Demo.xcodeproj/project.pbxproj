@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A21D3811EC2F3D00043B625 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A21D3801EC2F3D00043B625 /* main.m */; };
+		2A21D3841EC2F3D00043B625 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A21D3831EC2F3D00043B625 /* AppDelegate.m */; };
+		2A21D3871EC2F3D00043B625 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A21D3861EC2F3D00043B625 /* ViewController.m */; };
+		2A21D38A1EC2F3D00043B625 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A21D3881EC2F3D00043B625 /* Main.storyboard */; };
+		2A21D38C1EC2F3D00043B625 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A21D38B1EC2F3D00043B625 /* Assets.xcassets */; };
+		2A21D38F1EC2F3D00043B625 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A21D38D1EC2F3D00043B625 /* LaunchScreen.storyboard */; };
+		2A21D39A1EC2F3D00043B625 /* Excel_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A21D3991EC2F3D00043B625 /* Excel_DemoTests.m */; };
+		2A21D3A51EC2F3D10043B625 /* Excel_DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A21D3A41EC2F3D10043B625 /* Excel_DemoUITests.m */; };
+		2A21D3B71EC2F4280043B625 /* libDHxlsReaderIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A21D3B61EC2F4280043B625 /* libDHxlsReaderIOS.a */; };
+		2A21D3B91EC2F4410043B625 /* test2.xls in Resources */ = {isa = PBXBuildFile; fileRef = 2A21D3B81EC2F4410043B625 /* test2.xls */; };
+		2A21D3BB1EC2F4A20043B625 /* test.xls in Resources */ = {isa = PBXBuildFile; fileRef = 2A21D3BA1EC2F4A20043B625 /* test.xls */; };
+		2A21D3BF1EC2F6680043B625 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A21D3BE1EC2F6680043B625 /* libiconv.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2A21D3961EC2F3D00043B625 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A21D3741EC2F3D00043B625 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A21D37B1EC2F3D00043B625;
+			remoteInfo = "Excel-Demo";
+		};
+		2A21D3A11EC2F3D10043B625 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A21D3741EC2F3D00043B625 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A21D37B1EC2F3D00043B625;
+			remoteInfo = "Excel-Demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2A21D37C1EC2F3D00043B625 /* Excel-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Excel-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A21D3801EC2F3D00043B625 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2A21D3821EC2F3D00043B625 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2A21D3831EC2F3D00043B625 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2A21D3851EC2F3D00043B625 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2A21D3861EC2F3D00043B625 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2A21D3891EC2F3D00043B625 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2A21D38B1EC2F3D00043B625 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A21D38E1EC2F3D00043B625 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2A21D3901EC2F3D00043B625 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A21D3951EC2F3D00043B625 /* Excel-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Excel-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A21D3991EC2F3D00043B625 /* Excel_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Excel_DemoTests.m; sourceTree = "<group>"; };
+		2A21D39B1EC2F3D10043B625 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A21D3A01EC2F3D10043B625 /* Excel-DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Excel-DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A21D3A41EC2F3D10043B625 /* Excel_DemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Excel_DemoUITests.m; sourceTree = "<group>"; };
+		2A21D3A61EC2F3D10043B625 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A21D3B41EC2F4280043B625 /* DHcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHcell.h; sourceTree = "<group>"; };
+		2A21D3B51EC2F4280043B625 /* DHxlsReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHxlsReader.h; sourceTree = "<group>"; };
+		2A21D3B61EC2F4280043B625 /* libDHxlsReaderIOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDHxlsReaderIOS.a; sourceTree = "<group>"; };
+		2A21D3B81EC2F4410043B625 /* test2.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = test2.xls; sourceTree = "<group>"; };
+		2A21D3BA1EC2F4A20043B625 /* test.xls */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.xls; sourceTree = "<group>"; };
+		2A21D3BE1EC2F6680043B625 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A21D3791EC2F3D00043B625 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A21D3BF1EC2F6680043B625 /* libiconv.tbd in Frameworks */,
+				2A21D3B71EC2F4280043B625 /* libDHxlsReaderIOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A21D3921EC2F3D00043B625 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A21D39D1EC2F3D10043B625 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A21D3731EC2F3D00043B625 = {
+			isa = PBXGroup;
+			children = (
+				2A21D37E1EC2F3D00043B625 /* Excel-Demo */,
+				2A21D3981EC2F3D00043B625 /* Excel-DemoTests */,
+				2A21D3A31EC2F3D10043B625 /* Excel-DemoUITests */,
+				2A21D37D1EC2F3D00043B625 /* Products */,
+				2A21D3BD1EC2F6680043B625 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2A21D37D1EC2F3D00043B625 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A21D37C1EC2F3D00043B625 /* Excel-Demo.app */,
+				2A21D3951EC2F3D00043B625 /* Excel-DemoTests.xctest */,
+				2A21D3A01EC2F3D10043B625 /* Excel-DemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A21D37E1EC2F3D00043B625 /* Excel-Demo */ = {
+			isa = PBXGroup;
+			children = (
+				2A21D3B21EC2F4280043B625 /* xlsReader */,
+				2A21D3821EC2F3D00043B625 /* AppDelegate.h */,
+				2A21D3831EC2F3D00043B625 /* AppDelegate.m */,
+				2A21D3851EC2F3D00043B625 /* ViewController.h */,
+				2A21D3861EC2F3D00043B625 /* ViewController.m */,
+				2A21D3881EC2F3D00043B625 /* Main.storyboard */,
+				2A21D38B1EC2F3D00043B625 /* Assets.xcassets */,
+				2A21D38D1EC2F3D00043B625 /* LaunchScreen.storyboard */,
+				2A21D3901EC2F3D00043B625 /* Info.plist */,
+				2A21D3B81EC2F4410043B625 /* test2.xls */,
+				2A21D3BA1EC2F4A20043B625 /* test.xls */,
+				2A21D37F1EC2F3D00043B625 /* Supporting Files */,
+			);
+			path = "Excel-Demo";
+			sourceTree = "<group>";
+		};
+		2A21D37F1EC2F3D00043B625 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A21D3801EC2F3D00043B625 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2A21D3981EC2F3D00043B625 /* Excel-DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				2A21D3991EC2F3D00043B625 /* Excel_DemoTests.m */,
+				2A21D39B1EC2F3D10043B625 /* Info.plist */,
+			);
+			path = "Excel-DemoTests";
+			sourceTree = "<group>";
+		};
+		2A21D3A31EC2F3D10043B625 /* Excel-DemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2A21D3A41EC2F3D10043B625 /* Excel_DemoUITests.m */,
+				2A21D3A61EC2F3D10043B625 /* Info.plist */,
+			);
+			path = "Excel-DemoUITests";
+			sourceTree = "<group>";
+		};
+		2A21D3B21EC2F4280043B625 /* xlsReader */ = {
+			isa = PBXGroup;
+			children = (
+				2A21D3B31EC2F4280043B625 /* include */,
+				2A21D3B61EC2F4280043B625 /* libDHxlsReaderIOS.a */,
+			);
+			path = xlsReader;
+			sourceTree = "<group>";
+		};
+		2A21D3B31EC2F4280043B625 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				2A21D3B41EC2F4280043B625 /* DHcell.h */,
+				2A21D3B51EC2F4280043B625 /* DHxlsReader.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		2A21D3BD1EC2F6680043B625 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A21D3BE1EC2F6680043B625 /* libiconv.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A21D37B1EC2F3D00043B625 /* Excel-Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A21D3A91EC2F3D10043B625 /* Build configuration list for PBXNativeTarget "Excel-Demo" */;
+			buildPhases = (
+				2A21D3781EC2F3D00043B625 /* Sources */,
+				2A21D3791EC2F3D00043B625 /* Frameworks */,
+				2A21D37A1EC2F3D00043B625 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Excel-Demo";
+			productName = "Excel-Demo";
+			productReference = 2A21D37C1EC2F3D00043B625 /* Excel-Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2A21D3941EC2F3D00043B625 /* Excel-DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A21D3AC1EC2F3D10043B625 /* Build configuration list for PBXNativeTarget "Excel-DemoTests" */;
+			buildPhases = (
+				2A21D3911EC2F3D00043B625 /* Sources */,
+				2A21D3921EC2F3D00043B625 /* Frameworks */,
+				2A21D3931EC2F3D00043B625 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A21D3971EC2F3D00043B625 /* PBXTargetDependency */,
+			);
+			name = "Excel-DemoTests";
+			productName = "Excel-DemoTests";
+			productReference = 2A21D3951EC2F3D00043B625 /* Excel-DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2A21D39F1EC2F3D10043B625 /* Excel-DemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A21D3AF1EC2F3D10043B625 /* Build configuration list for PBXNativeTarget "Excel-DemoUITests" */;
+			buildPhases = (
+				2A21D39C1EC2F3D10043B625 /* Sources */,
+				2A21D39D1EC2F3D10043B625 /* Frameworks */,
+				2A21D39E1EC2F3D10043B625 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A21D3A21EC2F3D10043B625 /* PBXTargetDependency */,
+			);
+			name = "Excel-DemoUITests";
+			productName = "Excel-DemoUITests";
+			productReference = 2A21D3A01EC2F3D10043B625 /* Excel-DemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A21D3741EC2F3D00043B625 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = LiJie;
+				TargetAttributes = {
+					2A21D37B1EC2F3D00043B625 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = KKHXU36BGT;
+						ProvisioningStyle = Automatic;
+					};
+					2A21D3941EC2F3D00043B625 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = KKHXU36BGT;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2A21D37B1EC2F3D00043B625;
+					};
+					2A21D39F1EC2F3D10043B625 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = KKHXU36BGT;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2A21D37B1EC2F3D00043B625;
+					};
+				};
+			};
+			buildConfigurationList = 2A21D3771EC2F3D00043B625 /* Build configuration list for PBXProject "Excel-Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2A21D3731EC2F3D00043B625;
+			productRefGroup = 2A21D37D1EC2F3D00043B625 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2A21D37B1EC2F3D00043B625 /* Excel-Demo */,
+				2A21D3941EC2F3D00043B625 /* Excel-DemoTests */,
+				2A21D39F1EC2F3D10043B625 /* Excel-DemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2A21D37A1EC2F3D00043B625 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A21D3B91EC2F4410043B625 /* test2.xls in Resources */,
+				2A21D3BB1EC2F4A20043B625 /* test.xls in Resources */,
+				2A21D38F1EC2F3D00043B625 /* LaunchScreen.storyboard in Resources */,
+				2A21D38C1EC2F3D00043B625 /* Assets.xcassets in Resources */,
+				2A21D38A1EC2F3D00043B625 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A21D3931EC2F3D00043B625 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A21D39E1EC2F3D10043B625 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2A21D3781EC2F3D00043B625 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A21D3871EC2F3D00043B625 /* ViewController.m in Sources */,
+				2A21D3841EC2F3D00043B625 /* AppDelegate.m in Sources */,
+				2A21D3811EC2F3D00043B625 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A21D3911EC2F3D00043B625 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A21D39A1EC2F3D00043B625 /* Excel_DemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A21D39C1EC2F3D10043B625 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A21D3A51EC2F3D10043B625 /* Excel_DemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2A21D3971EC2F3D00043B625 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A21D37B1EC2F3D00043B625 /* Excel-Demo */;
+			targetProxy = 2A21D3961EC2F3D00043B625 /* PBXContainerItemProxy */;
+		};
+		2A21D3A21EC2F3D10043B625 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A21D37B1EC2F3D00043B625 /* Excel-Demo */;
+			targetProxy = 2A21D3A11EC2F3D10043B625 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2A21D3881EC2F3D00043B625 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A21D3891EC2F3D00043B625 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2A21D38D1EC2F3D00043B625 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A21D38E1EC2F3D00043B625 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2A21D3A71EC2F3D10043B625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2A21D3A81EC2F3D10043B625 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2A21D3AA1EC2F3D10043B625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KKHXU36BGT;
+				INFOPLIST_FILE = "Excel-Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Excel-Demo/xlsReader",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "LJ.Excel-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2A21D3AB1EC2F3D10043B625 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = KKHXU36BGT;
+				INFOPLIST_FILE = "Excel-Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Excel-Demo/xlsReader",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "LJ.Excel-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2A21D3AD1EC2F3D10043B625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = KKHXU36BGT;
+				INFOPLIST_FILE = "Excel-DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "LJ.Excel-DemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Excel-Demo.app/Excel-Demo";
+			};
+			name = Debug;
+		};
+		2A21D3AE1EC2F3D10043B625 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = KKHXU36BGT;
+				INFOPLIST_FILE = "Excel-DemoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "LJ.Excel-DemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Excel-Demo.app/Excel-Demo";
+			};
+			name = Release;
+		};
+		2A21D3B01EC2F3D10043B625 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = KKHXU36BGT;
+				INFOPLIST_FILE = "Excel-DemoUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "LJ.Excel-DemoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Excel-Demo";
+			};
+			name = Debug;
+		};
+		2A21D3B11EC2F3D10043B625 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = KKHXU36BGT;
+				INFOPLIST_FILE = "Excel-DemoUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "LJ.Excel-DemoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Excel-Demo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2A21D3771EC2F3D00043B625 /* Build configuration list for PBXProject "Excel-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A21D3A71EC2F3D10043B625 /* Debug */,
+				2A21D3A81EC2F3D10043B625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A21D3A91EC2F3D10043B625 /* Build configuration list for PBXNativeTarget "Excel-Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A21D3AA1EC2F3D10043B625 /* Debug */,
+				2A21D3AB1EC2F3D10043B625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2A21D3AC1EC2F3D10043B625 /* Build configuration list for PBXNativeTarget "Excel-DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A21D3AD1EC2F3D10043B625 /* Debug */,
+				2A21D3AE1EC2F3D10043B625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2A21D3AF1EC2F3D10043B625 /* Build configuration list for PBXNativeTarget "Excel-DemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A21D3B01EC2F3D10043B625 /* Debug */,
+				2A21D3B11EC2F3D10043B625 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A21D3741EC2F3D00043B625 /* Project object */;
+}
