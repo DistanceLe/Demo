@@ -13,6 +13,11 @@
 #import "UIView+LJ.h"
 #import "JSWave.h"
 
+
+#import "LJGif.h"
+#import "FLAnimatedImageView.h"
+#import "FLAnimatedImage.h"
+
 @implementation TestModel
 
 @end
@@ -20,9 +25,7 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet TestButton *testButton;
-@property (weak, nonatomic) IBOutlet TestViewC *testViewC;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
+@property (weak, nonatomic) IBOutlet FLAnimatedImageView *gifImageView;
 
 
 @end
@@ -42,6 +45,12 @@
 }
 - (IBAction)buttonClick:(UIButton *)sender {
     NSLog(@"click --------->");
+    [LJGif getGifImage];
+    
+    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+    NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:@"animated.gif"];
+    self.gifImageView.animatedImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:fileURL]];
+    
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -56,6 +65,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
+    return;
     UIButton* but = [UIButton buttonWithType:UIButtonTypeSystem];
     but.frame = CGRectMake(0, 150, 100, 100);
     but.backgroundColor = [UIColor redColor];
@@ -66,10 +78,10 @@
     //NSLog(@"...factorial: %ld", [self factorialWithN:10]);
     
 //    self.scrollView.enableNextResponder = YES;
-    self.testViewC.enableNextResponder = YES;
+//    self.testViewC.enableNextResponder = YES;
     //self.testButton.enableNextResponder = YES;
-    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(testViewTap:)];
-    [self.testViewC addGestureRecognizer:tap];
+//    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(testViewTap:)];
+//    [self.testViewC addGestureRecognizer:tap];
     
     
     
@@ -81,7 +93,7 @@
     model.age = @"12";
     NSLog(@"...%@", [mutableDic[@"model"] valueForKey:@"name"]);
     
-    TestModel* temp = mutableDic[@"model"];
+//    TestModel* temp = mutableDic[@"model"];
     
     self.contentLabel.text = @"算了\n郑文杰  16:02:41\n不能 IB 都是渣渣\n郑文杰  16:02:43\n不搞了";
     

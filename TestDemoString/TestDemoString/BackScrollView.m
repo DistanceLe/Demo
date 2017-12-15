@@ -8,6 +8,8 @@
 
 #import "BackScrollView.h"
 
+
+
 @implementation BackScrollView
 
 -(void)awakeFromNib{
@@ -24,9 +26,7 @@
             self.contentOffset = CGPointMake(0, 100);
         }
 //        [[NSNotificationCenter defaultCenter]postNotificationName:@"top" object:@(self.contentOffset.y - 100)];
-        
     }
-    
 }
 
 //-(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{

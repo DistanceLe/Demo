@@ -19,7 +19,7 @@
 
 @property(nonatomic, strong)void(^testHandler)(NSString* name);
 
--(void)addTest:(void(^)(NSString* name))handler;
+//-(void)addTest:(void(^)(NSString* name))handler;
 
 
 @end
