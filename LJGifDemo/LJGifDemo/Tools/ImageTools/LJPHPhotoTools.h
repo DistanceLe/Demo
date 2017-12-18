@@ -27,7 +27,7 @@ typedef void(^PHVideoURLBlock)      (NSURL* url, AVURLAsset* asset);
 /**  单单获取相机胶卷 相册, 回调数组里均只有一个元素 */
 +(void)getRollAlbum:(PHGroupBlock)handler;
 
-/**  获取一个相册的所有图片信息 */
+/**  获取一个相册的所有图片信息, 该工程，只读取图片资源，视频资源不处理 */
 +(NSArray<PHAsset*>*)getAssetsInCollection:(PHAssetCollection*)collection;
 
 /**  获取一组ALAsset 的URL里面的所有图片信息 */

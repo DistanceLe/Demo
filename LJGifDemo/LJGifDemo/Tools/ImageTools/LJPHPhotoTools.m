@@ -63,13 +63,6 @@
                 [[UIApplication sharedApplication]openURL:url];
             }
         }];
-        
-//        [LJAlertView customAlertWithTitle:LS(@"CE_OpenAlbumAuthorizationInfo") message:LS(@"CE_GoSetting") delegate:nil cancelButtonTitle:LS(@"CE_NOGo") otherButtonTitles:LS(@"CE_Setting") clickButton:^(NSInteger flag) {
-//            if (flag==1) {
-//                NSURL* url=[NSURL URLWithString:UIApplicationOpenSettingsURLString];
-//                [[UIApplication sharedApplication]openURL:url];
-//            }
-//        }];
     }
     NSMutableArray* alubms=[NSMutableArray array];
     NSMutableArray* counts=[NSMutableArray array];
@@ -171,6 +164,9 @@
     
     PHFetchResult* result=[PHAsset fetchAssetsInAssetCollection:collection options:option];
     for (PHAsset* asset in result) {
+        if (asset.mediaType != PHAssetMediaTypeImage) {
+            continue;
+        }
         [assets addObject:asset];
     }
     return assets;
@@ -251,7 +247,7 @@
     PHImageRequestOptions* option=[[PHImageRequestOptions alloc]init];
     option.resizeMode=PHImageRequestOptionsResizeModeExact;//缩放模式
     option.synchronous=NO;//是否同步
-    option.deliveryMode=PHImageRequestOptionsDeliveryModeFastFormat;//图片质量
+    option.deliveryMode=PHImageRequestOptionsDeliveryModeOpportunistic;//图片质量
     option.networkAccessAllowed=NO;
     
     [[PHCachingImageManager defaultManager]requestImageForAsset:asset

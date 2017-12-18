@@ -27,10 +27,10 @@
     [super viewDidLoad];
     
     self.title=@"相册";
+    [self initData];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self initData];
 }
 
 -(void)dealloc{

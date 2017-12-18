@@ -15,9 +15,10 @@ static NSString* const pointReuseIndentifier = @"pointReuseIndentifier";
 static NSString* const userLocationStyleReuseIndetifier = @"userLocationStyleReuseIndetifier";
 
 static NSString* const dateListName = @"dateListName";
+static NSString* const photoSavedName = @"photoSavedName";
 
-static NSString* const photoDictionary = @"photos";
-static NSString* const thumbnailDictionary = @"thumbnails";
+static NSString* const photoDirectory = @"photos";
+static NSString* const thumbnailDirectory = @"thumbnails";
 
 
 
