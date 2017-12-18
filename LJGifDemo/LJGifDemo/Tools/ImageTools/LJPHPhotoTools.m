@@ -85,7 +85,7 @@
         [names addObject:sub.localizedTitle];
         
         PHFetchResult* result=[PHAsset fetchAssetsInAssetCollection:sub options:nil];
-        NSInteger count=[result countOfAssetsWithMediaType:PHAssetMediaTypeImage | PHAssetMediaTypeVideo];
+        NSInteger count=[result countOfAssetsWithMediaType:PHAssetMediaTypeImage];
         [counts addObject:@(count)];
         
         if (count>0) {

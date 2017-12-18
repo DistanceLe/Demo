@@ -30,6 +30,11 @@
 		2A4CC08D1FE3C8DA0076676F /* UIView+LJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4CC0861FE3C8DA0076676F /* UIView+LJ.m */; };
 		2A4CC0911FE3CAEF0076676F /* LJGif.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4CC08F1FE3CAEF0076676F /* LJGif.m */; };
 		2A4CC0951FE3CB750076676F /* TimeTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4CC0941FE3CB750076676F /* TimeTools.m */; };
+		2AE07CF51FE7986400DA3149 /* LJPhotoAlbumDetailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CEF1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.m */; };
+		2AE07CF61FE7986400DA3149 /* LJPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AE07CF01FE7986300DA3149 /* LJPhotoCollectionViewCell.xib */; };
+		2AE07CF71FE7986400DA3149 /* LJPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CF11FE7986300DA3149 /* LJPhotoCollectionViewCell.m */; };
+		2AE07CF81FE7986400DA3149 /* LJPhotoAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CF31FE7986400DA3149 /* LJPhotoAlbumTableViewController.m */; };
+		2AE07CFC1FE798D700DA3149 /* LJFileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CFB1FE798D700DA3149 /* LJFileOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +85,15 @@
 		2A4CC0901FE3CAEF0076676F /* LJGif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJGif.h; sourceTree = "<group>"; };
 		2A4CC0931FE3CB750076676F /* TimeTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTools.h; sourceTree = "<group>"; };
 		2A4CC0941FE3CB750076676F /* TimeTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTools.m; sourceTree = "<group>"; };
+		2AE07CEE1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPhotoAlbumDetailCollectionViewController.h; sourceTree = "<group>"; };
+		2AE07CEF1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPhotoAlbumDetailCollectionViewController.m; sourceTree = "<group>"; };
+		2AE07CF01FE7986300DA3149 /* LJPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		2AE07CF11FE7986300DA3149 /* LJPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		2AE07CF21FE7986300DA3149 /* LJPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		2AE07CF31FE7986400DA3149 /* LJPhotoAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPhotoAlbumTableViewController.m; sourceTree = "<group>"; };
+		2AE07CF41FE7986400DA3149 /* LJPhotoAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPhotoAlbumTableViewController.h; sourceTree = "<group>"; };
+		2AE07CFA1FE798D600DA3149 /* LJFileOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJFileOperation.h; sourceTree = "<group>"; };
+		2AE07CFB1FE798D700DA3149 /* LJFileOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJFileOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +126,7 @@
 		2A4CC03F1FE3C33A0076676F /* LJGifDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2AE07CED1FE7983600DA3149 /* Album */,
 				2A4CC08E1FE3C9310076676F /* GIF */,
 				2A4CC0561FE3C3480076676F /* Tools */,
 				2A4CC0401FE3C33A0076676F /* AppDelegate.h */,
@@ -130,6 +145,7 @@
 		2A4CC0561FE3C3480076676F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				2AE07CF91FE798CF00DA3149 /* File */,
 				2A4CC0721FE3C8940076676F /* HeaderFiler */,
 				2A4CC0921FE3CB750076676F /* TimeTools */,
 				2A4CC0791FE3C8DA0076676F /* Category */,
@@ -226,6 +242,29 @@
 			path = TimeTools;
 			sourceTree = "<group>";
 		};
+		2AE07CED1FE7983600DA3149 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				2AE07CF41FE7986400DA3149 /* LJPhotoAlbumTableViewController.h */,
+				2AE07CF31FE7986400DA3149 /* LJPhotoAlbumTableViewController.m */,
+				2AE07CEE1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.h */,
+				2AE07CEF1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.m */,
+				2AE07CF21FE7986300DA3149 /* LJPhotoCollectionViewCell.h */,
+				2AE07CF11FE7986300DA3149 /* LJPhotoCollectionViewCell.m */,
+				2AE07CF01FE7986300DA3149 /* LJPhotoCollectionViewCell.xib */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		2AE07CF91FE798CF00DA3149 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				2AE07CFA1FE798D600DA3149 /* LJFileOperation.h */,
+				2AE07CFB1FE798D700DA3149 /* LJFileOperation.m */,
+			);
+			path = File;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -285,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A4CC04D1FE3C33A0076676F /* LaunchScreen.storyboard in Resources */,
+				2AE07CF61FE7986400DA3149 /* LJPhotoCollectionViewCell.xib in Resources */,
 				2A4CC04A1FE3C33A0076676F /* Assets.xcassets in Resources */,
 				2A4CC0481FE3C33A0076676F /* Main.storyboard in Resources */,
 			);
@@ -304,9 +344,11 @@
 				2A4CC08A1FE3C8DA0076676F /* UIButton+LJ.m in Sources */,
 				2A4CC0501FE3C33A0076676F /* main.m in Sources */,
 				2A4CC0711FE3C81B0076676F /* LJPHPhotoTools.m in Sources */,
+				2AE07CF71FE7986400DA3149 /* LJPhotoCollectionViewCell.m in Sources */,
 				2A4CC06E1FE3C7830076676F /* ProgressHUD.m in Sources */,
 				2A4CC06C1FE3C7830076676F /* LJInfoAlert.m in Sources */,
 				2A4CC06D1FE3C7830076676F /* LJSheetAlertView.m in Sources */,
+				2AE07CFC1FE798D700DA3149 /* LJFileOperation.m in Sources */,
 				2A4CC0951FE3CB750076676F /* TimeTools.m in Sources */,
 				2A4CC05D1FE3C37F0076676F /* FLAnimatedImage.m in Sources */,
 				2A4CC06B1FE3C7830076676F /* LJAlertView.m in Sources */,
@@ -316,7 +358,9 @@
 				2A4CC0611FE3C6C40076676F /* LJImageTools.m in Sources */,
 				2A4CC08C1FE3C8DA0076676F /* UIImage+LJ.m in Sources */,
 				2A4CC0781FE3C8940076676F /* Foundation+Log.m in Sources */,
+				2AE07CF81FE7986400DA3149 /* LJPhotoAlbumTableViewController.m in Sources */,
 				2A4CC08B1FE3C8DA0076676F /* UIImage+ImageEffects.m in Sources */,
+				2AE07CF51FE7986400DA3149 /* LJPhotoAlbumDetailCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
