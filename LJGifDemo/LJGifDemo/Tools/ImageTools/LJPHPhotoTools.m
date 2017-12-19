@@ -311,7 +311,7 @@
         PHImageRequestOptions* option=[[PHImageRequestOptions alloc]init];
         option.resizeMode=PHImageRequestOptionsResizeModeExact;//缩放模式
         option.synchronous=YES;//是否同步
-        option.deliveryMode=PHImageRequestOptionsDeliveryModeFastFormat;//图片质量
+        option.deliveryMode=PHImageRequestOptionsDeliveryModeHighQualityFormat;//图片质量
         option.networkAccessAllowed=NO;
         
         for (NSInteger index=0; index<assets.count; index++) {
@@ -342,7 +342,7 @@
     PHImageRequestOptions* option=[[PHImageRequestOptions alloc]init];
     option.resizeMode=PHImageRequestOptionsResizeModeExact;//缩放模式
     option.synchronous=NO;//是否同步
-    option.deliveryMode=PHImageRequestOptionsDeliveryModeFastFormat;//图片质量
+    option.deliveryMode=PHImageRequestOptionsDeliveryModeHighQualityFormat;//图片质量
     option.networkAccessAllowed=NO;
     
     [[PHCachingImageManager defaultManager]requestImageDataForAsset:asset options:option resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {

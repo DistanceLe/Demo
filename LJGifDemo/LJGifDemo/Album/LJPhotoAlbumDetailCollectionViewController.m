@@ -10,7 +10,8 @@
 
 #import "LJPhotoCollectionViewCell.h"
 #import "LJPHPhotoTools.h"
-#import "LJFileOperation.h"
+//#import "LJFileOperation.h"
+#import "LJPhotoOperational.h"
 #import "TimeTools.h"
 
 
@@ -63,8 +64,8 @@
         }
     }
     __block long long timestamp = [TimeTools getCurrentTimestamp];
-    LJFileOperation* originOperation=[LJFileOperation shareOperationWithDocument:photoDirectory];
-    LJFileOperation* thumbainOperation=[LJFileOperation shareOperationWithDocument:thumbnailDirectory];
+//    LJFileOperation* originOperation=[LJFileOperation shareOperationWithDocument:photoDirectory];
+//    LJFileOperation* thumbainOperation=[LJFileOperation shareOperationWithDocument:thumbnailDirectory];
     
     [self.selectedIndex enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj boolValue]) {
@@ -74,13 +75,15 @@
             
             [LJPHPhotoTools getImageDataWithAsset:asset handler:^(NSData *imageData, NSString* imageName) {
                 
-                DLog(@"imageName=%@", tempName);
-                [originOperation saveObject:imageData name:tempName];
+                DLog(@"origin~~~~~~imageName=%@", tempName);
+                [[LJPhotoOperational shareOperational]saveOriginImageData:imageData imageName:tempName];
+                //[originOperation saveObject:imageData name:tempName];
             }];
-            [LJPHPhotoTools getAsyncImageWithAsset:asset imageSize:CGSizeMake(IPHONE_WIDTH/1.5, IPHONE_WIDTH/1.5) handler:^(UIImage *image) {
+            [LJPHPhotoTools getThumbnailImagesWithAssets:@[asset] imageSize:CGSizeMake(IPHONE_WIDTH/1.5, IPHONE_WIDTH/1.5) handler:^(NSArray<UIImage*>* imageArray) {
                 index--;
-                DLog(@"imageName=%@", tempName);
-                [thumbainOperation saveObject:image name:tempName];
+                DLog(@"thumbnail-----------------imageName=%@", tempName);
+                [[LJPhotoOperational shareOperational]saveThumbnailImageData:imageArray.firstObject imageName:tempName];
+                //[thumbainOperation saveObject:image name:tempName];
                 if (index==0) {//保存完成，发送通知，刷新首页面
                     [ProgressHUD dismiss];
                     [[NSNotificationCenter defaultCenter]postNotificationName:photoSavedName object:nil];
