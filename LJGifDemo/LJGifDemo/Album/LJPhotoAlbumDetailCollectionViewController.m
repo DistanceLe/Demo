@@ -87,6 +87,7 @@
                 if (index==0) {//保存完成，发送通知，刷新首页面
                     [ProgressHUD dismiss];
                     [[NSNotificationCenter defaultCenter]postNotificationName:photoSavedName object:nil];
+                    [self.navigationController popViewControllerAnimated:YES];
                 }
             }];
         }

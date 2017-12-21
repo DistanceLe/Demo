@@ -50,6 +50,8 @@
     NSString* name;
     if (self.imageNames.count>index) {
         name = self.imageNames[index];
+    }else{
+        return nil;
     }
     if ([self.thumbnailImages valueForKey:name]) {
         return [self.thumbnailImages valueForKey:name];
@@ -89,10 +91,24 @@
     [self.imageNames removeObject:name];
     [self.thumbnailImages removeObjectForKey:name];
 }
-
+-(void)deleteImageWithIndex:(NSInteger)index{
+    NSString* name;
+    if (self.imageNames.count>index) {
+        name = self.imageNames[index];
+    }else{
+        return;
+    }
+    [self.imageNames removeObject:name];
+    [self.thumbnailImages removeObjectForKey:name];
+    
+    [self.thumbnailOperation deleteObjectWithName:name];
+    [self.originOperation deleteObjectWithName:name];
+    DLog(@"删除 index=%ld", index);
+}
 -(void)deleteAllImages{
     [self.thumbnailImages removeAllObjects];
     [self.imageNames removeAllObjects];
+    
     [self.thumbnailOperation deleteAllFile];
     [self.originOperation deleteAllFile];
 }

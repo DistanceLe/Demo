@@ -11,8 +11,8 @@
 
 typedef void (^ReturnValueBlock) (id returnValue);
 typedef void (^ErrorCodeBlock) (NSString* message);
-typedef void (^FailureBlock)();
-typedef void (^CompleteBlock)();
+typedef void (^FailureBlock)(void);
+typedef void (^CompleteBlock)(void);
 
 typedef void(^ButtonClickBlock)(id sender);
 typedef void(^StatusBlock)(id sender, id status);

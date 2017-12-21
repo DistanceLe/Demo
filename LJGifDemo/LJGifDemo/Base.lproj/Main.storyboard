@@ -53,12 +53,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="V2M-po-61V">
+                        <barButtonItem key="leftBarButtonItem" id="ziK-yw-By1"/>
                         <barButtonItem key="rightBarButtonItem" style="done" id="3wP-lg-4s7">
                             <color key="tintColor" red="1" green="0.45657190432103134" blue="0.39723868083963887" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="VO8-0k-zhu" id="qX4-Zk-4Q3"/>
+                        <outlet property="leftBar" destination="ziK-yw-By1" id="lEh-ak-LjI"/>
                         <outlet property="rightBar" destination="3wP-lg-4s7" id="dw6-SO-CPT"/>
                     </connections>
                 </viewController>

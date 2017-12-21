@@ -8,7 +8,7 @@
 
 #import "LJAlertView.h"
 #import "AppDelegate.h"
-#define LJAlertButtonTextColor [UIColor whiteColor]
+//#define LJAlertButtonTextColor [UIColor whiteColor]
 
 @interface LJAlertView ()
 
@@ -26,22 +26,22 @@
     
     UIAlertController* alertVC = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* cancelAction=[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"|||%@", cancelTitle] style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+    UIAlertAction* cancelAction=[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"%@", cancelTitle] style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
         if (handler){
             handler(0, cancelTitle);
         }
     }];
-    [cancelAction setValue:LJAlertButtonTextColor forKey:@"titleTextColor"];
+    //[cancelAction setValue:LJAlertButtonTextColor forKey:@"titleTextColor"];
     [alertVC addAction:cancelAction];
     
     for (NSInteger i = 0; i < otherTitles.count; i++) {
         NSString* title = otherTitles[i];
-        UIAlertAction* action=[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"|||%@", title] style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        UIAlertAction* action=[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"%@", title] style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
             if (handler){
                 handler(i+1, title);
             }
         }];
-        [action setValue:LJAlertButtonTextColor forKey:@"titleTextColor"];
+        //[action setValue:LJAlertButtonTextColor forKey:@"titleTextColor"];
         [alertVC addAction:action];
     }
     if (!viewController) {

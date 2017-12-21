@@ -30,6 +30,7 @@
 
 /**  删除选中的图片 */
 -(void)deleteImageWithName:(NSString*)name;
+-(void)deleteImageWithIndex:(NSInteger)index;
 
 /**  清空所以得图片 */
 -(void)deleteAllImages;
