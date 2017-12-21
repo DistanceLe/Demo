@@ -20,6 +20,8 @@ static NSString* const photoSavedName = @"photoSavedName";
 static NSString* const photoDirectory = @"photos";
 static NSString* const thumbnailDirectory = @"thumbnails";
 
+static NSString* const gifName = @"animation.gif";
+
 
 
 

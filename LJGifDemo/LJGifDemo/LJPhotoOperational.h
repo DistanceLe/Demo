@@ -10,6 +10,14 @@
 
 @interface LJPhotoOperational : NSObject
 
+
+/**  Gif配置 */
+@property(nonatomic, assign)NSInteger roopTimes;
+@property(nonatomic, assign)CGFloat frameInterval;
+@property(nonatomic, assign)CGFloat gifSize;
+@property(nonatomic, assign)CGFloat photoPercent;
+
+
 /**  选中的所以图片名字，按顺序排列 */
 @property(nonatomic, strong)NSMutableArray* imageNames;
 
@@ -18,6 +26,7 @@
 
 /**  根据图片名字获取 缩略图片 */
 -(UIImage*)getImageWithIndex:(NSInteger)index;
+-(UIImage*)getOriginImageWithIndex:(NSInteger)index;
 
 /**  获取所有的 原图片 */
 -(NSArray<UIImage*>*)getAllOriginImages;

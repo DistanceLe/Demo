@@ -35,6 +35,12 @@
 }
 
 -(void)initData{
+    self.roopTimes = 0;
+    self.frameInterval = 0.3;
+    self.gifSize = 1;
+    self.photoPercent = 1;
+    
+    
     self.thumbnailOperation = [LJFileOperation shareOperationWithDocument:thumbnailDirectory];
     self.originOperation = [LJFileOperation shareOperationWithDocument:photoDirectory];
     self.thumbnailImages = [NSMutableDictionary dictionary];
@@ -62,7 +68,17 @@
         return image;
     }
 }
-
+-(UIImage*)getOriginImageWithIndex:(NSInteger)index{
+    NSString* name;
+    if (self.imageNames.count>index) {
+        name = self.imageNames[index];
+    }else{
+        return nil;
+    }
+    NSData* imageData = [self.originOperation readObjectWithName:name];
+    UIImage* image = [UIImage imageWithData:imageData];
+    return image;
+}
 -(NSArray<UIImage *> *)getAllOriginImages{
     NSMutableArray* imagesData = [NSMutableArray array];
     for (NSString* name in self.imageNames) {

@@ -30,6 +30,8 @@
 		2A4CC08D1FE3C8DA0076676F /* UIView+LJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4CC0861FE3C8DA0076676F /* UIView+LJ.m */; };
 		2A4CC0911FE3CAEF0076676F /* LJGif.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4CC08F1FE3CAEF0076676F /* LJGif.m */; };
 		2A4CC0951FE3CB750076676F /* TimeTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4CC0941FE3CB750076676F /* TimeTools.m */; };
+		2A5DC3C31FEB826D006C9899 /* GifGenerateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DC3C21FEB826D006C9899 /* GifGenerateViewController.m */; };
+		2A5DC3C91FEBA46C006C9899 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DC3C81FEBA46C006C9899 /* SettingViewController.m */; };
 		2AE07CF51FE7986400DA3149 /* LJPhotoAlbumDetailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CEF1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.m */; };
 		2AE07CF61FE7986400DA3149 /* LJPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AE07CF01FE7986300DA3149 /* LJPhotoCollectionViewCell.xib */; };
 		2AE07CF71FE7986400DA3149 /* LJPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CF11FE7986300DA3149 /* LJPhotoCollectionViewCell.m */; };
@@ -86,6 +88,10 @@
 		2A4CC0901FE3CAEF0076676F /* LJGif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJGif.h; sourceTree = "<group>"; };
 		2A4CC0931FE3CB750076676F /* TimeTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeTools.h; sourceTree = "<group>"; };
 		2A4CC0941FE3CB750076676F /* TimeTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeTools.m; sourceTree = "<group>"; };
+		2A5DC3C11FEB826D006C9899 /* GifGenerateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GifGenerateViewController.h; sourceTree = "<group>"; };
+		2A5DC3C21FEB826D006C9899 /* GifGenerateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GifGenerateViewController.m; sourceTree = "<group>"; };
+		2A5DC3C71FEBA46C006C9899 /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		2A5DC3C81FEBA46C006C9899 /* SettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		2AE07CEE1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPhotoAlbumDetailCollectionViewController.h; sourceTree = "<group>"; };
 		2AE07CEF1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPhotoAlbumDetailCollectionViewController.m; sourceTree = "<group>"; };
 		2AE07CF01FE7986300DA3149 /* LJPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -136,6 +142,10 @@
 				2A4CC0411FE3C33A0076676F /* AppDelegate.m */,
 				2A4CC0431FE3C33A0076676F /* ViewController.h */,
 				2A4CC0441FE3C33A0076676F /* ViewController.m */,
+				2A5DC3C11FEB826D006C9899 /* GifGenerateViewController.h */,
+				2A5DC3C21FEB826D006C9899 /* GifGenerateViewController.m */,
+				2A5DC3C71FEBA46C006C9899 /* SettingViewController.h */,
+				2A5DC3C81FEBA46C006C9899 /* SettingViewController.m */,
 				6AED231E1FE956950035CB41 /* LJPhotoOperational.h */,
 				6AED231F1FE956950035CB41 /* LJPhotoOperational.m */,
 				2A4CC0461FE3C33A0076676F /* Main.storyboard */,
@@ -347,6 +357,7 @@
 				2A4CC0881FE3C8DA0076676F /* NSDictionary+LJCache.m in Sources */,
 				2A4CC0911FE3CAEF0076676F /* LJGif.m in Sources */,
 				2A4CC08A1FE3C8DA0076676F /* UIButton+LJ.m in Sources */,
+				2A5DC3C91FEBA46C006C9899 /* SettingViewController.m in Sources */,
 				2A4CC0501FE3C33A0076676F /* main.m in Sources */,
 				2A4CC0711FE3C81B0076676F /* LJPHPhotoTools.m in Sources */,
 				2AE07CF71FE7986400DA3149 /* LJPhotoCollectionViewCell.m in Sources */,
@@ -358,6 +369,7 @@
 				2A4CC0951FE3CB750076676F /* TimeTools.m in Sources */,
 				2A4CC05D1FE3C37F0076676F /* FLAnimatedImage.m in Sources */,
 				2A4CC06B1FE3C7830076676F /* LJAlertView.m in Sources */,
+				2A5DC3C31FEB826D006C9899 /* GifGenerateViewController.m in Sources */,
 				2A4CC0421FE3C33A0076676F /* AppDelegate.m in Sources */,
 				2A4CC08D1FE3C8DA0076676F /* UIView+LJ.m in Sources */,
 				2A4CC05C1FE3C37F0076676F /* FLAnimatedImageView.m in Sources */,

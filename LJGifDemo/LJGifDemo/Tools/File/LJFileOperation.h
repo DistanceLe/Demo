@@ -23,6 +23,7 @@
 -(id)readObjectWithName:(NSString*)name;
 -(void)readObjectAsyncWithName:(NSString*)name handler:(void(^)(NSData* data))handler;
 -(NSString*)readFilePath:(NSString*)name;
+-(NSURL*)getUrlFilePathComponent:(NSString*)fileName;
 
 /**  读取文件夹下的所有文件 */
 -(NSArray*)readAllFileName;

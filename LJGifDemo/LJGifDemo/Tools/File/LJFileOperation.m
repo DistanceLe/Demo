@@ -87,7 +87,16 @@
     NSString* filePath=[self.documentPath stringByAppendingPathComponent:name];
     return filePath;
 }
-
+-(NSURL*)getUrlFilePathComponent:(NSString*)fileName{
+    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+    if (fileName.length) {
+        NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@", self.documentName, fileName]];
+        return fileURL;
+    }else{
+        NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:self.documentName];
+        return fileURL;
+    }
+}
 
 -(NSArray *)readAllFileName{
     

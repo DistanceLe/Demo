@@ -55,22 +55,23 @@ static void headData(void){
     return nil;
 }
 
-static UIImage *frameImage(CGSize size, CGFloat radians) {
-    UIGraphicsBeginImageContextWithOptions(size, YES, 1); {
-        [[UIColor whiteColor] setFill];
-        UIRectFill(CGRectInfinite);
-        CGContextRef gc = UIGraphicsGetCurrentContext();
-        CGContextTranslateCTM(gc, size.width / 2, size.height / 2);
-        CGContextRotateCTM(gc, radians);
-        CGContextTranslateCTM(gc, size.width / 4, 0);
-        [[UIColor redColor] setFill];
-        CGFloat w = size.width / 10;
-        CGContextFillEllipseInRect(gc, CGRectMake(-w / 2, -w / 2, w, w));
-    }
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
+//static UIImage *frameImage(CGSize size, CGFloat radians) {
+//    UIGraphicsBeginImageContextWithOptions(size, YES, 1); {
+//        [[UIColor whiteColor] setFill];
+//        UIRectFill(CGRectInfinite);
+//        CGContextRef gc = UIGraphicsGetCurrentContext();
+//        CGContextTranslateCTM(gc, size.width / 2, size.height / 2);
+//        CGContextRotateCTM(gc, radians);
+//        CGContextTranslateCTM(gc, size.width / 4, 0);
+//        [[UIColor redColor] setFill];
+//        CGFloat w = size.width / 10;
+//        CGContextFillEllipseInRect(gc, CGRectMake(-w / 2, -w / 2, w, w));
+//    }
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return image;
+//}
+
 static void makeAnimatedGif(void) {
     static NSUInteger kFrameCount = 2;
 //    NSArray* imageName = @[@"start1", @"end1", @"start2", @"end2"];
