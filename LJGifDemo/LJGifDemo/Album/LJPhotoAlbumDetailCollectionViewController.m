@@ -125,7 +125,7 @@
         //创建异步加载：
         dispatch_queue_t asyncQueue = dispatch_queue_create("asyncQueue", DISPATCH_QUEUE_SERIAL);
         dispatch_async(asyncQueue, ^{
-            BOOL isGif = [LJImageTools isGifImage:imageData];
+            BOOL isGif = [LJImageTools isGifImageWithData:imageData];
             dispatch_sync(dispatch_get_main_queue(), ^{
                 if (isGif) {
                     cell.gifImageView.hidden = NO;

@@ -44,6 +44,9 @@
 
 +(BOOL)isGifImage:(NSData*)imageData;
 +(BOOL)isGifImageWithImage:(UIImage*)image;
+
++(BOOL)isGifImageWithData:(NSData*)imageData;
+
 +(UIImage*)animateGif:(NSData*)imageData;
 
 
