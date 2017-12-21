@@ -10,24 +10,25 @@
 
 @implementation LJPhotoCollectionViewCell
 {
-    StatusBlock tempBlock;
+//    StatusBlock tempBlock;
 }
 - (void)awakeFromNib {
     // Initialization code
-    UILongPressGestureRecognizer* longPress=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longTap:)];
-    [self addGestureRecognizer:longPress];
+    [super awakeFromNib];
+//    UILongPressGestureRecognizer* longPress=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longTap:)];
+//    [self addGestureRecognizer:longPress];
 }
 
--(void)longTapGestureHandler:(StatusBlock)handler{
-    
-    tempBlock=handler;
-}
-
--(void)longTap:(UILongPressGestureRecognizer*)longPress{
-    
-    if (tempBlock && longPress.state==UIGestureRecognizerStateBegan) {
-        tempBlock(longPress, nil);
-    }
-}
+//-(void)longTapGestureHandler:(StatusBlock)handler{
+//
+//    tempBlock=handler;
+//}
+//
+//-(void)longTap:(UILongPressGestureRecognizer*)longPress{
+//
+//    if (tempBlock && longPress.state==UIGestureRecognizerStateBegan) {
+//        tempBlock(longPress, nil);
+//    }
+//}
 
 @end

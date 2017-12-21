@@ -192,8 +192,6 @@
         id source = [[LJPhotoOperational shareOperational].imageNames objectAtIndex:sourceIndexPath.item];
         [[LJPhotoOperational shareOperational].imageNames removeObjectAtIndex:sourceIndexPath.item];
         [[LJPhotoOperational shareOperational].imageNames insertObject:source atIndex:destinationIndexPath.item];
-        
-        [self.collectionView reloadData];
     }
 }
 

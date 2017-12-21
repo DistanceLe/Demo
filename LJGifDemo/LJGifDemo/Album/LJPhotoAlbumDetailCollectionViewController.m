@@ -9,8 +9,9 @@
 #import "LJPhotoAlbumDetailCollectionViewController.h"
 
 #import "LJPhotoCollectionViewCell.h"
+
 #import "LJPHPhotoTools.h"
-//#import "LJFileOperation.h"
+#import "LJImageTools.h"
 #import "LJPhotoOperational.h"
 #import "TimeTools.h"
 
@@ -64,26 +65,24 @@
         }
     }
     __block long long timestamp = [TimeTools getCurrentTimestamp];
-//    LJFileOperation* originOperation=[LJFileOperation shareOperationWithDocument:photoDirectory];
-//    LJFileOperation* thumbainOperation=[LJFileOperation shareOperationWithDocument:thumbnailDirectory];
-    
     [self.selectedIndex enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj boolValue]) {
             PHAsset* asset=self.images[idx];
             NSString* tempName = [@((timestamp++)) stringValue];
             DLog(@"tempName  == %@", tempName);
             
+            //保存原始图片
             [LJPHPhotoTools getImageDataWithAsset:asset handler:^(NSData *imageData, NSString* imageName) {
                 
                 DLog(@"origin~~~~~~imageName=%@", tempName);
                 [[LJPhotoOperational shareOperational]saveOriginImageData:imageData imageName:tempName];
-                //[originOperation saveObject:imageData name:tempName];
             }];
+            
+            //保存缩略图
             [LJPHPhotoTools getThumbnailImagesWithAssets:@[asset] imageSize:CGSizeMake(IPHONE_WIDTH/1.5, IPHONE_WIDTH/1.5) handler:^(NSArray<UIImage*>* imageArray) {
                 index--;
                 DLog(@"thumbnail-----------------imageName=%@", tempName);
                 [[LJPhotoOperational shareOperational]saveThumbnailImageData:imageArray.firstObject imageName:tempName];
-                //[thumbainOperation saveObject:image name:tempName];
                 if (index==0) {//保存完成，发送通知，刷新首页面
                     [ProgressHUD dismiss];
                     [[NSNotificationCenter defaultCenter]postNotificationName:photoSavedName object:nil];
@@ -104,16 +103,40 @@
     
     LJPhotoCollectionViewCell* cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     PHAsset* sourceAsset = self.images[indexPath.item];
-    if (sourceAsset.duration > 0) {
-        cell.videoDurationTimeLabel.text = [TimeTools timestampChangeTimeStyle:sourceAsset.duration];
-        cell.videoDurationTimeLabel.hidden = NO;
-    }else{
-        cell.videoDurationTimeLabel.hidden = YES;
-    }
+//    if (sourceAsset.duration > 0) {
+//        cell.videoDurationTimeLabel.text = [TimeTools timestampChangeTimeStyle:sourceAsset.duration];
+//        cell.videoDurationTimeLabel.hidden = NO;
+//    }else{
+//        cell.videoDurationTimeLabel.hidden = YES;
+//    }
+    cell.selectButton.hidden=NO;
     [LJPHPhotoTools getAsyncImageWithAsset:sourceAsset imageSize:CGSizeMake(IPHONE_WIDTH/1.5, IPHONE_WIDTH/1.5) handler:^(UIImage *image) {
         cell.headImageView.image=image;
+//        if ([LJImageTools isGifImageWithImage:image]) {
+//            cell.gifImageView.hidden = NO;
+//            cell.selectButton.hidden = YES;
+//        }else{
+//            cell.gifImageView.hidden = YES;
+//            cell.selectButton.hidden = NO;
+//        }
     }];
-    cell.selectButton.hidden=NO;
+    //保存原始图片
+    [LJPHPhotoTools getImageDataWithAsset:sourceAsset handler:^(NSData *imageData, NSString* imageName) {
+        //创建异步加载：
+        dispatch_queue_t asyncQueue = dispatch_queue_create("asyncQueue", DISPATCH_QUEUE_SERIAL);
+        dispatch_async(asyncQueue, ^{
+            BOOL isGif = [LJImageTools isGifImage:imageData];
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                if (isGif) {
+                    cell.gifImageView.hidden = NO;
+                    cell.selectButton.hidden = YES;
+                }else{
+                    cell.gifImageView.hidden = YES;
+                    cell.selectButton.hidden = NO;
+                }
+            });
+        });
+    }];
     cell.selectButton.selected=[self.selectedIndex[indexPath.item] boolValue];
     return cell;
 }
@@ -121,6 +144,9 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     LJPhotoCollectionViewCell* cell=(LJPhotoCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    if (cell.selectButton.hidden) {
+        return;
+    }
     cell.selectButton.selected=!cell.selectButton.selected;
     [self.selectedIndex replaceObjectAtIndex:indexPath.item withObject:@(cell.selectButton.selected)];
 }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -45,15 +46,22 @@
                             <constraint firstAttribute="height" constant="50" id="trC-cw-wA2"/>
                         </constraints>
                     </imageView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gif-2" translatesAutoresizingMaskIntoConstraints="NO" id="bJQ-m6-j3M">
+                        <rect key="frame" x="169.5" y="155.5" width="33.5" height="33.5"/>
+                    </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="lOy-sx-0YR" firstAttribute="width" secondItem="bJQ-m6-j3M" secondAttribute="width" multiplier="1.5" id="0WZ-XS-62v"/>
+                <constraint firstAttribute="trailing" secondItem="bJQ-m6-j3M" secondAttribute="trailing" constant="-5" id="AlN-uB-lf8"/>
                 <constraint firstAttribute="trailing" secondItem="LWb-BF-iap" secondAttribute="trailing" constant="8" id="GmT-Oo-oSB"/>
                 <constraint firstItem="lOy-sx-0YR" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="He5-wx-gKH"/>
                 <constraint firstAttribute="bottom" secondItem="LWb-BF-iap" secondAttribute="bottom" constant="8" id="KiU-bZ-c2I"/>
+                <constraint firstAttribute="bottom" secondItem="bJQ-m6-j3M" secondAttribute="bottom" constant="-2" id="NpX-bO-ZYu"/>
                 <constraint firstAttribute="bottom" secondItem="BzT-sp-ryI" secondAttribute="bottom" id="Ny1-YQ-aHO"/>
                 <constraint firstItem="lOy-sx-0YR" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="OFz-vA-mgT"/>
+                <constraint firstItem="lOy-sx-0YR" firstAttribute="height" secondItem="bJQ-m6-j3M" secondAttribute="height" multiplier="1.5" id="PKV-X8-oRg"/>
                 <constraint firstAttribute="trailing" secondItem="MYt-34-NJt" secondAttribute="trailing" id="WYj-wB-cIi"/>
                 <constraint firstItem="BzT-sp-ryI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="arf-5A-xGe"/>
                 <constraint firstItem="MYt-34-NJt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="iIn-yS-Y5z"/>
@@ -62,6 +70,7 @@
             </constraints>
             <size key="customSize" width="198" height="187"/>
             <connections>
+                <outlet property="gifImageView" destination="bJQ-m6-j3M" id="qlN-vb-GQ9"/>
                 <outlet property="headImageView" destination="BzT-sp-ryI" id="j5D-kt-HWC"/>
                 <outlet property="playImageView" destination="lOy-sx-0YR" id="Vaq-Gs-2YQ"/>
                 <outlet property="selectButton" destination="MYt-34-NJt" id="HCq-s3-O6X"/>
@@ -71,6 +80,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="gif-2" width="60" height="60"/>
         <image name="pictureSelected" width="42" height="42"/>
         <image name="pictureUnselected" width="42" height="42"/>
         <image name="play" width="200" height="200"/>
