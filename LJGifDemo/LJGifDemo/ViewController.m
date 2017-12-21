@@ -30,9 +30,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     [self initData];
     [self initUI];
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    //self.hidesBottomBarWhenPushed = NO;
+    self.tabBarController.tabBar.hidden = NO;
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if (self.navigationController.viewControllers.count >1) {
+        self.tabBarController.tabBar.hidden = YES;
+        //self.hidesBottomBarWhenPushed = YES;
+    }
+}
+
 
 -(void)initData{
     self.editIndexPaths = [NSMutableArray array];

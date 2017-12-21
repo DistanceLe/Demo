@@ -103,7 +103,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Qwn-XS-Hzw">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="aAw-hS-WRn" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="aAw-hS-WRn" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="pdf-x2-gbE"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cUJ-S3-Z2P">

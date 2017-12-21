@@ -27,6 +27,7 @@
     [super viewDidLoad];
     
     self.title=@"相册";
+    
     [self initData];
 }
 -(void)viewDidAppear:(BOOL)animated{
@@ -52,16 +53,13 @@
 
 -(void)initUI{
     self.tableView.rowHeight=60;
+    self.tableView.tableFooterView = [UIView new];
     [self.tableView reloadData];
 }
 
 #pragma mark - ================ Delegate ==================
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.albums.count;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0.001;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
