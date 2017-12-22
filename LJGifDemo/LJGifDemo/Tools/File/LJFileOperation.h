@@ -31,4 +31,8 @@
 /**  删除该目录下的所有文件 */
 -(BOOL)deleteAllFile;
 
+
+/**  获取文件大小， fileName=nil 表示当前文件夹大小*/
+-(unsigned long long)getFileSize:(NSString*)fileName;
+
 @end

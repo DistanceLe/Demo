@@ -322,15 +322,23 @@
     CGFloat width=originImage.size.width;
     CGFloat height=originImage.size.height;
     
-    float verticalRadio=size.height/height;
-    float horizontalRadio=size.width/width;
-    float radio=verticalRadio>horizontalRadio ? horizontalRadio : verticalRadio;
-    width=width*radio;
-    height=height*radio;
+    float verticalRatio=size.height/height;
+    float horizontalRatio=size.width/width;
+    float ratio=verticalRatio>horizontalRatio ? horizontalRatio : verticalRatio;
+    width=width*ratio;
+    height=height*ratio;
     
     return [self changeImageSize:originImage toSize:CGSizeMake(width, height)];
 }
-
++(UIImage*)changeImage:(UIImage*)originImage toRatio:(CGFloat)ratio{
+    CGFloat width=originImage.size.width;
+    CGFloat height=originImage.size.height;
+    
+    width=width*ratio;
+    height=height*ratio;
+    
+    return [self changeImageSize:originImage toSize:CGSizeMake(width, height)];
+}
 /**  安装最短边，等比例压缩 */
 +(UIImage*)changeImageRatioCompress:(UIImage*)originImage ratioCompressSize:(CGSize)size
 {

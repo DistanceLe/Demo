@@ -23,6 +23,7 @@
 
 /**  等比例缩放 */
 +(UIImage*)changeImage:(UIImage*)originImage toRatioSize:(CGSize)size;
++(UIImage*)changeImage:(UIImage*)originImage toRatio:(CGFloat)ratio;
 
 /**  安装最短边，等比例压缩 */
 +(UIImage*)changeImageRatioCompress:(UIImage*)originImage ratioCompressSize:(CGSize)size;

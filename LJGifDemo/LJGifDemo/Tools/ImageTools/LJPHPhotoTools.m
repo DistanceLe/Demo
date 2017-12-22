@@ -345,7 +345,9 @@
     option.deliveryMode=PHImageRequestOptionsDeliveryModeHighQualityFormat;//图片质量
     option.networkAccessAllowed=NO;
     
-    [[PHCachingImageManager defaultManager]requestImageDataForAsset:asset options:option resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+    [[PHCachingImageManager defaultManager]requestImageDataForAsset:asset
+                                                            options:option
+                                                      resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
         
         if (handler) {
             NSURL* imageURL=[info valueForKey:@"PHImageFileURLKey"];
@@ -400,6 +402,26 @@
         //[PHAsset fetchAssetsWithLocalIdentifiers:@[localIdentifier] options:nil]; 通过占位ID获取图片
 
         [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+        
+    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+        if (handler) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                handler(success);
+            });
+        }
+    }];
+}
+/**  保存图片文件到相册 */
++(void)saveImageFileToCameraRoll:(NSURL*)url handler:(PHCompletionBlock)handler{
+    if (url == nil) {
+        [LJInfoAlert showInfo:LS(@"CE_SaveError") bgColor:nil];
+        return;
+    }
+    //异步操作
+    [[PHPhotoLibrary sharedPhotoLibrary]performChanges:^{
+        //.placeholderForCreatedAsset.localIdentifier    同步的话，可以使用占位ID
+        //[PHAsset fetchAssetsWithLocalIdentifiers:@[localIdentifier] options:nil]; 通过占位ID获取图片
+        [PHAssetChangeRequest creationRequestForAssetFromImageAtFileURL:url];
         
     } completionHandler:^(BOOL success, NSError * _Nullable error) {
         if (handler) {

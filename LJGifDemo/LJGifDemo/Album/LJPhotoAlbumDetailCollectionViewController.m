@@ -73,10 +73,18 @@
             
             //保存原始图片
             [LJPHPhotoTools getImageDataWithAsset:asset handler:^(NSData *imageData, NSString* imageName) {
-                
+
                 DLog(@"origin~~~~~~imageName=%@", tempName);
-                [[LJPhotoOperational shareOperational]saveOriginImageData:imageData imageName:tempName];
+                UIImage* image = [UIImage imageWithData:imageData];
+                imageData = UIImageJPEGRepresentation(image, 1);
+                image = [LJImageTools changeImage:[UIImage imageWithData:imageData] toRatioSize:CGSizeMake(IPHONE_WIDTH*2, IPHONE_WIDTH*2)];
+                
+                [[LJPhotoOperational shareOperational]saveOriginImageData:image imageName:tempName];
             }];
+//            [LJPHPhotoTools getImageWithAsset:asset imageSize:CGSizeMake(IPHONE_WIDTH*2, IPHONE_WIDTH*2) handler:^(UIImage *image) {
+//                [[LJPhotoOperational shareOperational]saveOriginImageData:image imageName:tempName];
+//            }];
+            
             
             //保存缩略图
             [LJPHPhotoTools getThumbnailImagesWithAssets:@[asset] imageSize:CGSizeMake(IPHONE_WIDTH/1.5, IPHONE_WIDTH/1.5) handler:^(NSArray<UIImage*>* imageArray) {
@@ -112,15 +120,9 @@
     cell.selectButton.hidden=NO;
     [LJPHPhotoTools getAsyncImageWithAsset:sourceAsset imageSize:CGSizeMake(IPHONE_WIDTH/1.5, IPHONE_WIDTH/1.5) handler:^(UIImage *image) {
         cell.headImageView.image=image;
-//        if ([LJImageTools isGifImageWithImage:image]) {
-//            cell.gifImageView.hidden = NO;
-//            cell.selectButton.hidden = YES;
-//        }else{
-//            cell.gifImageView.hidden = YES;
-//            cell.selectButton.hidden = NO;
-//        }
     }];
-    //保存原始图片
+    
+    //判断是不是Gif图片
     [LJPHPhotoTools getImageDataWithAsset:sourceAsset handler:^(NSData *imageData, NSString* imageName) {
         //创建异步加载：
         dispatch_queue_t asyncQueue = dispatch_queue_create("asyncQueue", DISPATCH_QUEUE_SERIAL);

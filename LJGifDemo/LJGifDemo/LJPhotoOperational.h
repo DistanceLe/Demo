@@ -26,6 +26,8 @@
 
 /**  根据图片名字获取 缩略图片 */
 -(UIImage*)getImageWithIndex:(NSInteger)index;
+
+/**  获取原始图片， 根据设置的尺寸和压缩比例 */
 -(UIImage*)getOriginImageWithIndex:(NSInteger)index;
 
 /**  获取所有的 原图片 */

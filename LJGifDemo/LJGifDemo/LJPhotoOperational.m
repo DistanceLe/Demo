@@ -9,6 +9,7 @@
 #import "LJPhotoOperational.h"
 
 #import "LJFileOperation.h"
+#import "LJImageTools.h"
 
 @interface LJPhotoOperational()
 
@@ -36,7 +37,7 @@
 
 -(void)initData{
     self.roopTimes = 0;
-    self.frameInterval = 0.3;
+    self.frameInterval = 0.75;
     self.gifSize = 1;
     self.photoPercent = 1;
     
@@ -77,6 +78,9 @@
     }
     NSData* imageData = [self.originOperation readObjectWithName:name];
     UIImage* image = [UIImage imageWithData:imageData];
+    imageData = UIImageJPEGRepresentation(image, self.photoPercent);
+    image = [LJImageTools changeImage:[UIImage imageWithData:imageData] toRatio:self.gifSize];
+    
     return image;
 }
 -(NSArray<UIImage *> *)getAllOriginImages{

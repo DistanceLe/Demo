@@ -16,9 +16,10 @@
 
 @interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *leftBar;
+@property(weak, nonatomic) IBOutlet UIBarButtonItem *leftBar;
 @property(weak, nonatomic) IBOutlet UIBarButtonItem *rightBar;
 @property(weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property(weak, nonatomic) IBOutlet UIButton *cleanAllBut;
 
 @property(nonatomic, strong)NSMutableArray<NSIndexPath*>* editIndexPaths;
 @property(nonatomic, assign)BOOL isEdit;
@@ -98,15 +99,28 @@
         @strongify(self);
         self.isEdit = !self.isEdit;
         if (self.isEdit) {
-            [but setTitle:@"取消" forState:UIControlStateNormal];
+            [but setTitle:@"完成" forState:UIControlStateNormal];
             [rightBut setTitle:@"删除" forState:UIControlStateNormal];
+            self.cleanAllBut.hidden = NO;
         }else{
             [but setTitle:@"编辑" forState:UIControlStateNormal];
             [rightBut setTitle:@"相册" forState:UIControlStateNormal];
+            self.cleanAllBut.hidden = YES;
         }
         [self.collectionView reloadData];
     }];
     self.leftBar.customView = leftBut;
+    
+    
+    [self.cleanAllBut addTargetClickHandler:^(UIButton *but, id obj) {
+        @strongify(self);
+        [LJAlertView showAlertWithTitle:@"删除全部" message:@"确认删除所有的图片" showViewController:self cancelTitle:@"取消" otherTitles:@[@"删除"] clickHandler:^(NSInteger index, NSString *title) {
+            if (index == 1) {
+                [[LJPhotoOperational shareOperational]deleteAllImages];
+                [self.collectionView reloadData];
+            }
+        }];
+    }];
 }
 
 -(void)refreshData{

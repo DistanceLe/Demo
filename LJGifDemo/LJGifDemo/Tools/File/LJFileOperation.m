@@ -84,8 +84,12 @@
     });
 }
 -(NSString *)readFilePath:(NSString *)name{
-    NSString* filePath=[self.documentPath stringByAppendingPathComponent:name];
-    return filePath;
+    if (name.length>0) {
+        return self.documentPath;
+    }else{
+        NSString* filePath=[self.documentPath stringByAppendingPathComponent:name];
+        return filePath;
+    }
 }
 -(NSURL*)getUrlFilePathComponent:(NSString*)fileName{
     NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
@@ -106,10 +110,42 @@
 
 -(BOOL)deleteAllFile{
     BOOL isDelete=[[NSFileManager defaultManager]removeItemAtPath:self.documentPath error:nil];
+    
+    [[NSFileManager defaultManager]createDirectoryAtPath:self.documentPath withIntermediateDirectories:YES attributes:nil error:nil];
     return isDelete;
 }
 
-
+-(unsigned long long)getFileSize:(NSString*)fileName{
+    // 总大小
+    unsigned long long size = 0;
+    
+    // 文件管理者
+    NSFileManager *mgr = [NSFileManager defaultManager];
+    NSString* filePath = [self readFilePath:fileName];
+    
+    // 路径是否存在
+    BOOL isDirectory = NO;
+    BOOL exists = [mgr fileExistsAtPath:filePath isDirectory:&isDirectory];
+    if (!exists) return 0;
+    
+    // 文件属性
+    NSDictionary *attrs = [mgr attributesOfItemAtPath:filePath error:nil];
+    
+    if ([attrs.fileType isEqualToString:NSFileTypeDirectory]) { // 文件夹
+        // 获得文件夹的大小  == 获得文件夹中所有文件的总大小
+        NSDirectoryEnumerator *enumerator = [mgr enumeratorAtPath:filePath];
+        for (NSString *subpath in enumerator) {
+            // 全路径
+            NSString *fullSubpath = [filePath stringByAppendingPathComponent:subpath];
+            // 累加文件大小
+            size += [mgr attributesOfItemAtPath:fullSubpath error:nil].fileSize;
+        }
+    } else { // 文件
+        size = attrs.fileSize;
+    }
+    
+    return size;
+}
 
 
 

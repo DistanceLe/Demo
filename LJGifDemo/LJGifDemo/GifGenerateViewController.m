@@ -34,15 +34,33 @@
     
     self.gifInfoLabel.text = @"图片尺寸:0*0\n图片大小:0MB";
     self.fileOperational = [LJFileOperation shareOperationWithDocument:@"gif"];
+    [self showGif];
 }
 
 /**  生成Gif图片 */
 - (IBAction)generateClick:(UIButton *)sender {
     [self makeAnimatedGif];
 }
+/**  清空 */
+- (IBAction)cleanGif:(UIButton *)sender {
+    @weakify(self);
+    [LJAlertView showAlertWithTitle:@"清除Gif图片" message:@"" showViewController:self cancelTitle:@"取消" otherTitles:@[@"删除"] clickHandler:^(NSInteger index, NSString *title) {
+        if (index == 1) {
+            @strongify(self);
+            [self.fileOperational deleteObjectWithName:gifName];
+            [self showGif];
+        }
+    }];
+}
 
 - (IBAction)saveToAlbum:(UIButton *)sender {
-    
+    [LJPHPhotoTools saveImageFileToCameraRoll:[self.fileOperational getUrlFilePathComponent:gifName] handler:^(BOOL success) {
+        if (success) {
+            [LJInfoAlert showInfo:@"保存成功" bgColor:nil];
+        }else{
+            [LJInfoAlert showInfo:@"保存失败╮(╯﹏╰)╭" bgColor:nil];
+        }
+    }];
 }
 
 -(void)showGif{
@@ -51,9 +69,10 @@
     if (gifImage) {
         self.gifImageView.animatedImage = gifImage;
         CGFloat sizeData = gifData.length/1024.0/1024.0;
-        self.gifInfoLabel.text = [NSString stringWithFormat:@"图片尺寸:%.0f*%.0f\n图片大小:%.2fMB",gifImage.size.width, gifImage.size.height, sizeData];
+        
+        self.gifInfoLabel.text = [NSString stringWithFormat:@"图片尺寸:%.0f*%.0f\n图片大小:%.2fMB\n原图大小:%.2fMB",gifImage.size.width, gifImage.size.height, sizeData, [[LJFileOperation shareOperationWithDocument:photoDirectory] getFileSize:@""]/1024.0/1024.0];
     }else{
-        self.gifInfoLabel.text = @"图片尺寸:0*0\n图片大小:0MB";
+        self.gifInfoLabel.text = [NSString stringWithFormat:@"图片尺寸:0*0\n图片大小:0MB\n原图大小:%.2fMB", [[LJFileOperation shareOperationWithDocument:photoDirectory] getFileSize:@""]/1024.0/1024.0];
         self.gifImageView.animatedImage = nil;
     }
 }
@@ -74,20 +93,14 @@
                                               (__bridge id)kCGImagePropertyGIFDelayTime: @(operational.frameInterval), // a float (not double!) in seconds, rounded to centiseconds in the GIF data
                                               }
                                       };
-    //NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
-    
-//    NSURL *documentsDirectoryURL = [NSURL URLWithString:[self.fileOperational readFilePath:gifName]];
-//    NSURL *fileURL = [documentsDirectoryURL URLByAppendingPathComponent:gifName];
     
     NSURL *fileURL = [self.fileOperational getUrlFilePathComponent:gifName];
-    
     
     CGImageDestinationRef destination = CGImageDestinationCreateWithURL((__bridge CFURLRef)fileURL, kUTTypeGIF, kFrameCount, NULL);
     CGImageDestinationSetProperties(destination, (__bridge CFDictionaryRef)fileProperties);
     
     for (NSUInteger i = 0; i < kFrameCount; i++) {
         @autoreleasepool {
-            //            UIImage *image = frameImage(CGSizeMake(300, 300), M_PI * 2 * i / kFrameCount);
             UIImage* image = [operational getOriginImageWithIndex:i];
             CGImageDestinationAddImage(destination, image.CGImage, (__bridge CFDictionaryRef)frameProperties);
         }

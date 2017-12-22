@@ -39,7 +39,7 @@ typedef void(^PHVideoURLBlock)      (NSURL* url, AVURLAsset* asset);
 /**  获取单张图片，size：PHImageManagerMaximumSize  则是原始图片 */
 +(void)getImageWithAsset:(PHAsset*)asset imageSize:(CGSize)size handler:(PHImageBlock)handler;
 
-/**  异步获取单张图片，推荐使用该方法 */
+/**  异步获取单张图片(可能会有多个结果回调)，推荐使用该方法 */
 +(void)getAsyncImageWithAsset:(PHAsset*)asset imageSize:(CGSize)size handler:(PHImageBlock)handler;
 
 /**  获取默认的所有缩略图，100*100 也相当于屏幕的50*50 */
@@ -56,6 +56,8 @@ typedef void(^PHVideoURLBlock)      (NSURL* url, AVURLAsset* asset);
 
 /**  保存图片到系统相册 */
 +(void)saveImageToCameraRoll:(UIImage*)image handler:(PHCompletionBlock)handler;
+/**  保存图片文件到相册 */
++(void)saveImageFileToCameraRoll:(NSURL*)url handler:(PHCompletionBlock)handler;
 
 /**  保存图片到自定义相册 */
 +(void)saveImage:(UIImage*)image toCustomAlbum:(NSString*)albumName handler:(PHCompletionBlock)handler;
