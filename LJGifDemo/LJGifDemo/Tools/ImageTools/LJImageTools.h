@@ -38,6 +38,9 @@
 /**  获取网络图片大小 */
 +(CGSize)getNetImageSizeWith:(id)imageURL;
 
+/**  根据颜色获取图片 */
++(UIImage*)getImageForColor:(UIColor*)color size:(CGSize)size;
+
 
 /**  设置图片模糊效果0.0~1.0 */
 +(UIImage*)setBlurImage:(UIImage*)image blurAmount:(CGFloat)blur;

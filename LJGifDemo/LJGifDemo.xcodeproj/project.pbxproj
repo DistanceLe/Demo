@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A3715FB2022BEC6003EAF19 /* VideoFrameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3715F92022BEC6003EAF19 /* VideoFrameCell.m */; };
+		2A3715FC2022BEC6003EAF19 /* VideoFrameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3715FA2022BEC6003EAF19 /* VideoFrameCell.xib */; };
 		2A4CC0421FE3C33A0076676F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4CC0411FE3C33A0076676F /* AppDelegate.m */; };
 		2A4CC0451FE3C33A0076676F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4CC0441FE3C33A0076676F /* ViewController.m */; };
 		2A4CC0481FE3C33A0076676F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4CC0461FE3C33A0076676F /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 		2A4CC0951FE3CB750076676F /* TimeTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4CC0941FE3CB750076676F /* TimeTools.m */; };
 		2A5DC3C31FEB826D006C9899 /* GifGenerateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DC3C21FEB826D006C9899 /* GifGenerateViewController.m */; };
 		2A5DC3C91FEBA46C006C9899 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DC3C81FEBA46C006C9899 /* SettingViewController.m */; };
+		2AAE9D9D2021BA4800623F18 /* VideoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE9D9C2021BA4800623F18 /* VideoEditViewController.m */; };
+		2AAE9DA02021CDA800623F18 /* VideoFrameCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE9D9F2021CDA800623F18 /* VideoFrameCollectionViewController.m */; };
 		2AE07CF51FE7986400DA3149 /* LJPhotoAlbumDetailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CEF1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.m */; };
 		2AE07CF61FE7986400DA3149 /* LJPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AE07CF01FE7986300DA3149 /* LJPhotoCollectionViewCell.xib */; };
 		2AE07CF71FE7986400DA3149 /* LJPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CF11FE7986300DA3149 /* LJPhotoCollectionViewCell.m */; };
@@ -41,6 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A3715F82022BEC6003EAF19 /* VideoFrameCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoFrameCell.h; path = Tools/VideoFrameCell.h; sourceTree = "<group>"; };
+		2A3715F92022BEC6003EAF19 /* VideoFrameCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VideoFrameCell.m; path = Tools/VideoFrameCell.m; sourceTree = "<group>"; };
+		2A3715FA2022BEC6003EAF19 /* VideoFrameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = VideoFrameCell.xib; path = Tools/VideoFrameCell.xib; sourceTree = "<group>"; };
 		2A4CC03D1FE3C33A0076676F /* LJGifDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJGifDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A4CC0401FE3C33A0076676F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2A4CC0411FE3C33A0076676F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -92,6 +99,10 @@
 		2A5DC3C21FEB826D006C9899 /* GifGenerateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GifGenerateViewController.m; sourceTree = "<group>"; };
 		2A5DC3C71FEBA46C006C9899 /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		2A5DC3C81FEBA46C006C9899 /* SettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		2AAE9D9B2021BA4800623F18 /* VideoEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoEditViewController.h; sourceTree = "<group>"; };
+		2AAE9D9C2021BA4800623F18 /* VideoEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoEditViewController.m; sourceTree = "<group>"; };
+		2AAE9D9E2021CDA800623F18 /* VideoFrameCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoFrameCollectionViewController.h; sourceTree = "<group>"; };
+		2AAE9D9F2021CDA800623F18 /* VideoFrameCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoFrameCollectionViewController.m; sourceTree = "<group>"; };
 		2AE07CEE1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPhotoAlbumDetailCollectionViewController.h; sourceTree = "<group>"; };
 		2AE07CEF1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPhotoAlbumDetailCollectionViewController.m; sourceTree = "<group>"; };
 		2AE07CF01FE7986300DA3149 /* LJPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -142,6 +153,13 @@
 				2A4CC0411FE3C33A0076676F /* AppDelegate.m */,
 				2A4CC0431FE3C33A0076676F /* ViewController.h */,
 				2A4CC0441FE3C33A0076676F /* ViewController.m */,
+				2AAE9D9B2021BA4800623F18 /* VideoEditViewController.h */,
+				2AAE9D9C2021BA4800623F18 /* VideoEditViewController.m */,
+				2A3715F82022BEC6003EAF19 /* VideoFrameCell.h */,
+				2A3715F92022BEC6003EAF19 /* VideoFrameCell.m */,
+				2A3715FA2022BEC6003EAF19 /* VideoFrameCell.xib */,
+				2AAE9D9E2021CDA800623F18 /* VideoFrameCollectionViewController.h */,
+				2AAE9D9F2021CDA800623F18 /* VideoFrameCollectionViewController.m */,
 				2A5DC3C11FEB826D006C9899 /* GifGenerateViewController.h */,
 				2A5DC3C21FEB826D006C9899 /* GifGenerateViewController.m */,
 				2A5DC3C71FEBA46C006C9899 /* SettingViewController.h */,
@@ -338,6 +356,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A3715FC2022BEC6003EAF19 /* VideoFrameCell.xib in Resources */,
 				2A4CC04D1FE3C33A0076676F /* LaunchScreen.storyboard in Resources */,
 				2AE07CF61FE7986400DA3149 /* LJPhotoCollectionViewCell.xib in Resources */,
 				2A4CC04A1FE3C33A0076676F /* Assets.xcassets in Resources */,
@@ -359,7 +378,9 @@
 				2A4CC08A1FE3C8DA0076676F /* UIButton+LJ.m in Sources */,
 				2A5DC3C91FEBA46C006C9899 /* SettingViewController.m in Sources */,
 				2A4CC0501FE3C33A0076676F /* main.m in Sources */,
+				2AAE9DA02021CDA800623F18 /* VideoFrameCollectionViewController.m in Sources */,
 				2A4CC0711FE3C81B0076676F /* LJPHPhotoTools.m in Sources */,
+				2AAE9D9D2021BA4800623F18 /* VideoEditViewController.m in Sources */,
 				2AE07CF71FE7986400DA3149 /* LJPhotoCollectionViewCell.m in Sources */,
 				2A4CC06E1FE3C7830076676F /* ProgressHUD.m in Sources */,
 				6AED23201FE956950035CB41 /* LJPhotoOperational.m in Sources */,
@@ -375,6 +396,7 @@
 				2A4CC05C1FE3C37F0076676F /* FLAnimatedImageView.m in Sources */,
 				2A4CC0611FE3C6C40076676F /* LJImageTools.m in Sources */,
 				2A4CC08C1FE3C8DA0076676F /* UIImage+LJ.m in Sources */,
+				2A3715FB2022BEC6003EAF19 /* VideoFrameCell.m in Sources */,
 				2A4CC0781FE3C8940076676F /* Foundation+Log.m in Sources */,
 				2AE07CF81FE7986400DA3149 /* LJPhotoAlbumTableViewController.m in Sources */,
 				2A4CC08B1FE3C8DA0076676F /* UIImage+ImageEffects.m in Sources */,
@@ -517,7 +539,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LJGifDemo/Tools/HeaderFiler/PrefixHeader.pch";
 				INFOPLIST_FILE = LJGifDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LJ.LJGifDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -535,7 +557,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LJGifDemo/Tools/HeaderFiler/PrefixHeader.pch";
 				INFOPLIST_FILE = LJGifDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LJ.LJGifDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

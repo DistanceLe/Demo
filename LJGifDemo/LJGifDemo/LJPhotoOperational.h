@@ -24,6 +24,10 @@
 /**  获取图片操作的单例 */
 +(instancetype)shareOperational;
 
+/**  根据文件名字获取 原始数据 的地址 */
+-(NSString*)getOriginDataPathWithFileName:(NSString*)name;
+-(NSURL*)getOriginDataURLPathWithFileName:(NSString*)name;
+
 /**  根据图片名字获取 缩略图片 */
 -(UIImage*)getImageWithIndex:(NSInteger)index;
 

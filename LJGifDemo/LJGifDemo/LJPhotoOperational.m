@@ -93,7 +93,15 @@
     return imagesData;
 }
 
-
+/**  根据文件名字获取 原始数据 的地址 */
+-(NSString*)getOriginDataPathWithFileName:(NSString*)name{
+    NSString* filePath = [self.originOperation readFilePath:name];
+    return filePath;
+}
+-(NSURL*)getOriginDataURLPathWithFileName:(NSString*)name{
+    NSURL* filePath = [self.originOperation getUrlFilePathComponent:name];
+    return filePath;
+}
 /**  保持原始图片 */
 -(void)saveOriginImageData:(id)data imageName:(NSString*)name{
     [self.originOperation saveObject:data name:name];

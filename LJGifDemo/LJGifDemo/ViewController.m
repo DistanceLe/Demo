@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "LJPhotoAlbumTableViewController.h"
+#import "VideoEditViewController.h"
 
 #import "LJPhotoCollectionViewCell.h"
 
@@ -189,7 +190,14 @@
     LJPhotoCollectionViewCell* cell=[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentify forIndexPath:indexPath];
     
     cell.headImageView.image=[[LJPhotoOperational shareOperational]getImageWithIndex:indexPath.item];
-    cell.playImageView.hidden = YES;
+    
+    if ([[LJPhotoOperational shareOperational].imageNames[indexPath.item] hasSuffix:@".MOV"]) {
+        cell.playImageView.hidden = NO;
+    }else{
+        cell.playImageView.hidden = YES;
+    }
+    
+    
     if (self.isEdit) {
         cell.selectButton.hidden=NO;
         cell.selectButton.selected=[self.editIndexPaths containsObject:indexPath];
@@ -209,6 +217,12 @@
         }else{
             [self.editIndexPaths removeObject:indexPath];
         }
+    }else{
+        //是否是视频，视频则进去 编辑
+        if ([[LJPhotoOperational shareOperational].imageNames[indexPath.item] hasSuffix:@".MOV"]) {
+            
+            [self performSegueWithIdentifier:@"videoEdit" sender:[LJPhotoOperational shareOperational].imageNames[indexPath.item]];
+        }
     }
 }
 
@@ -222,6 +236,15 @@
         id source = [[LJPhotoOperational shareOperational].imageNames objectAtIndex:sourceIndexPath.item];
         [[LJPhotoOperational shareOperational].imageNames removeObjectAtIndex:sourceIndexPath.item];
         [[LJPhotoOperational shareOperational].imageNames insertObject:source atIndex:destinationIndexPath.item];
+    }
+}
+
+#pragma mark - ================ Segue ==================
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"videoEdit"]) {
+        VideoEditViewController* videoVC = [segue destinationViewController];
+        videoVC.videoName = sender;
     }
 }
 

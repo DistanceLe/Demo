@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-
+#import <AVFoundation/AVFoundation.h>
 
 @implementation LJGif
 
@@ -108,6 +108,53 @@ static void makeAnimatedGif(void) {
     
     NSLog(@"url=%@", fileURL);
 }
+
+
+
+
+
+
++(UIImage*)getVideoPreViewImageWithURL:(NSURL*)videoPath{
+    
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoPath options:nil];
+    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    gen.appliesPreferredTrackTransform = YES;
+    
+//    gen.requestedTimeToleranceAfter = kCMTimeZero;
+//    gen.requestedTimeToleranceBefore = kCMTimeZero;
+    
+//    CMTime time = CMTimeMakeWithSeconds(0.0, 600);
+    CMTime time = kCMTimeZero;
+    NSError *error = nil;
+    CMTime actualTime;
+    CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
+    UIImage *img = [[UIImage alloc] initWithCGImage:image];
+    CGImageRelease(image);
+    return img;
+}
+
+
++(UIImage*)thumbnailImageForVideo:(NSURL *)videoURL atTime:(NSTimeInterval)time {
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
+    NSParameterAssert(asset);
+    AVAssetImageGenerator *assetImageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    assetImageGenerator.appliesPreferredTrackTransform = YES;
+    assetImageGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
+    
+    CGImageRef thumbnailImageRef = NULL;
+    CFTimeInterval thumbnailImageTime = time;
+    NSError *thumbnailImageGenerationError = nil;
+    thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 60) actualTime:NULL error:&thumbnailImageGenerationError];
+    
+    if (!thumbnailImageRef)
+        NSLog(@"thumbnailImageGenerationError %@", thumbnailImageGenerationError);
+    
+    UIImage *thumbnailImage = thumbnailImageRef ? [[UIImage alloc] initWithCGImage:thumbnailImageRef] : nil;
+    
+    return thumbnailImage;
+}
+
+
 
 
 @end

@@ -446,7 +446,18 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     }
     return size;
 }
-
+/**  根据颜色获取图片 */
++(UIImage*)getImageForColor:(UIColor*)color size:(CGSize)size{
+    CGRect rect=CGRectMake(0.0f, 0.0f, size.width, size.height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return theImage;
+}
 
 
 +(CGSize)getNetPNGImageSizeWith:(NSMutableURLRequest*)request

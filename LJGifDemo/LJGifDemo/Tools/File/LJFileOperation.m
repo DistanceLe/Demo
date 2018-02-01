@@ -84,7 +84,7 @@
     });
 }
 -(NSString *)readFilePath:(NSString *)name{
-    if (name.length>0) {
+    if (name.length<=0) {
         return self.documentPath;
     }else{
         NSString* filePath=[self.documentPath stringByAppendingPathComponent:name];

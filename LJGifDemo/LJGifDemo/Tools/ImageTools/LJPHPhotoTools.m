@@ -79,6 +79,7 @@
         
         PHFetchResult* result=[PHAsset fetchAssetsInAssetCollection:sub options:nil];
         NSInteger count=[result countOfAssetsWithMediaType:PHAssetMediaTypeImage];
+        count += [result countOfAssetsWithMediaType:PHAssetMediaTypeVideo];
         [counts addObject:@(count)];
         
         if (count>0) {
@@ -164,9 +165,9 @@
     
     PHFetchResult* result=[PHAsset fetchAssetsInAssetCollection:collection options:option];
     for (PHAsset* asset in result) {
-        if (asset.mediaType != PHAssetMediaTypeImage) {
-            continue;
-        }
+//        if (asset.mediaType != PHAssetMediaTypeImage) {
+//            continue;
+//        }
         [assets addObject:asset];
     }
     return assets;

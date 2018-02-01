@@ -13,4 +13,10 @@
 
 +(UIImage*)getGifImage;
 
+/**  根据视频的路径获取 某一帧 */
++(UIImage*)getVideoPreViewImageWithURL:(NSURL*)videoPath;
+
+/**  根据视频的路径，一个时间点，获取 某一帧 */
++(UIImage*)thumbnailImageForVideo:(NSURL *)videoURL atTime:(NSTimeInterval)time;
+
 @end
