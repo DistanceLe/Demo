@@ -55,23 +55,6 @@ static void headData(void){
     return nil;
 }
 
-//static UIImage *frameImage(CGSize size, CGFloat radians) {
-//    UIGraphicsBeginImageContextWithOptions(size, YES, 1); {
-//        [[UIColor whiteColor] setFill];
-//        UIRectFill(CGRectInfinite);
-//        CGContextRef gc = UIGraphicsGetCurrentContext();
-//        CGContextTranslateCTM(gc, size.width / 2, size.height / 2);
-//        CGContextRotateCTM(gc, radians);
-//        CGContextTranslateCTM(gc, size.width / 4, 0);
-//        [[UIColor redColor] setFill];
-//        CGFloat w = size.width / 10;
-//        CGContextFillEllipseInRect(gc, CGRectMake(-w / 2, -w / 2, w, w));
-//    }
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return image;
-//}
-
 static void makeAnimatedGif(void) {
     static NSUInteger kFrameCount = 2;
 //    NSArray* imageName = @[@"start1", @"end1", @"start2", @"end2"];
@@ -109,11 +92,6 @@ static void makeAnimatedGif(void) {
     NSLog(@"url=%@", fileURL);
 }
 
-
-
-
-
-
 +(UIImage*)getVideoPreViewImageWithURL:(NSURL*)videoPath{
     
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoPath options:nil];
@@ -144,16 +122,53 @@ static void makeAnimatedGif(void) {
     CGImageRef thumbnailImageRef = NULL;
     CFTimeInterval thumbnailImageTime = time;
     NSError *thumbnailImageGenerationError = nil;
-    thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 60) actualTime:NULL error:&thumbnailImageGenerationError];
+    thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime*60, 60) actualTime:NULL error:&thumbnailImageGenerationError];
     
     if (!thumbnailImageRef)
-        NSLog(@"thumbnailImageGenerationError %@", thumbnailImageGenerationError);
+        DLog(@"thumbnailImageGenerationError %@", thumbnailImageGenerationError);
     
     UIImage *thumbnailImage = thumbnailImageRef ? [[UIImage alloc] initWithCGImage:thumbnailImageRef] : nil;
-    
+    CGImageRelease(thumbnailImageRef);
+    DLog(@"...comein");
     return thumbnailImage;
 }
 
+static dispatch_queue_t asyncQueue;
+
+/**  异步获取 time时间的那一帧图片 */
++(void)getVideoFrameAsyncForVideo:(NSURL*)videoURL atTime:(NSTimeInterval)time complete:(void(^)(UIImage* image))handler{
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        asyncQueue = dispatch_queue_create("asyncQueue", DISPATCH_QUEUE_SERIAL);
+    });
+    
+    dispatch_async(asyncQueue, ^{
+        AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
+        NSParameterAssert(asset);
+        AVAssetImageGenerator *assetImageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+        assetImageGenerator.appliesPreferredTrackTransform = YES;
+        assetImageGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
+        
+        CGImageRef thumbnailImageRef = NULL;
+        CFTimeInterval thumbnailImageTime = time;
+        NSError *thumbnailImageGenerationError = nil;
+        thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime*60, 60) actualTime:NULL error:&thumbnailImageGenerationError];
+        
+        if (!thumbnailImageRef)
+            DLog(@"thumbnailImageGenerationError %@", thumbnailImageGenerationError);
+        
+        UIImage *thumbnailImage = thumbnailImageRef ? [[UIImage alloc] initWithCGImage:thumbnailImageRef] : nil;
+        CGImageRelease(thumbnailImageRef);
+        DLog(@"...comein");
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (handler) {
+                handler(thumbnailImage);
+            }
+        });
+    });
+}
 
 
 

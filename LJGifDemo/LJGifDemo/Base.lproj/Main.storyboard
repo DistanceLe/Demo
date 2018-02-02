@@ -115,7 +115,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="O21-7Y-roV">
-                                <rect key="frame" x="25" y="597" width="325" height="60"/>
+                                <rect key="frame" x="20" y="597" width="335" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.65768943762251975" blue="0.69420294904845914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="C8y-Eb-yFE"/>
@@ -137,7 +137,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_green" translatesAutoresizingMaskIntoConstraints="NO" id="nCd-mU-2bE">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_green" translatesAutoresizingMaskIntoConstraints="NO" id="nCd-mU-2bE">
                                 <rect key="frame" x="167.5" y="560" width="40" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="OOh-A3-qyF"/>
@@ -159,7 +159,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="O21-7Y-roV" firstAttribute="trailing" secondItem="JI2-IE-zkY" secondAttribute="trailing" constant="-25" id="A1w-1F-qRN"/>
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="width" secondItem="V3e-zg-Rne" secondAttribute="width" id="Gxq-r0-Xxv"/>
                             <constraint firstItem="F2b-AM-5hi" firstAttribute="top" secondItem="JI2-IE-zkY" secondAttribute="top" id="KX5-vV-yZH"/>
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="top" secondItem="V3e-zg-Rne" secondAttribute="top" id="Mpr-21-8ve"/>
@@ -169,10 +168,11 @@
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="top" secondItem="F2b-AM-5hi" secondAttribute="bottom" constant="16" id="bUm-qk-ZNO"/>
                             <constraint firstItem="Ga5-6y-CO2" firstAttribute="leading" secondItem="JI2-IE-zkY" secondAttribute="leading" constant="10" id="c32-Ln-v8V"/>
                             <constraint firstItem="JI2-IE-zkY" firstAttribute="trailing" secondItem="F2b-AM-5hi" secondAttribute="trailing" id="crq-tQ-2Qf"/>
-                            <constraint firstItem="O21-7Y-roV" firstAttribute="leading" secondItem="JI2-IE-zkY" secondAttribute="leading" constant="25" id="ePv-eO-KYr"/>
+                            <constraint firstItem="O21-7Y-roV" firstAttribute="leading" secondItem="JI2-IE-zkY" secondAttribute="leading" constant="20" id="ePv-eO-KYr"/>
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="leading" secondItem="V3e-zg-Rne" secondAttribute="trailing" constant="16" id="jX6-QQ-pow"/>
                             <constraint firstItem="F2b-AM-5hi" firstAttribute="leading" secondItem="JI2-IE-zkY" secondAttribute="leading" id="jso-zg-lyt"/>
                             <constraint firstItem="JI2-IE-zkY" firstAttribute="bottom" secondItem="O21-7Y-roV" secondAttribute="bottom" constant="10" id="q70-Nk-MMh"/>
+                            <constraint firstItem="JI2-IE-zkY" firstAttribute="trailing" secondItem="O21-7Y-roV" secondAttribute="trailing" constant="20" id="yVq-bf-JlV"/>
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="centerY" secondItem="Ga5-6y-CO2" secondAttribute="centerY" id="zZe-JA-VwQ"/>
                             <constraint firstItem="JI2-IE-zkY" firstAttribute="trailing" secondItem="cXh-UK-xaG" secondAttribute="trailing" constant="10" id="zfo-4c-T9k"/>
                         </constraints>

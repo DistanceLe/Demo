@@ -16,7 +16,10 @@
 /**  根据视频的路径获取 某一帧 */
 +(UIImage*)getVideoPreViewImageWithURL:(NSURL*)videoPath;
 
-/**  根据视频的路径，一个时间点，获取 某一帧 */
+/**  同步获取 根据视频的路径，一个时间点，获取 某一帧 */
 +(UIImage*)thumbnailImageForVideo:(NSURL *)videoURL atTime:(NSTimeInterval)time;
+
+/**  异步获取 time时间的那一帧图片 */
++(void)getVideoFrameAsyncForVideo:(NSURL*)videoURL atTime:(NSTimeInterval)time complete:(void(^)(UIImage* image))handler;
 
 @end
