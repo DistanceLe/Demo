@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class AVAssetImageGenerator;
+
 @interface LJGif : NSObject
 
 
@@ -21,5 +23,8 @@
 
 /**  异步获取 time时间的那一帧图片 */
 +(void)getVideoFrameAsyncForVideo:(NSURL*)videoURL atTime:(NSTimeInterval)time complete:(void(^)(UIImage* image))handler;
+
+/**  异步获取 time时间的那一帧图片 */
++(void)getVideoFrameAsyncWithGenerator:(AVAssetImageGenerator*)assetImageGenerator atTime:(NSTimeInterval)time complete:(void(^)(UIImage* image))handler;
 
 @end

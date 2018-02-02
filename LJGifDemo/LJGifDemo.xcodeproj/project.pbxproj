@@ -41,6 +41,10 @@
 		2AE07CF71FE7986400DA3149 /* LJPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CF11FE7986300DA3149 /* LJPhotoCollectionViewCell.m */; };
 		2AE07CF81FE7986400DA3149 /* LJPhotoAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CF31FE7986400DA3149 /* LJPhotoAlbumTableViewController.m */; };
 		2AE07CFC1FE798D700DA3149 /* LJFileOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CFB1FE798D700DA3149 /* LJFileOperation.m */; };
+		2AEC18962024148E00788287 /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC188F2024148E00788287 /* YYCache.m */; };
+		2AEC18972024148E00788287 /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC18912024148E00788287 /* YYDiskCache.m */; };
+		2AEC18982024148E00788287 /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC18932024148E00788287 /* YYKVStorage.m */; };
+		2AEC18992024148E00788287 /* YYMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC18952024148E00788287 /* YYMemoryCache.m */; };
 		6AED23201FE956950035CB41 /* LJPhotoOperational.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AED231F1FE956950035CB41 /* LJPhotoOperational.m */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +116,14 @@
 		2AE07CF41FE7986400DA3149 /* LJPhotoAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPhotoAlbumTableViewController.h; sourceTree = "<group>"; };
 		2AE07CFA1FE798D600DA3149 /* LJFileOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJFileOperation.h; sourceTree = "<group>"; };
 		2AE07CFB1FE798D700DA3149 /* LJFileOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJFileOperation.m; sourceTree = "<group>"; };
+		2AEC188E2024148E00788287 /* YYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCache.h; sourceTree = "<group>"; };
+		2AEC188F2024148E00788287 /* YYCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCache.m; sourceTree = "<group>"; };
+		2AEC18902024148E00788287 /* YYDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDiskCache.h; sourceTree = "<group>"; };
+		2AEC18912024148E00788287 /* YYDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYDiskCache.m; sourceTree = "<group>"; };
+		2AEC18922024148E00788287 /* YYKVStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYKVStorage.h; sourceTree = "<group>"; };
+		2AEC18932024148E00788287 /* YYKVStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYKVStorage.m; sourceTree = "<group>"; };
+		2AEC18942024148E00788287 /* YYMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYMemoryCache.h; sourceTree = "<group>"; };
+		2AEC18952024148E00788287 /* YYMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYMemoryCache.m; sourceTree = "<group>"; };
 		6AED231E1FE956950035CB41 /* LJPhotoOperational.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJPhotoOperational.h; sourceTree = "<group>"; };
 		6AED231F1FE956950035CB41 /* LJPhotoOperational.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJPhotoOperational.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +190,7 @@
 		2A4CC0561FE3C3480076676F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				2AEC188D2024148E00788287 /* YYCache */,
 				2AE07CF91FE798CF00DA3149 /* File */,
 				2A4CC0721FE3C8940076676F /* HeaderFiler */,
 				2A4CC0921FE3CB750076676F /* TimeTools */,
@@ -298,6 +311,21 @@
 			path = File;
 			sourceTree = "<group>";
 		};
+		2AEC188D2024148E00788287 /* YYCache */ = {
+			isa = PBXGroup;
+			children = (
+				2AEC188E2024148E00788287 /* YYCache.h */,
+				2AEC188F2024148E00788287 /* YYCache.m */,
+				2AEC18902024148E00788287 /* YYDiskCache.h */,
+				2AEC18912024148E00788287 /* YYDiskCache.m */,
+				2AEC18922024148E00788287 /* YYKVStorage.h */,
+				2AEC18932024148E00788287 /* YYKVStorage.m */,
+				2AEC18942024148E00788287 /* YYMemoryCache.h */,
+				2AEC18952024148E00788287 /* YYMemoryCache.m */,
+			);
+			path = YYCache;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -379,11 +407,14 @@
 				2A5DC3C91FEBA46C006C9899 /* SettingViewController.m in Sources */,
 				2A4CC0501FE3C33A0076676F /* main.m in Sources */,
 				2AAE9DA02021CDA800623F18 /* VideoFrameCollectionViewController.m in Sources */,
+				2AEC18962024148E00788287 /* YYCache.m in Sources */,
+				2AEC18982024148E00788287 /* YYKVStorage.m in Sources */,
 				2A4CC0711FE3C81B0076676F /* LJPHPhotoTools.m in Sources */,
 				2AAE9D9D2021BA4800623F18 /* VideoEditViewController.m in Sources */,
 				2AE07CF71FE7986400DA3149 /* LJPhotoCollectionViewCell.m in Sources */,
 				2A4CC06E1FE3C7830076676F /* ProgressHUD.m in Sources */,
 				6AED23201FE956950035CB41 /* LJPhotoOperational.m in Sources */,
+				2AEC18992024148E00788287 /* YYMemoryCache.m in Sources */,
 				2A4CC06C1FE3C7830076676F /* LJInfoAlert.m in Sources */,
 				2A4CC06D1FE3C7830076676F /* LJSheetAlertView.m in Sources */,
 				2AE07CFC1FE798D700DA3149 /* LJFileOperation.m in Sources */,
@@ -395,6 +426,7 @@
 				2A4CC08D1FE3C8DA0076676F /* UIView+LJ.m in Sources */,
 				2A4CC05C1FE3C37F0076676F /* FLAnimatedImageView.m in Sources */,
 				2A4CC0611FE3C6C40076676F /* LJImageTools.m in Sources */,
+				2AEC18972024148E00788287 /* YYDiskCache.m in Sources */,
 				2A4CC08C1FE3C8DA0076676F /* UIImage+LJ.m in Sources */,
 				2A3715FB2022BEC6003EAF19 /* VideoFrameCell.m in Sources */,
 				2A4CC0781FE3C8940076676F /* Foundation+Log.m in Sources */,

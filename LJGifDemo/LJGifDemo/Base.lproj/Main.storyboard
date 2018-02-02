@@ -92,6 +92,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPs-qs-Wwb">
+                                <rect key="frame" x="0.0" y="543" width="375" height="53.5"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F2b-AM-5hi">
                                 <rect key="frame" x="0.0" y="64" width="375" height="427.5"/>
                                 <color key="backgroundColor" red="0.97716968911917101" green="0.56278773360194601" blue="0.59933444558712279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -137,7 +140,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_green" translatesAutoresizingMaskIntoConstraints="NO" id="nCd-mU-2bE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_green" translatesAutoresizingMaskIntoConstraints="NO" id="nCd-mU-2bE">
                                 <rect key="frame" x="167.5" y="560" width="40" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="OOh-A3-qyF"/>
@@ -162,6 +165,7 @@
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="width" secondItem="V3e-zg-Rne" secondAttribute="width" id="Gxq-r0-Xxv"/>
                             <constraint firstItem="F2b-AM-5hi" firstAttribute="top" secondItem="JI2-IE-zkY" secondAttribute="top" id="KX5-vV-yZH"/>
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="top" secondItem="V3e-zg-Rne" secondAttribute="top" id="Mpr-21-8ve"/>
+                            <constraint firstItem="IPs-qs-Wwb" firstAttribute="leading" secondItem="JI2-IE-zkY" secondAttribute="leading" id="NNA-ZU-OKm"/>
                             <constraint firstItem="nCd-mU-2bE" firstAttribute="top" secondItem="Ga5-6y-CO2" secondAttribute="bottom" constant="20" id="U0k-uo-geO"/>
                             <constraint firstItem="O21-7Y-roV" firstAttribute="top" secondItem="nCd-mU-2bE" secondAttribute="bottom" constant="-8" id="UYL-ua-O9y"/>
                             <constraint firstItem="nCd-mU-2bE" firstAttribute="centerX" secondItem="KPN-k2-RN2" secondAttribute="centerX" id="V0G-KZ-ZQq"/>
@@ -169,8 +173,11 @@
                             <constraint firstItem="Ga5-6y-CO2" firstAttribute="leading" secondItem="JI2-IE-zkY" secondAttribute="leading" constant="10" id="c32-Ln-v8V"/>
                             <constraint firstItem="JI2-IE-zkY" firstAttribute="trailing" secondItem="F2b-AM-5hi" secondAttribute="trailing" id="crq-tQ-2Qf"/>
                             <constraint firstItem="O21-7Y-roV" firstAttribute="leading" secondItem="JI2-IE-zkY" secondAttribute="leading" constant="20" id="ePv-eO-KYr"/>
+                            <constraint firstItem="IPs-qs-Wwb" firstAttribute="top" secondItem="V3e-zg-Rne" secondAttribute="bottom" id="hbj-Ar-tGh"/>
+                            <constraint firstItem="O21-7Y-roV" firstAttribute="top" secondItem="IPs-qs-Wwb" secondAttribute="bottom" id="iMc-Dv-tqq"/>
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="leading" secondItem="V3e-zg-Rne" secondAttribute="trailing" constant="16" id="jX6-QQ-pow"/>
                             <constraint firstItem="F2b-AM-5hi" firstAttribute="leading" secondItem="JI2-IE-zkY" secondAttribute="leading" id="jso-zg-lyt"/>
+                            <constraint firstItem="JI2-IE-zkY" firstAttribute="trailing" secondItem="IPs-qs-Wwb" secondAttribute="trailing" id="pwJ-lh-wcW"/>
                             <constraint firstItem="JI2-IE-zkY" firstAttribute="bottom" secondItem="O21-7Y-roV" secondAttribute="bottom" constant="10" id="q70-Nk-MMh"/>
                             <constraint firstItem="JI2-IE-zkY" firstAttribute="trailing" secondItem="O21-7Y-roV" secondAttribute="trailing" constant="20" id="yVq-bf-JlV"/>
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="centerY" secondItem="Ga5-6y-CO2" secondAttribute="centerY" id="zZe-JA-VwQ"/>
@@ -191,11 +198,12 @@
                         <outlet property="frameCollectionView" destination="O21-7Y-roV" id="DVd-Ee-QSI"/>
                         <outlet property="indexCenterConstraint" destination="V0G-KZ-ZQq" id="sEE-D6-dDt"/>
                         <outlet property="indexImageView" destination="nCd-mU-2bE" id="yjs-aa-Jnj"/>
+                        <outlet property="panView" destination="IPs-qs-Wwb" id="qrd-UN-9uJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOd-B6-8IV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2906.25" y="116.19718309859155"/>
+            <point key="canvasLocation" x="2904.8000000000002" y="115.59220389805098"/>
         </scene>
         <!--视频帧-->
         <scene sceneID="Ccm-lM-WRB">
