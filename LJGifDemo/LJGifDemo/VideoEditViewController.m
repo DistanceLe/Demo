@@ -270,6 +270,7 @@
 }
 
 -(void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
     DLog(@"...memory 不够了");
 }
 

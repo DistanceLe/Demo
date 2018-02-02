@@ -614,7 +614,6 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     free(pixelBuffer);
     CFRelease(inBitmapData);
     
-    CGColorSpaceRelease(colorSpace);
     CGImageRelease(imageRef);
     
     return returnImage;
