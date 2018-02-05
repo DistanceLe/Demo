@@ -93,6 +93,16 @@
     return imagesData;
 }
 
+-(UIImage*)getOriginImageWithWithName:(NSString*)name{
+   
+    NSData* imageData = [self.originOperation readObjectWithName:name];
+    UIImage* image = [UIImage imageWithData:imageData];
+    imageData = UIImageJPEGRepresentation(image, self.photoPercent);
+    image = [LJImageTools changeImage:[UIImage imageWithData:imageData] toRatio:self.gifSize];
+    
+    return image;
+}
+
 /**  根据文件名字获取 原始数据 的地址 */
 -(NSString*)getOriginDataPathWithFileName:(NSString*)name{
     NSString* filePath = [self.originOperation readFilePath:name];

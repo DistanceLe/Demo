@@ -199,6 +199,7 @@
                         <outlet property="indexCenterConstraint" destination="V0G-KZ-ZQq" id="sEE-D6-dDt"/>
                         <outlet property="indexImageView" destination="nCd-mU-2bE" id="yjs-aa-Jnj"/>
                         <outlet property="panView" destination="IPs-qs-Wwb" id="qrd-UN-9uJ"/>
+                        <outlet property="step" destination="Ga5-6y-CO2" id="Sja-o3-BQn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOd-B6-8IV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -536,7 +537,14 @@
                             <outlet property="delegate" destination="tlc-yz-ryv" id="ktz-Ap-8wz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Gif配置" id="RDB-7x-p0D"/>
+                    <navigationItem key="navigationItem" title="Gif配置" id="RDB-7x-p0D">
+                        <barButtonItem key="rightBarButtonItem" title="缓存" id="emi-2G-vwJ">
+                            <color key="tintColor" red="0.99931615591049194" green="0.57788419723510742" blue="0.0011074217036366463" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="Cvn-TJ-AtU" kind="push" id="r5I-3U-mqm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="frameTimeLabel" destination="luU-su-LqJ" id="hFt-7D-YMi"/>
                         <outlet property="gifSizeLabel" destination="CIT-fB-o3G" id="Vo0-bd-AFX"/>
@@ -547,6 +555,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vck-LN-gGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2033" y="884"/>
+        </scene>
+        <!--Cache Table View Controller-->
+        <scene sceneID="F6P-yB-cWl">
+            <objects>
+                <tableViewController id="Cvn-TJ-AtU" customClass="CacheTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HlC-KQ-gut">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="M4b-pQ-sUL">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M4b-pQ-sUL" id="bhL-tx-KRx">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Cvn-TJ-AtU" id="D3X-gM-9nr"/>
+                            <outlet property="delegate" destination="Cvn-TJ-AtU" id="3fB-ew-1TB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="bNA-5s-Gao"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p0s-3x-enu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2735" y="888"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Qwn-XS-Hzw">

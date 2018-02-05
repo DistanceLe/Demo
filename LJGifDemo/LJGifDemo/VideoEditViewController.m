@@ -13,7 +13,9 @@
 
 #import "LJGif.h"
 #import "LJPhotoOperational.h"
+#import "LJPHPhotoTools.h"
 #import "YYCache.h"
+#import "TimeTools.h"
 
 @interface VideoEditViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;//主图片
@@ -22,19 +24,15 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *indexCenterConstraint;//指针图片 的中心
 @property (weak, nonatomic) IBOutlet UIView *panView;//手势添加的视图
 
-
 @property (weak, nonatomic) IBOutlet UICollectionView *frameCollectionView;//每一秒的首帧
-
-
-/**  每一秒最前的帧的图片 */
-//@property (nonatomic, strong)NSMutableDictionary* frameImages;//每一秒的首帧
-//@property (nonatomic, strong)NSMutableDictionary* allImages;//所有的帧图片
-//@property (nonatomic, strong)NSMutableDictionary* frameIndexs;//
+@property (weak, nonatomic) IBOutlet UIStepper *step;
+@property (nonatomic, assign)CGFloat currentStepValue;
 
 @property (nonatomic, strong)YYCache* imageCache;
 
 /**  帧率， 每秒多少针  一般 25帧 或者 30帧 */
 @property (nonatomic, assign)NSInteger fps;
+
 /**  视频的长度，单位秒 */
 @property (nonatomic, assign)CGFloat videoDuration;
 
@@ -81,6 +79,12 @@
     [ProgressHUD show:@"视频处理中..." autoStop:NO];
     
     CGFloat frameTime = 1.0/self.fps;
+    
+    self.step.minimumValue = 0;
+    self.step.maximumValue = @(self.videoDuration/frameTime).integerValue * frameTime;
+    self.step.stepValue = frameTime;
+    self.step.value = 0;
+    self.currentStepValue = 0;
     
     self.imageCache = [YYCache cacheWithName:self.videoName];
     
@@ -165,17 +169,56 @@
 
 - (IBAction)stepperClick:(UIStepper *)sender {
     
+    CGFloat currentIndex = (self.indexCenterConstraint.constant + IPHONE_WIDTH/2.0 - 20)/60.0;
+    CGFloat scrollOffsetX = self.scrollOffset/60.0;
+    CGFloat currentCenter = self.indexCenterConstraint.constant;
+    CGFloat minFramOffset = 60.0f/self.fps;
     
+    CGFloat intervaleTime = sender.value - (currentIndex+scrollOffsetX);
+    CGFloat shouldOffset =  (intervaleTime/(1.0f/self.fps)*minFramOffset);
+    
+    if (((currentCenter == -(IPHONE_WIDTH/2.0-20) || currentCenter-minFramOffset+0.01 < -(IPHONE_WIDTH/2.0-20))
+         && sender.value-self.currentStepValue < 0) ||
+        
+        ((currentCenter >= (IPHONE_WIDTH/2.0-20) ||currentCenter+minFramOffset-0.01 > (IPHONE_WIDTH/2.0-20))
+         && sender.value-self.currentStepValue > 0)) {
+        //scrollview 滚动
+        self.scrollOffset += shouldOffset;
+        self.frameCollectionView.contentOffset = CGPointMake(self.scrollOffset, 0);
+    }else{
+        //图片标签 移动
+        self.indexCenterConstraint.constant += shouldOffset;
+    }
+    self.currentStepValue = self.step.value;
+    [self refreshFrame];
 }
 
 - (IBAction)saveToAlbum:(UIButton *)sender {
     
-    
+    [LJPHPhotoTools saveImageToCameraRoll:self.contentImageView.image handler:^(BOOL success) {
+        if (success) {
+            [LJInfoAlert showInfo:@"保存相册成功" bgColor:nil];
+        }else{
+            [LJInfoAlert showInfo:@"保存相册失败" bgColor:nil];
+        }
+    }];
 }
 
 - (IBAction)saveToMainPage:(UIButton *)sender {
     
+    long long timestamp = [TimeTools getCurrentTimestamp];
+    NSString* tempName = [@((timestamp++)) stringValue];
+    //保存原始图片
+    UIImage* image = self.contentImageView.image;
+    [[LJPhotoOperational shareOperational]saveOriginImageData:image imageName:tempName];
     
+    //保存缩略图
+    [[LJPhotoOperational shareOperational]saveThumbnailImageData:image imageName:tempName];
+    if (1) {//保存完成，发送通知，刷新首页面
+        [ProgressHUD dismiss];
+        [[NSNotificationCenter defaultCenter]postNotificationName:photoSavedName object:nil];
+    }
+    [LJInfoAlert showInfo:@"保存成功" bgColor:nil];
 }
 
 -(void)refreshFrame{
@@ -184,13 +227,14 @@
     
     CGFloat currentFrameTime = currentIndex + scrollOffsetIndex;
     
-    NSString* frameKey = [NSString stringWithFormat:@"%.2f", currentFrameTime];
-//    if ([self.allImages valueForKey:frameKey]) {
-//        DLog(@"refresh %@", frameKey);
-//        self.contentImageView.image = [self.allImages valueForKey:frameKey];
-//    }
-    if ([self.imageCache.diskCache objectForKey:frameKey]) {
+    NSString* frameKey = [NSString stringWithFormat:@"%.2f", fabs(currentFrameTime)];
+
+    if ([self.imageCache.diskCache containsObjectForKey:frameKey]) {
         DLog(@"refresh %@", frameKey);
+        self.step.value = [frameKey floatValue];
+//        if (self.step.value + 1.0f/self.fps - 0.01 > self.step.maximumValue) {
+//            self.step.value = self.step.maximumValue;
+//        }
         self.contentImageView.image = (UIImage*)[self.imageCache.diskCache objectForKey:frameKey];
     }
 }
@@ -208,10 +252,9 @@
         //手势开始 到现在的偏移X
         CGFloat offset = currentPoint.x - self.gestureOffset;
         
-        CGFloat minFramOffset = 1.0f/self.fps;
+        CGFloat minFramOffset = 60.0f/self.fps/10.0;
         if (fabs(offset+self.beginIndexOffset - self.shouldIndexOffset) >= minFramOffset) {
             self.shouldIndexOffset = offset+self.beginIndexOffset;
-            
             [self refreshFrame];
         }
         [self setIndexImageLocationOffset:offset+self.beginIndexOffset animation:0];
@@ -233,24 +276,6 @@
     if ([self.imageCache.diskCache containsObjectForKey:[NSString stringWithFormat:@"%.2f", @(indexPath.item).floatValue]]){
         cell.contentImageView.image = (UIImage*)[self.imageCache.diskCache objectForKey:[NSString stringWithFormat:@"%.2f", @(indexPath.item).floatValue]];
     }
-    
-    
-//    if ([self.frameImages valueForKey:@(indexPath.item).stringValue]){
-//        cell.contentImageView.image = [self.frameImages valueForKey:@(indexPath.item).stringValue];
-//    }
-//    else{
-//        if (![self.frameIndexs valueForKey:@(indexPath.item).stringValue]) {
-//            [LJGif getVideoFrameAsyncForVideo:self.videoURL atTime:indexPath.item complete:^(UIImage *image) {
-//                if (image) {
-//                    [self.frameImages setValue:image forKey:@(indexPath.item).stringValue];
-//                    cell.contentImageView.image = image;
-//                }else{
-//                    [self.frameIndexs removeObjectForKey:@(indexPath.item).stringValue];
-//                }
-//            }];
-//        }
-//        [self.frameIndexs setValue:@"" forKey:@(indexPath.item).stringValue];
-//    }
     return cell;
 }
 
@@ -258,10 +283,10 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     CGFloat offsetX = scrollView.contentOffset.x;
-    DLog(@"scroll...%.2f", self.scrollOffset);
+    //DLog(@"scroll...%.2f", self.scrollOffset);
     offsetX = (offsetX<0?0:offsetX);
     
-    CGFloat minFramOffset = 1.0f/self.fps;
+    CGFloat minFramOffset = 60.0f/self.fps/10.0;
     if (fabs(offsetX - self.scrollOffset) >= minFramOffset) {
         self.scrollOffset = offsetX;
         [self refreshFrame];

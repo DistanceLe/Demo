@@ -18,7 +18,7 @@
 @property(nonatomic, assign)CGFloat photoPercent;
 
 
-/**  选中的所以图片名字，按顺序排列 */
+/**  选中的所有图片名字，按顺序排列 */
 @property(nonatomic, strong)NSMutableArray* imageNames;
 
 /**  获取图片操作的单例 */
@@ -33,6 +33,7 @@
 
 /**  获取原始图片， 根据设置的尺寸和压缩比例 */
 -(UIImage*)getOriginImageWithIndex:(NSInteger)index;
+-(UIImage*)getOriginImageWithWithName:(NSString*)name;
 
 /**  获取所有的 原图片 */
 -(NSArray<UIImage*>*)getAllOriginImages;
@@ -47,7 +48,7 @@
 -(void)deleteImageWithName:(NSString*)name;
 -(void)deleteImageWithIndex:(NSInteger)index;
 
-/**  清空所以得图片 */
+/**  清空所有得图片 */
 -(void)deleteAllImages;
 
 @end

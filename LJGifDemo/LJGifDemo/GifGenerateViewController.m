@@ -81,7 +81,13 @@
     [ProgressHUD show:@"处理中..."];
     LJPhotoOperational* operational = [LJPhotoOperational shareOperational];
     
-    NSUInteger kFrameCount = operational.imageNames.count;
+    NSMutableArray* imagesName = [NSMutableArray arrayWithArray:operational.imageNames];
+    for (NSString* string in operational.imageNames) {
+        if ([string hasSuffix:@".MOV"] || [string hasSuffix:@".gif"]) {
+            [imagesName removeObject:string];
+        }
+    }
+    NSUInteger kFrameCount = imagesName.count;
     NSDictionary *fileProperties = @{
                                      (__bridge id)kCGImagePropertyGIFDictionary: @{
                                              (__bridge id)kCGImagePropertyGIFLoopCount: @(operational.roopTimes), // 0 means loop forever
@@ -101,7 +107,7 @@
     
     for (NSUInteger i = 0; i < kFrameCount; i++) {
         @autoreleasepool {
-            UIImage* image = [operational getOriginImageWithIndex:i];
+            UIImage* image = [operational getOriginImageWithWithName:imagesName[i]];
             CGImageDestinationAddImage(destination, image.CGImage, (__bridge CFDictionaryRef)frameProperties);
         }
     }

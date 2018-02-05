@@ -34,6 +34,7 @@
 		2A4CC0951FE3CB750076676F /* TimeTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4CC0941FE3CB750076676F /* TimeTools.m */; };
 		2A5DC3C31FEB826D006C9899 /* GifGenerateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DC3C21FEB826D006C9899 /* GifGenerateViewController.m */; };
 		2A5DC3C91FEBA46C006C9899 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DC3C81FEBA46C006C9899 /* SettingViewController.m */; };
+		2A762B9820284D5900AF57A1 /* CacheTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A762B9720284D5900AF57A1 /* CacheTableViewController.m */; };
 		2AAE9D9D2021BA4800623F18 /* VideoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE9D9C2021BA4800623F18 /* VideoEditViewController.m */; };
 		2AAE9DA02021CDA800623F18 /* VideoFrameCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE9D9F2021CDA800623F18 /* VideoFrameCollectionViewController.m */; };
 		2AE07CF51FE7986400DA3149 /* LJPhotoAlbumDetailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CEF1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.m */; };
@@ -103,6 +104,8 @@
 		2A5DC3C21FEB826D006C9899 /* GifGenerateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GifGenerateViewController.m; sourceTree = "<group>"; };
 		2A5DC3C71FEBA46C006C9899 /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		2A5DC3C81FEBA46C006C9899 /* SettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		2A762B9620284D5900AF57A1 /* CacheTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CacheTableViewController.h; sourceTree = "<group>"; };
+		2A762B9720284D5900AF57A1 /* CacheTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CacheTableViewController.m; sourceTree = "<group>"; };
 		2AAE9D9B2021BA4800623F18 /* VideoEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoEditViewController.h; sourceTree = "<group>"; };
 		2AAE9D9C2021BA4800623F18 /* VideoEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoEditViewController.m; sourceTree = "<group>"; };
 		2AAE9D9E2021CDA800623F18 /* VideoFrameCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoFrameCollectionViewController.h; sourceTree = "<group>"; };
@@ -176,6 +179,8 @@
 				2A5DC3C21FEB826D006C9899 /* GifGenerateViewController.m */,
 				2A5DC3C71FEBA46C006C9899 /* SettingViewController.h */,
 				2A5DC3C81FEBA46C006C9899 /* SettingViewController.m */,
+				2A762B9620284D5900AF57A1 /* CacheTableViewController.h */,
+				2A762B9720284D5900AF57A1 /* CacheTableViewController.m */,
 				6AED231E1FE956950035CB41 /* LJPhotoOperational.h */,
 				6AED231F1FE956950035CB41 /* LJPhotoOperational.m */,
 				2A4CC0461FE3C33A0076676F /* Main.storyboard */,
@@ -413,6 +418,7 @@
 				2AAE9D9D2021BA4800623F18 /* VideoEditViewController.m in Sources */,
 				2AE07CF71FE7986400DA3149 /* LJPhotoCollectionViewCell.m in Sources */,
 				2A4CC06E1FE3C7830076676F /* ProgressHUD.m in Sources */,
+				2A762B9820284D5900AF57A1 /* CacheTableViewController.m in Sources */,
 				6AED23201FE956950035CB41 /* LJPhotoOperational.m in Sources */,
 				2AEC18992024148E00788287 /* YYMemoryCache.m in Sources */,
 				2A4CC06C1FE3C7830076676F /* LJInfoAlert.m in Sources */,

@@ -176,7 +176,7 @@ static dispatch_queue_t asyncQueue;
         if (thumbnailImage.size.width > IPHONE_WIDTH || thumbnailImage.size.height > IPHONE_WIDTH) {
             thumbnailImage = [LJImageTools changeImage:thumbnailImage toRatioSize:CGSizeMake(IPHONE_WIDTH, IPHONE_WIDTH)];
         }
-        NSData* imageData = UIImageJPEGRepresentation(thumbnailImage, 0.6);
+        NSData* imageData = UIImageJPEGRepresentation(thumbnailImage, 0.9);
         DLog(@"imageDataSize :%.2fMb", imageData.length/1024/1024.0f);
         thumbnailImage = [UIImage imageWithData:imageData];
         
