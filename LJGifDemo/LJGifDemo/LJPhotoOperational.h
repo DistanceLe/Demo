@@ -13,6 +13,7 @@
 
 /**  Gif配置 */
 @property(nonatomic, assign)NSInteger roopTimes;
+@property(nonatomic, assign)CGFloat angleValue;
 @property(nonatomic, assign)CGFloat frameInterval;
 @property(nonatomic, assign)CGFloat gifSize;
 @property(nonatomic, assign)CGFloat photoPercent;

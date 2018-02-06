@@ -94,15 +94,21 @@
                      }
                                                                  }];
             }else{
+                if (asset.mediaSubtypes == 32) {//gif 图片类型
+                    tempName = [NSString stringWithFormat:@"%@.gif", tempName];
+                }
                 //保存原始图片
                 [LJPHPhotoTools getImageDataWithAsset:asset handler:^(NSData *imageData, NSString* imageName) {
                     
                     DLog(@"origin~~~~~~imageName=%@", tempName);
-                    UIImage* image = [UIImage imageWithData:imageData];
-                    imageData = UIImageJPEGRepresentation(image, 1);
-                    image = [LJImageTools changeImage:[UIImage imageWithData:imageData] toRatioSize:CGSizeMake(IPHONE_WIDTH*2, IPHONE_WIDTH*2)];
-                    
-                    [[LJPhotoOperational shareOperational]saveOriginImageData:image imageName:tempName];
+                    if (asset.mediaSubtypes == 32) {
+                        [[LJPhotoOperational shareOperational]saveOriginImageData:imageData imageName:tempName];
+                    }else{
+                        UIImage* image = [UIImage imageWithData:imageData];
+                        imageData = UIImageJPEGRepresentation(image, 1);
+                        image = [LJImageTools changeImage:[UIImage imageWithData:imageData] toRatioSize:CGSizeMake(IPHONE_WIDTH*2, IPHONE_WIDTH*2)];
+                        [[LJPhotoOperational shareOperational]saveOriginImageData:image imageName:tempName];
+                    }
                 }];
             }
             //保存缩略图
@@ -152,10 +158,10 @@
             dispatch_sync(dispatch_get_main_queue(), ^{
                 if (isGif) {
                     cell.gifImageView.hidden = NO;
-                    cell.selectButton.hidden = YES;
+                    //cell.selectButton.hidden = YES;
                 }else{
                     cell.gifImageView.hidden = YES;
-                    cell.selectButton.hidden = NO;
+                    //cell.selectButton.hidden = NO;
                 }
             });
         });

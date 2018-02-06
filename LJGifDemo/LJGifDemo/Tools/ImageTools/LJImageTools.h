@@ -19,7 +19,7 @@
 +(UIImage*)rotationImage:(UIImage*)image rotation:(UIImageOrientation)orientation;
 
 /**  旋转图片 自定义角度0~360 大于360会自动减去360 */
-+(UIImage *)rotationImage:(UIImage *)image angle:(CGFloat)angle clip:(BOOL)clip;
++(UIImage *)rotationImage:(UIImage *)image angle:(CGFloat)angle clip:(BOOL)clip isZoom:(BOOL)zoom;
 
 /**  等比例缩放 */
 +(UIImage*)changeImage:(UIImage*)originImage toRatioSize:(CGSize)size;

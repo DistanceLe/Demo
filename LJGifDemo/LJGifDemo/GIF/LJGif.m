@@ -189,10 +189,10 @@ static dispatch_queue_t asyncQueue;
 }
 /**  异步获取 time时间的那一帧图片 */
 +(void)getVideoFrameAsyncWithGenerator:(AVAssetImageGenerator*)assetImageGenerator atTime:(NSTimeInterval)time complete:(void(^)(UIImage* image))handler{
-    @autoreleasepool {
+    
          
     dispatch_async([self getDispatchQueue], ^{
-        
+        @autoreleasepool {
         DLog(@"%@", [NSThread currentThread]);
         CGImageRef thumbnailImageRef = NULL;
         NSError *thumbnailImageGenerationError = nil;
@@ -205,8 +205,9 @@ static dispatch_queue_t asyncQueue;
         CGImageRelease(thumbnailImageRef);
         DLog(@"...comein time:%.2f", time);
         
-        if (thumbnailImage.size.width > IPHONE_WIDTH || thumbnailImage.size.height > IPHONE_WIDTH) {
-            thumbnailImage = [LJImageTools changeImage:thumbnailImage toRatioSize:CGSizeMake(IPHONE_WIDTH, IPHONE_WIDTH)];
+        CGFloat maxSize = 600;
+        if (thumbnailImage.size.width > maxSize || thumbnailImage.size.height > maxSize) {
+            thumbnailImage = [LJImageTools changeImage:thumbnailImage toRatioSize:CGSizeMake(maxSize, maxSize)];
         }
         NSData* imageData = UIImageJPEGRepresentation(thumbnailImage, 0.6);
         DLog(@"imageDataSize :%.2fMb", imageData.length/1024/1024.0f);
@@ -217,8 +218,9 @@ static dispatch_queue_t asyncQueue;
                 handler(thumbnailImage);
             }
         });
+        }
     });
-    }
+    
 }
 
 

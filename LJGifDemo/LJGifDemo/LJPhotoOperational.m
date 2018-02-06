@@ -37,7 +37,7 @@
 
 -(void)initData{
     self.roopTimes = 0;
-    self.frameInterval = 0.75;
+    self.frameInterval = 0.2;
     self.gifSize = 1;
     self.photoPercent = 1;
     

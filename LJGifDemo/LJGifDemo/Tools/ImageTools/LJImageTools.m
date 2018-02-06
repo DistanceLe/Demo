@@ -200,11 +200,11 @@
     return newPic;
 }
 
-+(UIImage *)rotationImage:(UIImage *)image angle:(CGFloat)angle clip:(BOOL)clip{
++(UIImage *)rotationImage:(UIImage *)image angle:(CGFloat)angle clip:(BOOL)clip isZoom:(BOOL)zoom{
     long double rotate = 0.0;
     CGRect rect;
-    double translateX = 0;
-    double translateY = 0;
+//    double translateX = 0;
+//    double translateY = 0;
     
     //使之顺时针旋转
     angle=360-angle;
@@ -217,6 +217,7 @@
     rect = CGRectMake(0, 0, image.size.width*image.scale, image.size.height*image.scale);
     CGSize imgSize = CGSizeMake(image.size.width*image.scale, image.size.height*image.scale);
     
+    /*
     //因为图片是一个矩形，以图片的左上角为原点，对角线的一半为半径，画出一个圆。
     //此时图片的中心点的坐标的绝对值就是（image.size.with/2, image.size.height/2)
     double radius=sqrtf(powf(imgSize.width, 2)+powf(imgSize.height, 2))/2;
@@ -250,59 +251,73 @@
         //向上平移（设备上的向上，quartz2D里面的就是向下）为负数
         translateY=-translateY;
     }
-    
+    */
+     
     //因为quart2D的坐标系是原点在左下角，和设备的坐标系相反，所以Y轴的移动旋转都要反过来看
     //即我们在设备上要图片向下，即在quartz2D里面就是向上 translateY就要大于0
     //这里的旋转 位移 是将整个坐标系都改变，所以要进行下一个操作的时候，坐标系就和原先的位置不同了。
     //在quartz2D里面旋转是逆时针旋转的。（在他的坐标系里面看）（在我们设备上就是顺时针了）
     
-    UIGraphicsBeginImageContext(imgSize);
+    CGSize tempImageSize = imgSize;
+    if (!zoom) {
+        tempImageSize = CGSizeMake(fabs(imgSize.width*cos(rotate))+fabs(imgSize.height*sin(rotate)),
+                                   fabs(imgSize.width*sin(rotate))+fabs(imgSize.height*cos(rotate)));
+    }
+    UIGraphicsBeginImageContext(tempImageSize);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     //1.画布延Y轴下移height
-    CGContextTranslateCTM(context, 0.0, rect.size.height);
+    CGContextTranslateCTM(context, 0.0, tempImageSize.height);
     //2.对Y轴做垂直翻转
     CGContextScaleCTM(context, 1.0, -1.0);
     
     //先位移后旋转，位置不能颠倒
-    CGContextTranslateCTM(context, imgSize.width/2, imgSize.height/2);
+    CGContextTranslateCTM(context, tempImageSize.width/2, tempImageSize.height/2);
     CGContextRotateCTM(context, rotate);
-    CGContextTranslateCTM(context, -imgSize.width/2 , -imgSize.height/2);
+    CGContextTranslateCTM(context, -tempImageSize.width/2 , -tempImageSize.height/2);
     
     
     
     //是否剪裁图片
     if (!clip) {
-        rect=CGRectApplyAffineTransform(rect, CGAffineTransformTranslate(CGAffineTransformRotate(CGAffineTransformMakeTranslation(imgSize.width/2, imgSize.height/2), rotate), -imgSize.width/2, -imgSize.height/2));
-        double newWidth=rect.size.width;
-        double newHeight=rect.size.height;
-        
-        double scareWidth=imgSize.width/newWidth;
-        double scareHeight=imgSize.height/newHeight;
-        double scare=MIN(scareWidth, scareHeight);
-        CGContextScaleCTM(context, scare, scare);
-        
-        NSInteger type=angle/45;
-        if (type==1 || type==2 || type==5 || type==6) {
-            double temp=newWidth;
-            if (imgSize.width>imgSize.height) {
-                newWidth=newHeight;//宽的图片
-            }else{
-                newHeight=temp;//长的图片
+        if (!zoom) {
+            double scareWidth=(tempImageSize.width-imgSize.width)/2.0;
+            double scareHeight=(tempImageSize.height-imgSize.height)/2.0;
+            
+            rect.origin = CGPointMake(scareWidth, scareHeight);
+            rect.size = imgSize;
+        }else{
+            rect=CGRectApplyAffineTransform(rect, CGAffineTransformTranslate(CGAffineTransformRotate(CGAffineTransformMakeTranslation(imgSize.width/2, imgSize.height/2), rotate), -imgSize.width/2, -imgSize.height/2));
+            double newWidth=rect.size.width;
+            double newHeight=rect.size.height;
+            
+            double scareWidth=imgSize.width/newWidth;
+            double scareHeight=imgSize.height/newHeight;
+            double scare=MIN(scareWidth, scareHeight);
+            CGContextScaleCTM(context, scare, scare);
+            
+            NSInteger type=angle/45;
+            if (type==1 || type==2 || type==5 || type==6) {
+                double temp=newWidth;
+                if (imgSize.width>imgSize.height) {
+                    newWidth=newHeight;//宽的图片
+                }else{
+                    newHeight=temp;//长的图片
+                }
             }
+            
+            double offsetX=fabs(imgSize.width-newWidth*scare)/2/scare;
+            double offsetY=fabs(imgSize.height-newHeight*scare)/2/scare;
+            if (offsetX<0.001) {
+                offsetX=fabs(rect.origin.x);
+            }
+            if (offsetY<0.001) {
+                offsetY=fabs(rect.origin.y);
+            }
+            
+            rect.origin=CGPointMake(offsetX, offsetY);
+            rect.size=imgSize;
         }
-        
-        double offsetX=fabs(imgSize.width-newWidth*scare)/2/scare;
-        double offsetY=fabs(imgSize.height-newHeight*scare)/2/scare;
-        if (offsetX<0.001) {
-            offsetX=fabs(rect.origin.x);
-        }
-        if (offsetY<0.001) {
-            offsetY=fabs(rect.origin.y);
-        }
-        
-        rect.origin=CGPointMake(offsetX, offsetY);
-        rect.size=imgSize;
     }
     
     //最后绘制图片

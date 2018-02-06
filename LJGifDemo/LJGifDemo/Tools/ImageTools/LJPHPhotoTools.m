@@ -71,39 +71,37 @@
     
     PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil];
     PHFetchResult *userAlbums = [PHAssetCollection fetchTopLevelUserCollectionsWithOptions:nil];
-    //注意类型,遍历相册
-    for (PHAssetCollection *sub in smartAlbums){
-        //遍历到数组中
-        [alubms addObject:sub];
-        [names addObject:sub.localizedTitle];
-        
-        PHFetchResult* result=[PHAsset fetchAssetsInAssetCollection:sub options:nil];
-        NSInteger count=[result countOfAssetsWithMediaType:PHAssetMediaTypeImage];
-        count += [result countOfAssetsWithMediaType:PHAssetMediaTypeVideo];
-        [counts addObject:@(count)];
-        
-        if (count>0) {
-            [self getImageWithAsset:result.firstObject imageSize:CGSizeMake(200, 200) handler:^(UIImage *image) {
-                [images addObject:image];
-            }];
-        }else{
-            [images addObject:[UIImage imageNamed:@"auth"]];
+    PHFetchResult *videoAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumVideos options:nil];
+    
+    NSMutableArray* albumsArray = [NSMutableArray arrayWithArray:@[smartAlbums, videoAlbums, userAlbums]];
+    
+    if (@available(iOS 10.3, *)) {
+        PHFetchResult *livePhootAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumLivePhotos options:nil];
+        [albumsArray insertObject:livePhootAlbums atIndex:2];
+        if (@available(iOS 11.0, *)) {
+            PHFetchResult *gifPhootAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumAnimated options:nil];
+            [albumsArray insertObject:gifPhootAlbums atIndex:2];
         }
     }
-    for (PHAssetCollection* sub in userAlbums) {
-        [alubms addObject:sub];
-        [names addObject:sub.localizedTitle];
-        
-        PHFetchResult* result=[PHAsset fetchAssetsInAssetCollection:sub options:nil];
-        NSInteger count=[result countOfAssetsWithMediaType:PHAssetMediaTypeImage];
-        [counts addObject:@(count)];
-        
-        if (count>0) {
-            [self getImageWithAsset:result.firstObject imageSize:CGSizeMake(200, 200) handler:^(UIImage *image) {
-                [images addObject:image];
-            }];
-        }else{
-            [images addObject:[UIImage imageNamed:@"auth"]];
+    
+    for (PHFetchResult* result in albumsArray) {
+        for (PHAssetCollection *sub in result){
+            //遍历到数组中
+            [alubms addObject:sub];
+            [names addObject:sub.localizedTitle];
+            
+            PHFetchResult* result=[PHAsset fetchAssetsInAssetCollection:sub options:nil];
+            NSInteger count=[result countOfAssetsWithMediaType:PHAssetMediaTypeImage];
+            count += [result countOfAssetsWithMediaType:PHAssetMediaTypeVideo];
+            [counts addObject:@(count)];
+            
+            if (count>0) {
+                [self getImageWithAsset:result.firstObject imageSize:CGSizeMake(200, 200) handler:^(UIImage *image) {
+                    [images addObject:image];
+                }];
+            }else{
+                [images addObject:[UIImage imageNamed:@"auth"]];
+            }
         }
     }
     

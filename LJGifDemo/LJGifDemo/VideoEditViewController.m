@@ -19,6 +19,7 @@
 
 @interface VideoEditViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;//主图片
+@property (weak, nonatomic) IBOutlet UILabel *currentTimeLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *indexImageView;//手势操纵的 指针图片
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *indexCenterConstraint;//指针图片 的中心
@@ -60,11 +61,6 @@
 }
 -(void)initData{
     self.videoURL = [[LJPhotoOperational shareOperational]getOriginDataURLPathWithFileName:self.videoName];
-//    UIImage* frameIamge = [LJGif getVideoPreViewImageWithURL:self.videoURL];
-    
-//    self.frameImages = [NSMutableDictionary dictionary];
-//    self.allImages = [NSMutableDictionary dictionary];
-//    self.frameIndexs = [NSMutableDictionary dictionary];
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:self.videoURL options:nil];
     
     //帧率， 每秒多少针  一般 25帧 或者 30帧
@@ -85,6 +81,19 @@
     self.step.stepValue = frameTime;
     self.step.value = 0;
     self.currentStepValue = 0;
+    self.currentTimeLabel.text = @"0:00";
+    
+    //保存cache 的名字
+    YYCache* cacheNames = [YYCache cacheWithName:allCacheNames];
+    NSMutableDictionary* namesDic;
+    id dic = [cacheNames objectForKey:allCacheNames];
+    if (!dic) {
+        dic = [NSDictionary dictionary];
+    }
+    namesDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    [namesDic setValue:@([TimeTools getCurrentTimestamp]).stringValue forKey:self.videoName];
+    [cacheNames.diskCache setObject:namesDic forKey:allCacheNames];
+    
     
     self.imageCache = [YYCache cacheWithName:self.videoName];
     
@@ -94,8 +103,8 @@
     assetImageGenerator.requestedTimeToleranceAfter = kCMTimeZero;
     assetImageGenerator.requestedTimeToleranceBefore = kCMTimeZero;
     
-    
-    for (NSInteger i = 0; i < 4000; i++) {
+    NSInteger maxFrame = 5000;
+    for (NSInteger i = 0; i < maxFrame; i++) {
         CGFloat currentTime = i*frameTime;
         if (currentTime > self.videoDuration) {
             break;
@@ -105,9 +114,9 @@
         DLog(@"循环 %@", timeStr);
         if ([self.imageCache.diskCache containsObjectForKey:timeStr]) {
             if ([timeStr floatValue]>=self.videoDuration ||
-                [timeStr floatValue]+(1.0/self.fps) > self.videoDuration ||
+                [timeStr floatValue]+frameTime > self.videoDuration ||
                 [timeStr floatValue]+0.01 > self.videoDuration ||
-                i==4000) {
+                i==maxFrame) {
                 DLog(@"完成：%@ ✌️", timeStr);
                 self.contentImageView.image = (UIImage*)[self.imageCache.diskCache objectForKey:@"0.00"];
                 [ProgressHUD dismiss];
@@ -119,7 +128,7 @@
                 DLog(@"得到图片 %@", timeStr);
                 [self.imageCache.diskCache setObject:image forKey:timeStr];
                 self.contentImageView.image = image;
-                if ([timeStr floatValue]>=self.videoDuration || [timeStr floatValue]+(1.0/self.fps) > self.videoDuration || i==4000) {
+                if ([timeStr floatValue]>=self.videoDuration || [timeStr floatValue]+frameTime*2 > self.videoDuration || i==maxFrame) {
                     DLog(@"完成：%@ ✌️", timeStr);
                     self.contentImageView.image = (UIImage*)[self.imageCache.diskCache objectForKey:@"0.00"];
                     [ProgressHUD dismiss];
@@ -154,7 +163,6 @@
 -(void)setIndexImageLocationOffset:(CGFloat)offset animation:(CGFloat)animation{
     
     CGFloat totalLength = IPHONE_WIDTH - 40;
-    //CGFloat perLength= totalLength/100.0f;
     
     CGFloat minimOffset = -totalLength/2.0;
     
@@ -230,11 +238,9 @@
     NSString* frameKey = [NSString stringWithFormat:@"%.2f", fabs(currentFrameTime)];
 
     if ([self.imageCache.diskCache containsObjectForKey:frameKey]) {
+        self.currentTimeLabel.text = frameKey;
         DLog(@"refresh %@", frameKey);
         self.step.value = [frameKey floatValue];
-//        if (self.step.value + 1.0f/self.fps - 0.01 > self.step.maximumValue) {
-//            self.step.value = self.step.maximumValue;
-//        }
         self.contentImageView.image = (UIImage*)[self.imageCache.diskCache objectForKey:frameKey];
     }
 }
@@ -283,7 +289,6 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     CGFloat offsetX = scrollView.contentOffset.x;
-    //DLog(@"scroll...%.2f", self.scrollOffset);
     offsetX = (offsetX<0?0:offsetX);
     
     CGFloat minFramOffset = 60.0f/self.fps/10.0;
@@ -291,7 +296,6 @@
         self.scrollOffset = offsetX;
         [self refreshFrame];
     }
-    
 }
 
 -(void)didReceiveMemoryWarning{

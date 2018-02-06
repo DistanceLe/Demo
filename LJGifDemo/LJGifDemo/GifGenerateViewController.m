@@ -10,6 +10,7 @@
 
 #import "FLAnimatedImageView.h"
 #import "FLAnimatedImage.h"
+#import "LJImageTools.h"
 
 #import "LJFileOperation.h"
 #import "LJPhotoOperational.h"
@@ -70,9 +71,9 @@
         self.gifImageView.animatedImage = gifImage;
         CGFloat sizeData = gifData.length/1024.0/1024.0;
         
-        self.gifInfoLabel.text = [NSString stringWithFormat:@"图片尺寸:%.0f*%.0f\n图片大小:%.2fMB\n原图大小:%.2fMB",gifImage.size.width, gifImage.size.height, sizeData, [[LJFileOperation shareOperationWithDocument:photoDirectory] getFileSize:@""]/1024.0/1024.0];
+        self.gifInfoLabel.text = [NSString stringWithFormat:@"图片尺寸:%.0f*%.0f\n图片大小:%.2fMB\n首页资源:%.2fMB",gifImage.size.width, gifImage.size.height, sizeData, [[LJFileOperation shareOperationWithDocument:photoDirectory] getFileSize:@""]/1024.0/1024.0];
     }else{
-        self.gifInfoLabel.text = [NSString stringWithFormat:@"图片尺寸:0*0\n图片大小:0MB\n原图大小:%.2fMB", [[LJFileOperation shareOperationWithDocument:photoDirectory] getFileSize:@""]/1024.0/1024.0];
+        self.gifInfoLabel.text = [NSString stringWithFormat:@"图片尺寸:0*0\n图片大小:0MB\n首页资源:%.2fMB", [[LJFileOperation shareOperationWithDocument:photoDirectory] getFileSize:@""]/1024.0/1024.0];
         self.gifImageView.animatedImage = nil;
     }
 }
@@ -108,6 +109,12 @@
     for (NSUInteger i = 0; i < kFrameCount; i++) {
         @autoreleasepool {
             UIImage* image = [operational getOriginImageWithWithName:imagesName[i]];
+            //旋转图片
+            if (fabs(operational.angleValue)>0.01) {
+                image = [LJImageTools rotationImage:image angle:operational.angleValue clip:NO isZoom:NO];
+            }
+            
+            
             CGImageDestinationAddImage(destination, image.CGImage, (__bridge CFDictionaryRef)frameProperties);
         }
     }

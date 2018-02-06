@@ -196,7 +196,11 @@
     }else{
         cell.playImageView.hidden = YES;
     }
-    
+    if ([[LJPhotoOperational shareOperational].imageNames[indexPath.item] hasSuffix:@".gif"]) {
+        cell.gifImageView.hidden = NO;
+    }else{
+        cell.gifImageView.hidden = YES;
+    }
     
     if (self.isEdit) {
         cell.selectButton.hidden=NO;

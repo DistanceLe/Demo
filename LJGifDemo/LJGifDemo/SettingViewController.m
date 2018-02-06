@@ -12,9 +12,14 @@
 @interface SettingViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *roopLabel;
+@property (weak, nonatomic) IBOutlet UILabel *angleLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *frameTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *gifSizeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *photoPersentLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *angleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *roopTextField;
 
 
 @end
@@ -25,6 +30,21 @@
     [super viewDidLoad];
     
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    //self.hidesBottomBarWhenPushed = NO;
+    self.tabBarController.tabBar.hidden = NO;
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if (self.navigationController.viewControllers.count >1) {
+        self.tabBarController.tabBar.hidden = YES;
+        //self.hidesBottomBarWhenPushed = YES;
+    }
 }
 
 /**  每帧间隔 */
@@ -52,10 +72,17 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-    NSInteger num = [textField.text integerValue];
-    textField.text = @(num).stringValue;
-    self.roopLabel.text = textField.text;
-    [LJPhotoOperational shareOperational].roopTimes = num;
+    if (textField == self.roopTextField) {
+        NSInteger num = [textField.text integerValue];
+        textField.text = @(num).stringValue;
+        self.roopLabel.text = textField.text;
+        [LJPhotoOperational shareOperational].roopTimes = num;
+    }else if (textField == self.angleTextField){
+        NSInteger num = [textField.text integerValue];
+        
+        self.angleLabel.text = [NSString stringWithFormat:@"%ld", num];
+        [LJPhotoOperational shareOperational].angleValue = num;
+    }
 }
 
 

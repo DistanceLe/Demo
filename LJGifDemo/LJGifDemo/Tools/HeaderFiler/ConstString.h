@@ -21,6 +21,7 @@ static NSString* const photoDirectory = @"photos";
 static NSString* const thumbnailDirectory = @"thumbnails";
 
 static NSString* const gifName = @"animation.gif";
+static NSString* const allCacheNames = @"YYCache_allCacheNames";
 
 
 
