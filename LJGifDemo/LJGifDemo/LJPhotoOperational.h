@@ -36,6 +36,8 @@
 -(UIImage*)getOriginImageWithIndex:(NSInteger)index;
 -(UIImage*)getOriginImageWithWithName:(NSString*)name;
 
+-(NSData*)getOriginImageDataWithWithName:(NSString*)name;
+
 /**  获取所有的 原图片 */
 -(NSArray<UIImage*>*)getAllOriginImages;
 

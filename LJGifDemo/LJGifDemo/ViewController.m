@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "LJPhotoAlbumTableViewController.h"
 #import "VideoEditViewController.h"
+#import "GifEditCollectionViewController.h"
 
 #import "LJPhotoCollectionViewCell.h"
 
@@ -226,6 +227,9 @@
         if ([[LJPhotoOperational shareOperational].imageNames[indexPath.item] hasSuffix:@".MOV"]) {
             
             [self performSegueWithIdentifier:@"videoEdit" sender:[LJPhotoOperational shareOperational].imageNames[indexPath.item]];
+        }else if ([[LJPhotoOperational shareOperational].imageNames[indexPath.item] hasSuffix:@".gif"]) {
+            
+            [self performSegueWithIdentifier:@"gifEdit" sender:[LJPhotoOperational shareOperational].imageNames[indexPath.item]];
         }
     }
 }
@@ -249,6 +253,9 @@
     if ([segue.identifier isEqualToString:@"videoEdit"]) {
         VideoEditViewController* videoVC = [segue destinationViewController];
         videoVC.videoName = sender;
+    }else if ([segue.identifier isEqualToString:@"gifEdit"]) {
+        GifEditCollectionViewController* gifVC = [segue destinationViewController];
+        gifVC.gifName = sender;
     }
 }
 

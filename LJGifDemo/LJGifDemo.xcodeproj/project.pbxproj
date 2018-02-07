@@ -36,7 +36,7 @@
 		2A5DC3C91FEBA46C006C9899 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5DC3C81FEBA46C006C9899 /* SettingViewController.m */; };
 		2A762B9820284D5900AF57A1 /* CacheTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A762B9720284D5900AF57A1 /* CacheTableViewController.m */; };
 		2AAE9D9D2021BA4800623F18 /* VideoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE9D9C2021BA4800623F18 /* VideoEditViewController.m */; };
-		2AAE9DA02021CDA800623F18 /* VideoFrameCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAE9D9F2021CDA800623F18 /* VideoFrameCollectionViewController.m */; };
+		2AD07919202B083300180918 /* GifEditCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD07918202B083300180918 /* GifEditCollectionViewController.m */; };
 		2AE07CF51FE7986400DA3149 /* LJPhotoAlbumDetailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CEF1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.m */; };
 		2AE07CF61FE7986400DA3149 /* LJPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AE07CF01FE7986300DA3149 /* LJPhotoCollectionViewCell.xib */; };
 		2AE07CF71FE7986400DA3149 /* LJPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE07CF11FE7986300DA3149 /* LJPhotoCollectionViewCell.m */; };
@@ -108,8 +108,8 @@
 		2A762B9720284D5900AF57A1 /* CacheTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CacheTableViewController.m; sourceTree = "<group>"; };
 		2AAE9D9B2021BA4800623F18 /* VideoEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoEditViewController.h; sourceTree = "<group>"; };
 		2AAE9D9C2021BA4800623F18 /* VideoEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoEditViewController.m; sourceTree = "<group>"; };
-		2AAE9D9E2021CDA800623F18 /* VideoFrameCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoFrameCollectionViewController.h; sourceTree = "<group>"; };
-		2AAE9D9F2021CDA800623F18 /* VideoFrameCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoFrameCollectionViewController.m; sourceTree = "<group>"; };
+		2AD07917202B083300180918 /* GifEditCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GifEditCollectionViewController.h; sourceTree = "<group>"; };
+		2AD07918202B083300180918 /* GifEditCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GifEditCollectionViewController.m; sourceTree = "<group>"; };
 		2AE07CEE1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJPhotoAlbumDetailCollectionViewController.h; sourceTree = "<group>"; };
 		2AE07CEF1FE7986300DA3149 /* LJPhotoAlbumDetailCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJPhotoAlbumDetailCollectionViewController.m; sourceTree = "<group>"; };
 		2AE07CF01FE7986300DA3149 /* LJPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -170,11 +170,11 @@
 				2A4CC0441FE3C33A0076676F /* ViewController.m */,
 				2AAE9D9B2021BA4800623F18 /* VideoEditViewController.h */,
 				2AAE9D9C2021BA4800623F18 /* VideoEditViewController.m */,
+				2AD07917202B083300180918 /* GifEditCollectionViewController.h */,
+				2AD07918202B083300180918 /* GifEditCollectionViewController.m */,
 				2A3715F82022BEC6003EAF19 /* VideoFrameCell.h */,
 				2A3715F92022BEC6003EAF19 /* VideoFrameCell.m */,
 				2A3715FA2022BEC6003EAF19 /* VideoFrameCell.xib */,
-				2AAE9D9E2021CDA800623F18 /* VideoFrameCollectionViewController.h */,
-				2AAE9D9F2021CDA800623F18 /* VideoFrameCollectionViewController.m */,
 				2A5DC3C11FEB826D006C9899 /* GifGenerateViewController.h */,
 				2A5DC3C21FEB826D006C9899 /* GifGenerateViewController.m */,
 				2A5DC3C71FEBA46C006C9899 /* SettingViewController.h */,
@@ -411,7 +411,6 @@
 				2A4CC08A1FE3C8DA0076676F /* UIButton+LJ.m in Sources */,
 				2A5DC3C91FEBA46C006C9899 /* SettingViewController.m in Sources */,
 				2A4CC0501FE3C33A0076676F /* main.m in Sources */,
-				2AAE9DA02021CDA800623F18 /* VideoFrameCollectionViewController.m in Sources */,
 				2AEC18962024148E00788287 /* YYCache.m in Sources */,
 				2AEC18982024148E00788287 /* YYKVStorage.m in Sources */,
 				2A4CC0711FE3C81B0076676F /* LJPHPhotoTools.m in Sources */,
@@ -437,6 +436,7 @@
 				2A3715FB2022BEC6003EAF19 /* VideoFrameCell.m in Sources */,
 				2A4CC0781FE3C8940076676F /* Foundation+Log.m in Sources */,
 				2AE07CF81FE7986400DA3149 /* LJPhotoAlbumTableViewController.m in Sources */,
+				2AD07919202B083300180918 /* GifEditCollectionViewController.m in Sources */,
 				2A4CC08B1FE3C8DA0076676F /* UIImage+ImageEffects.m in Sources */,
 				2AE07CF51FE7986400DA3149 /* LJPhotoAlbumDetailCollectionViewController.m in Sources */,
 			);

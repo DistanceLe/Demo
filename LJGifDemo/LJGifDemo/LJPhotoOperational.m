@@ -102,7 +102,10 @@
     
     return image;
 }
-
+-(NSData*)getOriginImageDataWithWithName:(NSString*)name{
+    NSData* imageData = [self.originOperation readObjectWithName:name];
+    return imageData;
+}
 /**  根据文件名字获取 原始数据 的地址 */
 -(NSString*)getOriginDataPathWithFileName:(NSString*)name{
     NSString* filePath = [self.originOperation readFilePath:name];

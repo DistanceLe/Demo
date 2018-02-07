@@ -78,6 +78,7 @@
                         <outlet property="leftBar" destination="ziK-yw-By1" id="lEh-ak-LjI"/>
                         <outlet property="rightBar" destination="3wP-lg-4s7" id="dw6-SO-CPT"/>
                         <segue destination="mPw-kd-qeR" kind="push" identifier="videoEdit" id="ebB-kM-f19"/>
+                        <segue destination="90R-CS-U6r" kind="push" identifier="gifEdit" id="ziV-Df-God"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -205,13 +206,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JI2-IE-zkY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="视频编辑" id="jS9-lF-vqZ">
-                        <barButtonItem key="rightBarButtonItem" title="查看所有帧" id="Sty-oQ-aT1">
-                            <connections>
-                                <segue destination="ZK7-8p-PQO" kind="push" id="3rE-Rf-PQO"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="视频编辑" id="jS9-lF-vqZ"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="contentImageView" destination="F2b-AM-5hi" id="NLH-hV-Dba"/>
@@ -225,55 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOd-B6-8IV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2904.8000000000002" y="115.59220389805098"/>
-        </scene>
-        <!--视频帧-->
-        <scene sceneID="Ccm-lM-WRB">
-            <objects>
-                <collectionViewController id="ZK7-8p-PQO" customClass="VideoFrameCollectionViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="xdF-xh-JQB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GBT-0p-5H4">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ta4-1K-cCY">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="ZK7-8p-PQO" id="s5r-G7-T47"/>
-                            <outlet property="delegate" destination="ZK7-8p-PQO" id="oKu-Rb-rtY"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="视频帧" id="kY2-hZ-NlE">
-                        <rightBarButtonItems>
-                            <barButtonItem title="保存首页" id="psq-oP-17y">
-                                <connections>
-                                    <action selector="saveToMainPage:" destination="ZK7-8p-PQO" id="dlE-Q6-W29"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="保存相册" id="7pr-ck-4ek">
-                                <connections>
-                                    <action selector="saveAlbum:" destination="ZK7-8p-PQO" id="i4v-41-6qd"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aAZ-Dj-DUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3583" y="117"/>
+            <point key="canvasLocation" x="2881" y="-490"/>
         </scene>
         <!--生成Gif-->
         <scene sceneID="Hpn-g2-RXg">
@@ -628,6 +575,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vck-LN-gGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2032.8" y="883.80809595202402"/>
+        </scene>
+        <!--Gif编辑-->
+        <scene sceneID="1lp-z3-cLj">
+            <objects>
+                <collectionViewController id="90R-CS-U6r" customClass="GifEditCollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7yQ-Xs-Gul">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ac1-Hh-GRM">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="90R-CS-U6r" id="Fih-g7-y47"/>
+                            <outlet property="delegate" destination="90R-CS-U6r" id="MK7-lK-nHd"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Gif编辑" id="IT5-yf-86C">
+                        <rightBarButtonItems>
+                            <barButtonItem title="相册" id="rIP-eM-oud">
+                                <connections>
+                                    <action selector="albumClick:" destination="90R-CS-U6r" id="JSI-bN-vZ9"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="首页" id="tCA-ZT-ojB">
+                                <connections>
+                                    <action selector="mainPageClick:" destination="90R-CS-U6r" id="5Hu-Cp-M5H"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="添加到:" id="7J4-aI-yRx"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sWw-IP-8Rc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2881" y="189"/>
         </scene>
         <!--Cache Table View Controller-->
         <scene sceneID="F6P-yB-cWl">
