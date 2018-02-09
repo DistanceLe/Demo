@@ -90,12 +90,15 @@
                          DLog(@" 保存 视频 出错了 %@", error);
                      } else {
                          DLog(@" 保存 视频 成功 %@", videoFilePath);
-                         //                        NSData *data = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:PATH_MOVIE_FILE]];
+                         //NSData *data = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:PATH_MOVIE_FILE]];
                      }
-                                                                 }];
+                }];
             }else{
+                NSString* liveVideoName = [NSString stringWithFormat:@"%@.mov", tempName];//用小写mov， 视频用大写
                 if (asset.mediaSubtypes == 32) {//gif 图片类型
                     tempName = [NSString stringWithFormat:@"%@.gif", tempName];
+                }else if (asset.mediaSubtypes == PHAssetMediaSubtypePhotoLive){
+                    tempName = [NSString stringWithFormat:@"%@.livePhoto", tempName];
                 }
                 //保存原始图片
                 [LJPHPhotoTools getImageDataWithAsset:asset handler:^(NSData *imageData, NSString* imageName) {
@@ -104,6 +107,30 @@
                     if (asset.mediaSubtypes == 32) {
                         [[LJPhotoOperational shareOperational]saveOriginImageData:imageData imageName:tempName];
                     }else{
+                        if (asset.mediaSubtypes == PHAssetMediaSubtypePhotoLive) {
+                            //livePhoto 图片在保存视频文件
+                            
+                            NSString* videoFilePath = [[LJPhotoOperational shareOperational]getOriginDataPathWithFileName:liveVideoName];
+                            NSArray *assetResources = [PHAssetResource assetResourcesForAsset:asset];
+                            PHAssetResource *resource;
+                            for (PHAssetResource *assetRes in assetResources) {
+                                if (assetRes.type == PHAssetResourceTypePairedVideo ||
+                                    assetRes.type == PHAssetResourceTypeVideo) {
+                                    resource = assetRes;
+                                }
+                            }
+                            [[PHAssetResourceManager defaultManager] writeDataForAssetResource:resource
+                                                                                        toFile:[NSURL fileURLWithPath:videoFilePath]
+                                                                                       options:nil
+                                                                             completionHandler:^(NSError * _Nullable error){
+                                 if (error) {
+                                     DLog(@" 保存 视频 出错了 %@", error);
+                                 } else {
+                                     DLog(@" 保存 视频 成功 %@", videoFilePath);
+                                     //NSData *data = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:PATH_MOVIE_FILE]];
+                                 }
+                            }];
+                        }
                         UIImage* image = [UIImage imageWithData:imageData];
                         imageData = UIImageJPEGRepresentation(image, 1);
                         image = [LJImageTools changeImage:[UIImage imageWithData:imageData] toRatioSize:CGSizeMake(IPHONE_WIDTH*2, IPHONE_WIDTH*2)];
@@ -144,28 +171,25 @@
         cell.videoDurationTimeLabel.hidden = YES;
     }
     
+    if (sourceAsset.mediaType == PHAssetMediaTypeImage && sourceAsset.mediaSubtypes == 32) {
+        cell.gifImageView.hidden = NO;
+    }else{
+        cell.gifImageView.hidden = YES;
+    }
+    
+    if (sourceAsset.mediaType == PHAssetMediaTypeImage && sourceAsset.mediaSubtypes == PHAssetMediaSubtypePhotoLive) {
+        cell.livePhotoImageView.hidden = NO;
+    }else{
+        cell.livePhotoImageView.hidden = YES;
+    }
+    
+    
     cell.selectButton.hidden=NO;
     [LJPHPhotoTools getAsyncImageWithAsset:sourceAsset imageSize:CGSizeMake(IPHONE_WIDTH/1.5, IPHONE_WIDTH/1.5) handler:^(UIImage *image) {
         cell.headImageView.image=image;
     }];
     
-    //判断是不是Gif图片
-    [LJPHPhotoTools getImageDataWithAsset:sourceAsset handler:^(NSData *imageData, NSString* imageName) {
-        //创建异步加载：
-        dispatch_queue_t asyncQueue = dispatch_queue_create("asyncQueue", DISPATCH_QUEUE_SERIAL);
-        dispatch_async(asyncQueue, ^{
-            BOOL isGif = [LJImageTools isGifImageWithData:imageData];
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                if (isGif) {
-                    cell.gifImageView.hidden = NO;
-                    //cell.selectButton.hidden = YES;
-                }else{
-                    cell.gifImageView.hidden = YES;
-                    //cell.selectButton.hidden = NO;
-                }
-            });
-        });
-    }];
+    
     cell.selectButton.selected=[self.selectedIndex[indexPath.item] boolValue];
     return cell;
 }

@@ -86,13 +86,18 @@
     
     for (PHFetchResult* result in albumsArray) {
         for (PHAssetCollection *sub in result){
-            //遍历到数组中
-            [alubms addObject:sub];
-            [names addObject:sub.localizedTitle];
             
             PHFetchResult* result=[PHAsset fetchAssetsInAssetCollection:sub options:nil];
             NSInteger count=[result countOfAssetsWithMediaType:PHAssetMediaTypeImage];
             count += [result countOfAssetsWithMediaType:PHAssetMediaTypeVideo];
+            
+            if (count == 0) {//相册没有图片的 不显示
+                continue;
+            }
+            
+            //遍历到数组中
+            [alubms addObject:sub];
+            [names addObject:sub.localizedTitle];
             [counts addObject:@(count)];
             
             if (count>0) {

@@ -59,6 +59,13 @@
     
     NSString* filePath=[self.documentPath stringByAppendingPathComponent:name];
     BOOL isDelete=[[NSFileManager defaultManager]removeItemAtPath:filePath error:nil];
+    
+    if ([self.documentName isEqualToString:photoDirectory] && [name hasSuffix:@".livePhoto"]) {
+        name = [NSString stringWithFormat:@"%@.mov",[[name componentsSeparatedByString:@"."] firstObject]];
+        filePath=[self.documentPath stringByAppendingPathComponent:name];
+        [[NSFileManager defaultManager]removeItemAtPath:filePath error:nil];
+    }
+    
     return isDelete;
 }
 

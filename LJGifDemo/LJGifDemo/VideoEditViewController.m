@@ -60,6 +60,10 @@
     DLog(@"dealloc Viedo edit");
 }
 -(void)initData{
+    if ([self.videoName hasSuffix:@".livePhoto"]) {
+        self.videoName = [NSString stringWithFormat:@"%@.mov",[[self.videoName componentsSeparatedByString:@"."] firstObject]];
+    }
+    
     self.videoURL = [[LJPhotoOperational shareOperational]getOriginDataURLPathWithFileName:self.videoName];
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:self.videoURL options:nil];
     

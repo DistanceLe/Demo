@@ -18,10 +18,8 @@
 
 @interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property(weak, nonatomic) IBOutlet UIBarButtonItem *leftBar;
-@property(weak, nonatomic) IBOutlet UIBarButtonItem *rightBar;
 @property(weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property(weak, nonatomic) IBOutlet UIButton *cleanAllBut;
+@property(strong, nonatomic)UIButton *cleanAllBut;
 
 @property(nonatomic, strong)NSMutableArray<NSIndexPath*>* editIndexPaths;
 @property(nonatomic, assign)BOOL isEdit;
@@ -64,7 +62,7 @@
 }
 
 -(void)initUI{
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     UICollectionViewFlowLayout* layout=[[UICollectionViewFlowLayout alloc]init];
     NSInteger itemWidth=(IPHONE_WIDTH-9)/4;
     layout.minimumInteritemSpacing = 3;
@@ -80,6 +78,7 @@
     
     
     UIButton* rightBut = [UIButton buttonWithType:UIButtonTypeSystem];
+    rightBut.frame = CGRectMake(0, 0, 44, 44);
     [rightBut setTitle:@"相册" forState:UIControlStateNormal];
     [rightBut setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     @weakify(self);
@@ -92,9 +91,20 @@
             [self.navigationController pushViewController:albumVC animated:YES];
         }
     }];
-    self.rightBar.customView = rightBut;
+    
+    self.cleanAllBut = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.cleanAllBut.frame = CGRectMake(0, 0, 44, 44);
+    [self.cleanAllBut setTitle:@"" forState:UIControlStateNormal];
+    self.cleanAllBut.enabled = NO;
+    [self.cleanAllBut setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    
+    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightBut];
+    UIBarButtonItem* cleanItem = [[UIBarButtonItem alloc]initWithCustomView:self.cleanAllBut];
+    self.navigationItem.rightBarButtonItems = @[rightItem, cleanItem];
+    
     
     UIButton* leftBut = [UIButton buttonWithType:UIButtonTypeSystem];
+    leftBut.frame = CGRectMake(0, 0, 44, 44);
     [leftBut setTitle:@"编辑" forState:UIControlStateNormal];
     [leftBut setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [leftBut addTargetClickHandler:^(UIButton *but, id obj) {
@@ -103,15 +113,19 @@
         if (self.isEdit) {
             [but setTitle:@"完成" forState:UIControlStateNormal];
             [rightBut setTitle:@"删除" forState:UIControlStateNormal];
-            self.cleanAllBut.hidden = NO;
+            self.cleanAllBut.enabled = YES;
+            [self.cleanAllBut setTitle:@"清空" forState:UIControlStateNormal];
         }else{
             [but setTitle:@"编辑" forState:UIControlStateNormal];
             [rightBut setTitle:@"相册" forState:UIControlStateNormal];
-            self.cleanAllBut.hidden = YES;
+            self.cleanAllBut.enabled = NO;
+            [self.cleanAllBut setTitle:@"" forState:UIControlStateNormal];
         }
         [self.collectionView reloadData];
     }];
-    self.leftBar.customView = leftBut;
+    
+    UIBarButtonItem* leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftBut];
+    self.navigationItem.leftBarButtonItems = @[leftItem];
     
     
     [self.cleanAllBut addTargetClickHandler:^(UIButton *but, id obj) {
@@ -119,6 +133,12 @@
         [LJAlertView showAlertWithTitle:@"删除全部" message:@"确认删除所有的图片" showViewController:self cancelTitle:@"取消" otherTitles:@[@"删除"] clickHandler:^(NSInteger index, NSString *title) {
             if (index == 1) {
                 [[LJPhotoOperational shareOperational]deleteAllImages];
+                
+                self.isEdit = !self.isEdit;
+                [but setTitle:@"编辑" forState:UIControlStateNormal];
+                [rightBut setTitle:@"相册" forState:UIControlStateNormal];
+                self.cleanAllBut.enabled = NO;
+                [self.cleanAllBut setTitle:@"" forState:UIControlStateNormal];
                 [self.collectionView reloadData];
             }
         }];
@@ -202,6 +222,12 @@
     }else{
         cell.gifImageView.hidden = YES;
     }
+    if ([[LJPhotoOperational shareOperational].imageNames[indexPath.item] hasSuffix:@".livePhoto"]) {
+        cell.livePhotoImageView.hidden = NO;
+    }else{
+        cell.livePhotoImageView.hidden = YES;
+    }
+    
     
     if (self.isEdit) {
         cell.selectButton.hidden=NO;
@@ -224,12 +250,13 @@
         }
     }else{
         //是否是视频，视频则进去 编辑
-        if ([[LJPhotoOperational shareOperational].imageNames[indexPath.item] hasSuffix:@".MOV"]) {
+        NSString* imageName = [LJPhotoOperational shareOperational].imageNames[indexPath.item];
+        
+        if ([imageName hasSuffix:@".MOV"] || [imageName hasSuffix:@".livePhoto"]) {
+            [self performSegueWithIdentifier:@"videoEdit" sender:imageName];
             
-            [self performSegueWithIdentifier:@"videoEdit" sender:[LJPhotoOperational shareOperational].imageNames[indexPath.item]];
-        }else if ([[LJPhotoOperational shareOperational].imageNames[indexPath.item] hasSuffix:@".gif"]) {
-            
-            [self performSegueWithIdentifier:@"gifEdit" sender:[LJPhotoOperational shareOperational].imageNames[indexPath.item]];
+        }else if ([imageName hasSuffix:@".gif"]) {
+            [self performSegueWithIdentifier:@"gifEdit" sender:imageName];
         }
     }
 }

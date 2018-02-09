@@ -382,6 +382,7 @@ static NSHashTable *allAnimatedImagesWeak;
     // Note: We're comparing an index with a count and need to bail on greater than or equal to.
     if (index >= self.frameCount) {
         FLLog(FLLogLevelWarn, @"Skipping requested frame %lu beyond bounds (total frame count: %lu) for animated image: %@", (unsigned long)index, (unsigned long)self.frameCount, self);
+        DLog(@"%ld  超出数量范围了", index);
         return nil;
     }
     

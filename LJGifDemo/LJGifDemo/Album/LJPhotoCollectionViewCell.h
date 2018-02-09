@@ -17,6 +17,9 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *playImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *gifImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *livePhotoImageView;
+
+
 
 //-(void)longTapGestureHandler:(StatusBlock)handler;
 

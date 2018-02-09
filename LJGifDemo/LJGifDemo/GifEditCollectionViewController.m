@@ -19,6 +19,7 @@
 
 @property(nonatomic, strong)FLAnimatedImage* gifImage;
 @property(nonatomic, strong)NSMutableArray* selectedIndex;
+@property(nonatomic, strong)NSMutableDictionary* frameImages;
 
 
 @end
@@ -43,6 +44,7 @@
 
 -(void)initData{
     
+    self.frameImages = [NSMutableDictionary dictionary];
     NSData* gifData = [[LJPhotoOperational shareOperational]getOriginImageDataWithWithName:self.gifName];
     self.gifImage = [FLAnimatedImage animatedImageWithGIFData:gifData];
     self.selectedIndex=[NSMutableArray array];
@@ -114,7 +116,24 @@
     cell.videoDurationTimeLabel.hidden = YES;
     cell.selectButton.hidden=NO;
     
-    cell.headImageView.image= [self.gifImage imageLazilyCachedAtIndex:indexPath.item];
+    UIImage* image = [self.frameImages valueForKey:[@(indexPath.item) stringValue]];
+    if (image) {
+        cell.headImageView.image = image;
+        DLog(@"直接取");
+    }else{
+        UIImage* frameImage = [self.gifImage imageLazilyCachedAtIndex:indexPath.item];
+        if (frameImage) {
+            DLog(@"动态取...-----------");
+            [self.frameImages setValue:frameImage forKey:[@(indexPath.item) stringValue]];
+            cell.headImageView.image = frameImage;
+        }else{
+            DLog(@"找不到图片La %ld", indexPath.item);
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.35*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.collectionView reloadData];
+            });
+        }
+    }
+   
     cell.selectButton.selected=[self.selectedIndex[indexPath.item] boolValue];
     return cell;
 }

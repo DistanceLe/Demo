@@ -47,36 +47,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="VO8-0k-zhu" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0qh-3l-p9t"/>
-                            <constraint firstItem="VO8-0k-zhu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LNv-vL-FqD"/>
-                            <constraint firstItem="VO8-0k-zhu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MUw-VO-vHp"/>
-                            <constraint firstItem="VO8-0k-zhu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ofy-FS-vEE"/>
+                            <constraint firstItem="VO8-0k-zhu" firstAttribute="bottom" secondItem="jCk-yz-0oK" secondAttribute="bottom" id="0qh-3l-p9t"/>
+                            <constraint firstItem="VO8-0k-zhu" firstAttribute="top" secondItem="jCk-yz-0oK" secondAttribute="top" id="LNv-vL-FqD"/>
+                            <constraint firstItem="VO8-0k-zhu" firstAttribute="leading" secondItem="jCk-yz-0oK" secondAttribute="leading" id="MUw-VO-vHp"/>
+                            <constraint firstItem="VO8-0k-zhu" firstAttribute="trailing" secondItem="jCk-yz-0oK" secondAttribute="trailing" id="ofy-FS-vEE"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="jCk-yz-0oK"/>
                     </view>
-                    <navigationItem key="navigationItem" title="预设图片墙" id="V2M-po-61V">
-                        <barButtonItem key="leftBarButtonItem" id="ziK-yw-By1"/>
-                        <rightBarButtonItems>
-                            <barButtonItem style="done" id="3wP-lg-4s7">
-                                <color key="tintColor" red="1" green="0.45657190432103134" blue="0.39723868083963887" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </barButtonItem>
-                            <barButtonItem style="plain" id="ify-Cp-H7C">
-                                <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8cd-tK-46S">
-                                    <rect key="frame" x="288" y="7" width="71" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="清空">
-                                        <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                </button>
-                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="预设图片墙" id="V2M-po-61V"/>
                     <connections>
-                        <outlet property="cleanAllBut" destination="8cd-tK-46S" id="DQy-6Q-PTJ"/>
                         <outlet property="collectionView" destination="VO8-0k-zhu" id="qX4-Zk-4Q3"/>
-                        <outlet property="leftBar" destination="ziK-yw-By1" id="lEh-ak-LjI"/>
-                        <outlet property="rightBar" destination="3wP-lg-4s7" id="dw6-SO-CPT"/>
                         <segue destination="mPw-kd-qeR" kind="push" identifier="videoEdit" id="ebB-kM-f19"/>
                         <segue destination="90R-CS-U6r" kind="push" identifier="gifEdit" id="ziV-Df-God"/>
                     </connections>
@@ -181,30 +161,30 @@
                             <constraint firstItem="XoJ-zv-hQD" firstAttribute="leading" secondItem="nCd-mU-2bE" secondAttribute="leading" id="9X3-k2-5j0"/>
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="width" secondItem="V3e-zg-Rne" secondAttribute="width" id="Gxq-r0-Xxv"/>
                             <constraint firstItem="zWK-9V-iX7" firstAttribute="bottom" secondItem="KPN-k2-RN2" secondAttribute="bottomMargin" id="HxN-13-abo"/>
-                            <constraint firstItem="F2b-AM-5hi" firstAttribute="top" secondItem="JI2-IE-zkY" secondAttribute="top" id="KX5-vV-yZH"/>
+                            <constraint firstItem="F2b-AM-5hi" firstAttribute="top" secondItem="bBe-eH-Kvt" secondAttribute="top" id="KX5-vV-yZH"/>
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="top" secondItem="V3e-zg-Rne" secondAttribute="top" id="Mpr-21-8ve"/>
-                            <constraint firstItem="IPs-qs-Wwb" firstAttribute="leading" secondItem="JI2-IE-zkY" secondAttribute="leading" id="NNA-ZU-OKm"/>
+                            <constraint firstItem="IPs-qs-Wwb" firstAttribute="leading" secondItem="bBe-eH-Kvt" secondAttribute="leading" id="NNA-ZU-OKm"/>
                             <constraint firstItem="nCd-mU-2bE" firstAttribute="top" secondItem="Ga5-6y-CO2" secondAttribute="bottom" constant="20" id="U0k-uo-geO"/>
                             <constraint firstItem="O21-7Y-roV" firstAttribute="top" secondItem="nCd-mU-2bE" secondAttribute="bottom" constant="-8" id="UYL-ua-O9y"/>
-                            <constraint firstItem="nCd-mU-2bE" firstAttribute="centerX" secondItem="KPN-k2-RN2" secondAttribute="centerX" id="V0G-KZ-ZQq"/>
+                            <constraint firstItem="nCd-mU-2bE" firstAttribute="centerX" secondItem="bBe-eH-Kvt" secondAttribute="centerX" id="V0G-KZ-ZQq"/>
                             <constraint firstItem="XoJ-zv-hQD" firstAttribute="height" secondItem="nCd-mU-2bE" secondAttribute="height" id="WoY-id-bqx"/>
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="top" secondItem="F2b-AM-5hi" secondAttribute="bottom" constant="16" id="bUm-qk-ZNO"/>
-                            <constraint firstItem="Ga5-6y-CO2" firstAttribute="leading" secondItem="JI2-IE-zkY" secondAttribute="leading" constant="10" id="c32-Ln-v8V"/>
-                            <constraint firstItem="JI2-IE-zkY" firstAttribute="trailing" secondItem="F2b-AM-5hi" secondAttribute="trailing" id="crq-tQ-2Qf"/>
-                            <constraint firstItem="O21-7Y-roV" firstAttribute="leading" secondItem="JI2-IE-zkY" secondAttribute="leading" constant="20" id="ePv-eO-KYr"/>
+                            <constraint firstItem="Ga5-6y-CO2" firstAttribute="leading" secondItem="bBe-eH-Kvt" secondAttribute="leading" constant="10" id="c32-Ln-v8V"/>
+                            <constraint firstItem="bBe-eH-Kvt" firstAttribute="trailing" secondItem="F2b-AM-5hi" secondAttribute="trailing" id="crq-tQ-2Qf"/>
+                            <constraint firstItem="O21-7Y-roV" firstAttribute="leading" secondItem="bBe-eH-Kvt" secondAttribute="leading" constant="20" id="ePv-eO-KYr"/>
                             <constraint firstItem="XoJ-zv-hQD" firstAttribute="top" secondItem="nCd-mU-2bE" secondAttribute="top" id="gFa-Iw-r0G"/>
                             <constraint firstItem="IPs-qs-Wwb" firstAttribute="top" secondItem="V3e-zg-Rne" secondAttribute="bottom" id="hbj-Ar-tGh"/>
                             <constraint firstItem="O21-7Y-roV" firstAttribute="top" secondItem="IPs-qs-Wwb" secondAttribute="bottom" id="iMc-Dv-tqq"/>
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="leading" secondItem="V3e-zg-Rne" secondAttribute="trailing" constant="16" id="jX6-QQ-pow"/>
-                            <constraint firstItem="F2b-AM-5hi" firstAttribute="leading" secondItem="JI2-IE-zkY" secondAttribute="leading" id="jso-zg-lyt"/>
+                            <constraint firstItem="F2b-AM-5hi" firstAttribute="leading" secondItem="bBe-eH-Kvt" secondAttribute="leading" id="jso-zg-lyt"/>
                             <constraint firstItem="XoJ-zv-hQD" firstAttribute="width" secondItem="nCd-mU-2bE" secondAttribute="width" id="kPa-F1-k4A"/>
-                            <constraint firstItem="JI2-IE-zkY" firstAttribute="trailing" secondItem="IPs-qs-Wwb" secondAttribute="trailing" id="pwJ-lh-wcW"/>
-                            <constraint firstItem="JI2-IE-zkY" firstAttribute="bottom" secondItem="O21-7Y-roV" secondAttribute="bottom" constant="10" id="q70-Nk-MMh"/>
-                            <constraint firstItem="JI2-IE-zkY" firstAttribute="trailing" secondItem="O21-7Y-roV" secondAttribute="trailing" constant="20" id="yVq-bf-JlV"/>
+                            <constraint firstItem="bBe-eH-Kvt" firstAttribute="trailing" secondItem="IPs-qs-Wwb" secondAttribute="trailing" id="pwJ-lh-wcW"/>
+                            <constraint firstItem="bBe-eH-Kvt" firstAttribute="bottom" secondItem="O21-7Y-roV" secondAttribute="bottom" constant="10" id="q70-Nk-MMh"/>
+                            <constraint firstItem="bBe-eH-Kvt" firstAttribute="trailing" secondItem="O21-7Y-roV" secondAttribute="trailing" constant="20" id="yVq-bf-JlV"/>
                             <constraint firstItem="cXh-UK-xaG" firstAttribute="centerY" secondItem="Ga5-6y-CO2" secondAttribute="centerY" id="zZe-JA-VwQ"/>
-                            <constraint firstItem="JI2-IE-zkY" firstAttribute="trailing" secondItem="cXh-UK-xaG" secondAttribute="trailing" constant="10" id="zfo-4c-T9k"/>
+                            <constraint firstItem="bBe-eH-Kvt" firstAttribute="trailing" secondItem="cXh-UK-xaG" secondAttribute="trailing" constant="10" id="zfo-4c-T9k"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="JI2-IE-zkY"/>
+                        <viewLayoutGuide key="safeArea" id="bBe-eH-Kvt"/>
                     </view>
                     <navigationItem key="navigationItem" title="视频编辑" id="jS9-lF-vqZ"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -272,15 +252,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jZT-NQ-hy9" firstAttribute="trailing" secondItem="yvd-Wr-2Jh" secondAttribute="trailing" id="3ZE-Xg-ZRX"/>
-                            <constraint firstItem="jZT-NQ-hy9" firstAttribute="leading" secondItem="yvd-Wr-2Jh" secondAttribute="leading" id="KDm-4w-Sp2"/>
-                            <constraint firstItem="jZT-NQ-hy9" firstAttribute="top" secondItem="yvd-Wr-2Jh" secondAttribute="top" id="bqM-oE-tS9"/>
-                            <constraint firstItem="gKY-u1-ChA" firstAttribute="trailing" secondItem="yvd-Wr-2Jh" secondAttribute="trailing" id="mnR-mN-oF9"/>
+                            <constraint firstItem="jZT-NQ-hy9" firstAttribute="trailing" secondItem="uP4-d1-cTn" secondAttribute="trailing" id="3ZE-Xg-ZRX"/>
+                            <constraint firstItem="jZT-NQ-hy9" firstAttribute="leading" secondItem="uP4-d1-cTn" secondAttribute="leading" id="KDm-4w-Sp2"/>
+                            <constraint firstItem="jZT-NQ-hy9" firstAttribute="top" secondItem="uP4-d1-cTn" secondAttribute="top" id="bqM-oE-tS9"/>
+                            <constraint firstItem="gKY-u1-ChA" firstAttribute="trailing" secondItem="uP4-d1-cTn" secondAttribute="trailing" id="mnR-mN-oF9"/>
                             <constraint firstItem="gKY-u1-ChA" firstAttribute="top" secondItem="jZT-NQ-hy9" secondAttribute="bottom" id="nur-3D-WO9"/>
-                            <constraint firstItem="gKY-u1-ChA" firstAttribute="leading" secondItem="yvd-Wr-2Jh" secondAttribute="leading" id="pIY-BV-zWP"/>
-                            <constraint firstItem="gKY-u1-ChA" firstAttribute="bottom" secondItem="yvd-Wr-2Jh" secondAttribute="bottom" id="xCx-tm-5gc"/>
+                            <constraint firstItem="gKY-u1-ChA" firstAttribute="leading" secondItem="uP4-d1-cTn" secondAttribute="leading" id="pIY-BV-zWP"/>
+                            <constraint firstItem="gKY-u1-ChA" firstAttribute="bottom" secondItem="uP4-d1-cTn" secondAttribute="bottom" id="xCx-tm-5gc"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="yvd-Wr-2Jh"/>
+                        <viewLayoutGuide key="safeArea" id="uP4-d1-cTn"/>
                     </view>
                     <navigationItem key="navigationItem" title="生成Gif" id="dqP-lb-hRT">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="WSy-5m-Fer">
