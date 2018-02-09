@@ -34,7 +34,7 @@
     UICollectionViewFlowLayout* layout=[[UICollectionViewFlowLayout alloc]init];
     layout.minimumLineSpacing=8;
     layout.minimumInteritemSpacing=8;
-    layout.itemSize=CGSizeMake(IPHONE_WIDTH-16, IPHONE_WIDTH-16);
+    layout.itemSize=CGSizeMake((IPHONE_WIDTH-8)/2.0, (IPHONE_WIDTH-8)/2.0);
     self.collectionView.collectionViewLayout = layout;
     
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([LJPhotoCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:cellIdentify];
@@ -115,7 +115,7 @@
     cell.gifImageView.hidden = YES;
     cell.videoDurationTimeLabel.hidden = YES;
     cell.selectButton.hidden=NO;
-    
+    cell.headImageView.contentMode = UIViewContentModeScaleAspectFit;
     UIImage* image = [self.frameImages valueForKey:[@(indexPath.item) stringValue]];
     if (image) {
         cell.headImageView.image = image;
