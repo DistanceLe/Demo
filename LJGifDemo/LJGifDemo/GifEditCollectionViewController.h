@@ -10,6 +10,11 @@
 
 @interface GifEditCollectionViewController : UICollectionViewController
 
+/**  从首页进入的Gif解析 */
 @property(nonatomic, strong)NSString* gifName;
+
+/**  从缓存目录进入的 */
+@property(nonatomic, strong)NSString* cacheName;
+
 
 @end

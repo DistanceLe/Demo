@@ -85,7 +85,7 @@
     self.step.stepValue = frameTime;
     self.step.value = 0;
     self.currentStepValue = 0;
-    self.currentTimeLabel.text = @"0:00";
+    self.currentTimeLabel.text = @"0\n0.00";
     
     //保存cache 的名字
     YYCache* cacheNames = [YYCache cacheWithName:allCacheNames];
@@ -107,34 +107,35 @@
     assetImageGenerator.requestedTimeToleranceAfter = kCMTimeZero;
     assetImageGenerator.requestedTimeToleranceBefore = kCMTimeZero;
     
-    NSInteger maxFrame = 5000;
+    NSInteger maxFrame = 10000;
     for (NSInteger i = 0; i < maxFrame; i++) {
         CGFloat currentTime = i*frameTime;
         if (currentTime > self.videoDuration) {
             break;
         }
         /**  即 一秒最多 100帧， 保留两位小数 */
-        NSString* timeStr = [NSString stringWithFormat:@"%.2f", currentTime];
-        DLog(@"循环 %@", timeStr);
-        if ([self.imageCache.diskCache containsObjectForKey:timeStr]) {
-            if ([timeStr floatValue]>=self.videoDuration ||
-                [timeStr floatValue]+frameTime > self.videoDuration ||
-                [timeStr floatValue]+0.01 > self.videoDuration ||
+        //NSString* timeStr = [NSString stringWithFormat:@"%.2f", currentTime];
+//        DLog(@"循环 %@", timeStr);
+        if ([self.imageCache.diskCache containsObjectForKey:@(i).stringValue]) {
+            if (//[timeStr floatValue]>=self.videoDuration ||
+                currentTime+frameTime > self.videoDuration ||
+                currentTime+0.001 > self.videoDuration ||
                 i==maxFrame) {
-                DLog(@"完成：%@ ✌️", timeStr);
-                self.contentImageView.image = (UIImage*)[self.imageCache.diskCache objectForKey:@"0.00"];
+//                DLog(@"完成：%@ ✌️", timeStr);
+                self.contentImageView.image = (UIImage*)[self.imageCache.diskCache objectForKey:@"0"];
                 [ProgressHUD dismiss];
                 [self.frameCollectionView reloadData];
                 break;
             }
         }else{
             [LJGif getVideoFrameAsyncWithGenerator:assetImageGenerator atTime:currentTime complete:^(UIImage *image) {
-                DLog(@"得到图片 %@", timeStr);
-                [self.imageCache.diskCache setObject:image forKey:timeStr];
+//                DLog(@"得到图片 %@", timeStr);
+                [self.imageCache.diskCache setObject:image forKey:@(i).stringValue];
                 self.contentImageView.image = image;
-                if ([timeStr floatValue]>=self.videoDuration || [timeStr floatValue]+frameTime*2 > self.videoDuration || i==maxFrame) {
-                    DLog(@"完成：%@ ✌️", timeStr);
-                    self.contentImageView.image = (UIImage*)[self.imageCache.diskCache objectForKey:@"0.00"];
+                if (//[timeStr floatValue]>=self.videoDuration ||
+                    currentTime+frameTime > self.videoDuration || i==maxFrame) {
+//                    DLog(@"完成：%@ ✌️", timeStr);
+                    self.contentImageView.image = (UIImage*)[self.imageCache.diskCache objectForKey:@"0"];
                     [ProgressHUD dismiss];
                     [self.frameCollectionView reloadData];
                 }
@@ -190,10 +191,10 @@
     CGFloat shouldOffset =  (intervaleTime/(1.0f/self.fps)*minFramOffset);
     
     if (((currentCenter == -(IPHONE_WIDTH/2.0-20) || currentCenter-minFramOffset+0.01 < -(IPHONE_WIDTH/2.0-20))
-         && sender.value-self.currentStepValue < 0) ||
+         && sender.value-self.currentStepValue < 0.001) ||
         
         ((currentCenter >= (IPHONE_WIDTH/2.0-20) ||currentCenter+minFramOffset-0.01 > (IPHONE_WIDTH/2.0-20))
-         && sender.value-self.currentStepValue > 0)) {
+         && sender.value-self.currentStepValue > 0.001)) {
         //scrollview 滚动
         self.scrollOffset += shouldOffset;
         self.frameCollectionView.contentOffset = CGPointMake(self.scrollOffset, 0);
@@ -238,13 +239,14 @@
     CGFloat scrollOffsetIndex = self.scrollOffset/60.0;
     
     CGFloat currentFrameTime = currentIndex + scrollOffsetIndex;
-    
-    NSString* frameKey = [NSString stringWithFormat:@"%.2f", fabs(currentFrameTime)];
+    CGFloat frameTime = 1.0/self.fps;
+    NSString* frameKey = [NSString stringWithFormat:@"%.0f", fabs(currentFrameTime)/frameTime];
 
     if ([self.imageCache.diskCache containsObjectForKey:frameKey]) {
-        self.currentTimeLabel.text = frameKey;
+        self.currentTimeLabel.text = [NSString stringWithFormat:@"%@\n%.2f", frameKey, frameKey.integerValue*frameTime];
         DLog(@"refresh %@", frameKey);
-        self.step.value = [frameKey floatValue];
+        self.step.value = frameKey.integerValue * frameTime;
+        self.currentStepValue = self.step.value;
         self.contentImageView.image = (UIImage*)[self.imageCache.diskCache objectForKey:frameKey];
     }
 }
@@ -283,8 +285,8 @@
     
     VideoFrameCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentify forIndexPath:indexPath];
     
-    if ([self.imageCache.diskCache containsObjectForKey:[NSString stringWithFormat:@"%.2f", @(indexPath.item).floatValue]]){
-        cell.contentImageView.image = (UIImage*)[self.imageCache.diskCache objectForKey:[NSString stringWithFormat:@"%.2f", @(indexPath.item).floatValue]];
+    if ([self.imageCache.diskCache containsObjectForKey:[NSString stringWithFormat:@"%ld", indexPath.item*self.fps]]){
+        cell.contentImageView.image = (UIImage*)[self.imageCache.diskCache objectForKey:[NSString stringWithFormat:@"%ld", indexPath.item*self.fps]];
     }
     return cell;
 }

@@ -84,7 +84,8 @@
     
     NSMutableArray* imagesName = [NSMutableArray arrayWithArray:operational.imageNames];
     for (NSString* string in operational.imageNames) {
-        if ([string hasSuffix:@".MOV"] || [string hasSuffix:@".gif"]) {
+        if ([string hasSuffix:@".MOV"] || [string hasSuffix:@".gif"]
+            || ([string hasSuffix:@".livePhoto"] && ![LJPhotoOperational shareOperational].livephotoOpen)) {
             [imagesName removeObject:string];
         }
     }

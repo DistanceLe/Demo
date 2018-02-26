@@ -7,6 +7,7 @@
 //
 
 #import "CacheTableViewController.h"
+#import "GifEditCollectionViewController.h"
 
 #import "YYCache.h"
 
@@ -81,6 +82,12 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"cache" sender:self.cacheNamesArray[indexPath.row]];
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
@@ -94,14 +101,14 @@
 }
 
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    //cache
+    if ([segue.identifier isEqualToString:@"cache"]) {
+        GifEditCollectionViewController* gifVC = [segue destinationViewController];
+        gifVC.cacheName = sender;
+    }
 }
-*/
 
 @end

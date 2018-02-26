@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *angleTextField;
 @property (weak, nonatomic) IBOutlet UITextField *roopTextField;
 
+@property (weak, nonatomic) IBOutlet UISwitch *livePhotoSwitch;
 
 @end
 
@@ -45,6 +46,11 @@
         self.tabBarController.tabBar.hidden = YES;
         //self.hidesBottomBarWhenPushed = YES;
     }
+}
+
+/**  是否将livePhoto当做图片 */
+- (IBAction)livephotoSwitchClick:(UISwitch *)sender {
+    [LJPhotoOperational shareOperational].livephotoOpen = sender.isOn;
 }
 
 /**  每帧间隔 */

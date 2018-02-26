@@ -12,6 +12,7 @@
 
 
 /**  Gif配置 */
+@property(nonatomic, assign)BOOL      livephotoOpen;
 @property(nonatomic, assign)NSInteger roopTimes;
 @property(nonatomic, assign)CGFloat angleValue;
 @property(nonatomic, assign)CGFloat frameInterval;

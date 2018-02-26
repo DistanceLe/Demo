@@ -36,6 +36,7 @@
 }
 
 -(void)initData{
+    self.livephotoOpen = YES;
     self.roopTimes = 0;
     self.frameInterval = 0.2;
     self.gifSize = 1;
