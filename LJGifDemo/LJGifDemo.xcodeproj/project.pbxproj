@@ -50,9 +50,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2A3715F82022BEC6003EAF19 /* VideoFrameCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoFrameCell.h; path = Tools/VideoFrameCell.h; sourceTree = "<group>"; };
-		2A3715F92022BEC6003EAF19 /* VideoFrameCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VideoFrameCell.m; path = Tools/VideoFrameCell.m; sourceTree = "<group>"; };
-		2A3715FA2022BEC6003EAF19 /* VideoFrameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = VideoFrameCell.xib; path = Tools/VideoFrameCell.xib; sourceTree = "<group>"; };
+		2A3715F82022BEC6003EAF19 /* VideoFrameCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoFrameCell.h; sourceTree = "<group>"; };
+		2A3715F92022BEC6003EAF19 /* VideoFrameCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoFrameCell.m; sourceTree = "<group>"; };
+		2A3715FA2022BEC6003EAF19 /* VideoFrameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoFrameCell.xib; sourceTree = "<group>"; };
 		2A4CC03D1FE3C33A0076676F /* LJGifDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJGifDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A4CC0401FE3C33A0076676F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2A4CC0411FE3C33A0076676F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -142,6 +142,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A277FEC2046B409008FD6C5 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				2AAE9D9B2021BA4800623F18 /* VideoEditViewController.h */,
+				2AAE9D9C2021BA4800623F18 /* VideoEditViewController.m */,
+				2AD07917202B083300180918 /* GifEditCollectionViewController.h */,
+				2AD07918202B083300180918 /* GifEditCollectionViewController.m */,
+				2A3715F82022BEC6003EAF19 /* VideoFrameCell.h */,
+				2A3715F92022BEC6003EAF19 /* VideoFrameCell.m */,
+				2A3715FA2022BEC6003EAF19 /* VideoFrameCell.xib */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		2A277FED2046B464008FD6C5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2A4CC0431FE3C33A0076676F /* ViewController.h */,
+				2A4CC0441FE3C33A0076676F /* ViewController.m */,
+				2A5DC3C11FEB826D006C9899 /* GifGenerateViewController.h */,
+				2A5DC3C21FEB826D006C9899 /* GifGenerateViewController.m */,
+				2A5DC3C71FEBA46C006C9899 /* SettingViewController.h */,
+				2A5DC3C81FEBA46C006C9899 /* SettingViewController.m */,
+				2A762B9620284D5900AF57A1 /* CacheTableViewController.h */,
+				2A762B9720284D5900AF57A1 /* CacheTableViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		2A4CC0341FE3C33A0076676F = {
 			isa = PBXGroup;
 			children = (
@@ -164,25 +193,12 @@
 				2AE07CED1FE7983600DA3149 /* Album */,
 				2A4CC08E1FE3C9310076676F /* GIF */,
 				2A4CC0561FE3C3480076676F /* Tools */,
-				2A4CC0401FE3C33A0076676F /* AppDelegate.h */,
-				2A4CC0411FE3C33A0076676F /* AppDelegate.m */,
-				2A4CC0431FE3C33A0076676F /* ViewController.h */,
-				2A4CC0441FE3C33A0076676F /* ViewController.m */,
-				2AAE9D9B2021BA4800623F18 /* VideoEditViewController.h */,
-				2AAE9D9C2021BA4800623F18 /* VideoEditViewController.m */,
-				2AD07917202B083300180918 /* GifEditCollectionViewController.h */,
-				2AD07918202B083300180918 /* GifEditCollectionViewController.m */,
-				2A3715F82022BEC6003EAF19 /* VideoFrameCell.h */,
-				2A3715F92022BEC6003EAF19 /* VideoFrameCell.m */,
-				2A3715FA2022BEC6003EAF19 /* VideoFrameCell.xib */,
-				2A5DC3C11FEB826D006C9899 /* GifGenerateViewController.h */,
-				2A5DC3C21FEB826D006C9899 /* GifGenerateViewController.m */,
-				2A5DC3C71FEBA46C006C9899 /* SettingViewController.h */,
-				2A5DC3C81FEBA46C006C9899 /* SettingViewController.m */,
-				2A762B9620284D5900AF57A1 /* CacheTableViewController.h */,
-				2A762B9720284D5900AF57A1 /* CacheTableViewController.m */,
 				6AED231E1FE956950035CB41 /* LJPhotoOperational.h */,
 				6AED231F1FE956950035CB41 /* LJPhotoOperational.m */,
+				2A4CC0401FE3C33A0076676F /* AppDelegate.h */,
+				2A4CC0411FE3C33A0076676F /* AppDelegate.m */,
+				2A277FED2046B464008FD6C5 /* Main */,
+				2A277FEC2046B409008FD6C5 /* Edit */,
 				2A4CC0461FE3C33A0076676F /* Main.storyboard */,
 				2A4CC0491FE3C33A0076676F /* Assets.xcassets */,
 				2A4CC04B1FE3C33A0076676F /* LaunchScreen.storyboard */,
