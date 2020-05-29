@@ -42,7 +42,7 @@
 -(void)setBeizierUI{
     
     self.bezierLayer=[LJBezierLayer layer];
-    self.bezierLayer.frame=CGRectMake(0, 0, 300, 300);
+    self.bezierLayer.frame=CGRectMake(0, 0, BezierWidth, BezierWidth);
     self.bezierLayer.isCubeCurve=YES;
     __weak typeof(self) tempWeakSelf=self;
     

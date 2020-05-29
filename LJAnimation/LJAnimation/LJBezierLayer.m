@@ -48,10 +48,15 @@
     CGFloat layerWidth=self.bounds.size.width;
     
     UIBezierPath* bezierPath=[UIBezierPath bezierPath];
+    
+    //起始点， 左下角是坐标原点
     [bezierPath moveToPoint:CGPointMake(0, layerHeight)];
+    
     if (self.isCubeCurve) {
+        //三次贝塞尔曲线   Point表示结束的点  controlPoint控制的点
         [bezierPath addCurveToPoint:CGPointMake(layerWidth, 0) controlPoint1:_firstPoint controlPoint2:_secondPoint];
     }else{
+        //二次贝塞尔曲线   Point表示结束的点
         [bezierPath addQuadCurveToPoint:CGPointMake(layerWidth, 0) controlPoint:_firstPoint];
     }
     

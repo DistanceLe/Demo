@@ -345,7 +345,7 @@
 				TargetAttributes = {
 					2A34B2851D2E0C01004FEC67 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = KKHXU36BGT;
+						DevelopmentTeam = QTZ635LNPY;
 					};
 					2A34B29E1D2E0C02004FEC67 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -362,6 +362,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -570,9 +571,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KKHXU36BGT;
+				DEVELOPMENT_TEAM = QTZ635LNPY;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/renjinkui/Desktop/休闲项目/LJAnimation/LJAnimation/Tools/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/LJAnimation/Tools/PrefixHeader.pch";
 				INFOPLIST_FILE = LJAnimation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LJ.LJAnimation;
@@ -584,9 +585,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = KKHXU36BGT;
+				DEVELOPMENT_TEAM = QTZ635LNPY;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/renjinkui/Desktop/休闲项目/LJAnimation/LJAnimation/Tools/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/LJAnimation/Tools/PrefixHeader.pch";
 				INFOPLIST_FILE = LJAnimation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LJ.LJAnimation;
