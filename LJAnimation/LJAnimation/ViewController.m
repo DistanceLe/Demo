@@ -217,7 +217,8 @@
     @weakify(self);
     _viewsGravity.action=^{
         @strongify(self);
-        NSLog(@"acting");
+//        NSLog(@"acting 220");
+        // 弹性 会一直进来
         UIBezierPath* path=[[UIBezierPath alloc]init];
         [path moveToPoint:self.panView.center];
         [path addCurveToPoint:self.but.center controlPoint1:self.controlPoint2.center controlPoint2:self.controlPoint.center];
@@ -346,7 +347,7 @@
     @weakify(self);
     _viewsGravity.action=^{
         @strongify(self);
-        NSLog(@"acting");
+        NSLog(@"acting 349");
         UIBezierPath* path=[[UIBezierPath alloc]init];
         [path moveToPoint:self.panView.center];
         [path addCurveToPoint:self.ballImageView.center controlPoint1:self.topView.center controlPoint2:self.bottomView.center];

@@ -19,9 +19,19 @@
 -(instancetype)init{
     self=[super init];
     if (self) {
-        
+        self.beginPoint = CGPointZero;
+        self.endPoint = CGPointZero;
     }
     return self;
+}
+
+- (void)setBeginPoint:(CGPoint)beginPoint{
+    _beginPoint = beginPoint;
+    [self setNeedsDisplay];
+}
+-(void)setEndPoint:(CGPoint)endPoint{
+    _endPoint = endPoint;
+    [self setNeedsDisplay];
 }
 
 -(void)setFirstPoint:(CGPoint)firstPoint{
@@ -49,15 +59,25 @@
     
     UIBezierPath* bezierPath=[UIBezierPath bezierPath];
     
+    CGPoint tempBeginPoint = self.beginPoint;
+    CGPoint tempEndPoint = self.endPoint;
+    if (CGPointEqualToPoint(self.beginPoint, CGPointZero) &&
+        CGPointEqualToPoint(self.endPoint, CGPointZero)) {
+        
+        tempBeginPoint = CGPointMake(0, layerHeight);
+        tempEndPoint = CGPointMake(layerWidth, 0);
+    }
+    
+    
     //起始点， 左下角是坐标原点
-    [bezierPath moveToPoint:CGPointMake(0, layerHeight)];
+    [bezierPath moveToPoint:tempBeginPoint];
     
     if (self.isCubeCurve) {
         //三次贝塞尔曲线   Point表示结束的点  controlPoint控制的点
-        [bezierPath addCurveToPoint:CGPointMake(layerWidth, 0) controlPoint1:_firstPoint controlPoint2:_secondPoint];
+        [bezierPath addCurveToPoint:tempEndPoint controlPoint1:_firstPoint controlPoint2:_secondPoint];
     }else{
         //二次贝塞尔曲线   Point表示结束的点
-        [bezierPath addQuadCurveToPoint:CGPointMake(layerWidth, 0) controlPoint:_firstPoint];
+        [bezierPath addQuadCurveToPoint:tempEndPoint controlPoint:_firstPoint];
     }
     
     CGContextAddPath(ctx, bezierPath.CGPath);
