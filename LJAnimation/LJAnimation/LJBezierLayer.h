@@ -10,8 +10,16 @@
 
 @interface LJBezierLayer : CALayer
 
+@property(nonatomic, strong)UIColor* lineColor;
+@property(nonatomic, assign)CGFloat lineWidth;
+
+
 /**  三次方贝塞尔曲线 */
 @property(nonatomic, assign)BOOL isCubeCurve;
+
+/**  是否虚线 */
+@property(nonatomic, assign)BOOL isDash;
+
 
 
 /**  起始点 */
